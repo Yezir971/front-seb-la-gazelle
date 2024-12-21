@@ -8,8 +8,6 @@ const Home = () => {
             <Navbar/>
             <SignInModal />
             <SignUpModal />
-            
-            
         </>
     )
 }

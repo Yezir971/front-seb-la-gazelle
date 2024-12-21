@@ -4,13 +4,7 @@
     box-sizing: border-box;
 }
 
-html { 
-    background: url(../img/Nature_Vector_Backgrounds.jpeg) no-repeat center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 
 
 /*
