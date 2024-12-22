@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import NavBarGame from "../Component/NavBarGame";
 import styled from "styled-components";
-import screen from "../assets/img/charly-game/charly-game-1.png";
+// import screen from "../assets/img/charly-game/charly-game-1.png";
 import gsap from "gsap";
+import data from "../data/charlyGame.js";
+import TimmerComponent from "../Component/TimmerComponent.jsx";
+import { TimerContext } from "../context/TimerContext.jsx";
 
 // Styled Components
 const PictureContainer = styled.div`
@@ -20,7 +23,7 @@ const PictureContainer = styled.div`
 const PictureGameCharly = styled.img`
   width: 100%;
   max-width: 600px;
-  height: auto;
+  // height: auto;
   object-fit: contain;
   cursor: pointer;
 
@@ -28,18 +31,33 @@ const PictureGameCharly = styled.img`
     max-width: 700px;
   }
 `;
+const ContainerGame = styled.div`
+  position:relative;
+`
+const ContainerTimer = styled.div`
+  position:absolute;
+  right:15px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+`
+
 
 const CharlyGames = () => {
     const [score, setScore] = useState(0);
     const [mouse, setMouse] = useState({ x: 0, y: 0 }); // position du click
     const [interactScore, setInteractScore] = useState('')
-    //   const [windowSize, setWindowSize] = useState({x:window.innerWidth,y:window.innerHeight }); // taille de lécran
-    //   const [dimensions, setDimensions] = useState({ width: 0, height: 0 }); // dimension de l'image
+    const {time, messageTimer} = useContext(TimerContext)
+    
+
     const scoreContainerRef = useRef(null); // référence pour la taille de l'image
 
-
-  
-//  fonction qui va permettre de savoir où exactement l'utilisateur a clicker 
+    // variable aléatoire qui va permettre de choisir aléatoirement une image 
+    const [randomPicture, setRandomPicture] = useState(Math.floor(Math.random() * (data.length ) ));
+    
+    //fonction qui va permettre de savoir où exactement l'utilisateur a clicker 
     const handleClick = (event) => {
         // getBoundingClientRect permet d'avoir la position de l'image par rapport a la fenêter 
         const rect = scoreContainerRef.current.getBoundingClientRect();
@@ -54,27 +72,47 @@ const CharlyGames = () => {
         setMouse({ x: proportionalX, y: proportionalY });
 
         // Vérifiez si le clic est dans une zone spécifique
-        if (proportionalX >= 45 && proportionalX <= 97 && proportionalY >= 367 && proportionalY <= 400) {
-            setInteractScore("win");
-            setScore((prev) => prev + 1);
+        if (proportionalX >= data[randomPicture].position[0].xMin && proportionalX <= data[randomPicture].position[0].xMax && proportionalY >= data[randomPicture].position[1].yMin && proportionalY <= data[randomPicture].position[1].yMax) {
+          setInteractScore("win");
+          setScore((prev) => prev + 1);
+          // si l'utilisateur à réussi a trouver charly on trouve aléatoirement une autre image 
+          let newRandomNumber = Math.floor(Math.random() * (data.length ) )
+
+          // boucle while qui va nous permettre de générer une image différente de celle générer 
+          while(newRandomNumber == randomPicture){
+            newRandomNumber = Math.floor(Math.random() * (data.length ))
+          }
+          setRandomPicture(newRandomNumber)
         } else {
-            gsap.to(scoreContainerRef.current, { x: 10, duration: 0.3, yoyo: true, repeat: 2 }); // Shake animation
-            setInteractScore("lose");
+          // gsap.to(scoreContainerRef.current, { x: 10, duration: 0.3, yoyo: true, repeat: 2 }); // Shake animation
+          setInteractScore("lose");
         }
     
     };
-    console.log("Position relative du clic : ", mouse);
-
-    const interacteScore = (mouse.x >= 45 && mouse.x <= 97) && (mouse.y >= 367 && mouse.y <= 400) ? "win" : "lose"
-
+    console.log(mouse)
+    console.log(randomPicture)
 
     return (
         <>
             <NavBarGame points={score} />
-            <p>{interactScore}</p>
-            <PictureContainer>
-                <PictureGameCharly draggable="false" ref={scoreContainerRef} src={screen} onClick={handleClick} />
-            </PictureContainer>
+            {/* <p>{interactScore}</p> */}
+            <ContainerGame>
+
+              <ContainerTimer>
+                <TimmerComponent  />
+
+              </ContainerTimer>
+
+              {(time > 0 && time <= 60) ? (
+                <PictureContainer>
+                    <PictureGameCharly draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
+                </PictureContainer>
+              ):(
+                <>
+                  <button>Nouvelle partie</button>
+                </>
+              )}
+            </ContainerGame>
         </>
     );
 };

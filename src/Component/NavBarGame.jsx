@@ -14,12 +14,12 @@ const ContainerIconReturn = styled.div`
     align-items: center;
 `
 const ImageSebi = styled.img`
-    width:102px;
-    height:120px;
+    width:72px;
+    height:90px;
 `
 const Arrow = styled.img`
-    width:44px;
-    height:44px;
+    width:30px;
+    height:30px;
 `
 const ContainerScorePoints = styled.div`
     display:flex;

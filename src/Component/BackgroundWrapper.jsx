@@ -4,7 +4,7 @@ import NatureBackground from "../assets/img/Nature_Vector_Backgrounds.jpeg";
 import ChameleonBackground from "../assets/img/background-charly-le-cameleon.png";
 
 const PageBackground = styled.div`
-  background: ${({ background }) => background } no-repeat center fixed;
+  background: ${({ background }) => background } no-repeat center ;
   height:100vh;
   -webkit-background-size: cover;
   -moz-background-size: cover;
