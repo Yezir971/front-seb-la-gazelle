@@ -22,16 +22,13 @@ function SignInModal() {
         try {
             await send(body)
             console.log(`resultat api :`)
-            // data : représente les data recu de l'api donné erreurs 
-            // loading : représente le chargement de l'api 
-            // error : représente le boolean des erreurs liée au serveur de l'api. (si true c'est a cause d'une erreur 500)
-            // dataError : est le descriptif des errurs en cas d'erreur 500
-            console.log(`
-                data : ${data} // 
-                loading : ${isLoading} //
-                error : ${error} //
-                dataError : ${dataError}`)
-            console.log(JSON.stringify(data))
+
+            // console.log(`
+            //     data : ${data} // 
+            //     loading : ${isLoading} //
+            //     error : ${error} //
+            //     dataError : ${dataError}`)
+            // console.log(JSON.stringify(data))
             
         } catch (error) {
             console.log(`erreur de l'api : ${error}`)

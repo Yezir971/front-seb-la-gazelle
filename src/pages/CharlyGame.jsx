@@ -1,8 +1,7 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import NavBarGame from "../Component/NavBarGame";
 import styled from "styled-components";
 // import screen from "../assets/img/charly-game/charly-game-1.png";
-import gsap from "gsap";
 import data from "../data/charlyGame.js";
 import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
@@ -18,7 +17,7 @@ const PictureContainer = styled.div`
   @media (min-width: 768px) {
     padding: 20px;
   }
-`;
+`
 
 const PictureGameCharly = styled.img`
   width: 100%;
@@ -30,7 +29,7 @@ const PictureGameCharly = styled.img`
   @media (min-width: 768px) {
     max-width: 700px;
   }
-`;
+`
 const ContainerGame = styled.div`
   position:relative;
 `
@@ -49,7 +48,9 @@ const CharlyGames = () => {
     const [score, setScore] = useState(0);
     const [mouse, setMouse] = useState({ x: 0, y: 0 }); // position du click
     const [interactScore, setInteractScore] = useState('')
-    const {time, messageTimer} = useContext(TimerContext)
+    const {time} = useContext(TimerContext)
+    console.log(mouse)
+    console.log(interactScore);
     
 
     const scoreContainerRef = useRef(null); // référence pour la taille de l'image
@@ -79,7 +80,7 @@ const CharlyGames = () => {
           let newRandomNumber = Math.floor(Math.random() * (data.length ) )
 
           // boucle while qui va nous permettre de générer une image différente de celle générer 
-          while(newRandomNumber == randomPicture){
+          while(newRandomNumber === randomPicture){
             newRandomNumber = Math.floor(Math.random() * (data.length ))
           }
           setRandomPicture(newRandomNumber)
@@ -89,13 +90,10 @@ const CharlyGames = () => {
         }
     
     };
-    console.log(mouse)
-    console.log(randomPicture)
 
     return (
         <>
             <NavBarGame points={score} />
-            {/* <p>{interactScore}</p> */}
             <ContainerGame>
 
               <ContainerTimer>

@@ -4,7 +4,7 @@ import NatureBackground from "../assets/img/Nature_Vector_Backgrounds.jpeg";
 import ChameleonBackground from "../assets/img/background-charly-le-cameleon.png";
 
 const PageBackground = styled.div`
-  background: ${({ background }) => background } no-repeat center ;
+  background: ${({ $background }) => $background } no-repeat center ;
   height:100vh;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -24,7 +24,7 @@ const BackgroundWrapper = ({ children }) => {
   };
   const currentBackground = backgrounds[location.pathname] || "white";
 
-  return <PageBackground background={currentBackground}>{children}</PageBackground>;
+  return <PageBackground $background={currentBackground}>{children}</PageBackground>;
   // return <PageBackground>{children}</PageBackground>;
 };  
 
