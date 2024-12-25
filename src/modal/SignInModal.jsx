@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import {UserContext} from '../context/UserContext';
 import useFetch from '../assets/hooks/useFetch';
 
@@ -6,8 +6,10 @@ function SignInModal() {
     const refName = useRef()
     const refPassword = useRef()
     const {modalState, toggleModals } = useContext(UserContext);
-    const { send, isLoading, data, error, dataError } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
+    const [responseApi, setResponseApi] = useState("") 
+    const [error, setError] = useState(false)
     
+    const { send, dataError } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
     const submit = async (e) => {
         e.preventDefault()
         // On défini le body de notre requete ici 
@@ -20,15 +22,26 @@ function SignInModal() {
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
-            await send(body)
+            const response = await send(body)
             console.log(`resultat api :`)
+            if(response.data.token && response){
+                // on récupère le token de l'utilisateur 
+                const token = response.data.token
+                setResponseApi(response)
+                // on save dans le localstorage le token de l'utilisateur 
+                localStorage.setItem("token", token);
+    
+                // si tout est ok on actualise la page  
+                window.location.reload();
 
-            // console.log(`
-            //     data : ${data} // 
-            //     loading : ${isLoading} //
-            //     error : ${error} //
-            //     dataError : ${dataError}`)
-            // console.log(JSON.stringify(data))
+                // si on arrive pas a se connecter c'est que le mot de passe ou le mail n'est pas correcte 
+
+            }
+            else if(response.data.code === 401){
+                setResponseApi("Votre mot de passe ou mail n'est pas correcte")
+                setError(true)
+            }
+
             
         } catch (error) {
             console.log(`erreur de l'api : ${error}`)
@@ -57,6 +70,10 @@ function SignInModal() {
                             <input type="submit" value="Se connecter" className="formButton"/>
                         </div>
                     </form>
+                    {
+                        error && <p>{responseApi}</p>
+                    }
+
                 </div>
             )}
         </>
