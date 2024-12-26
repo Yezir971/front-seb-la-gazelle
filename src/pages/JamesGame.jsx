@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import TimmerComponent from "../Component/TimmerComponent";
 import gsap from "gsap";
+import imageJamesTheHowl from "../assets/img/james-avatar.png"
 import { TimerContext } from "../context/TimerContext";
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -8,6 +9,11 @@ const styles = {
       fontFamily: "Arial, sans-serif",
       textAlign: "center",
       padding: "20px",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column"
     },
     answers: {
       display: "flex",
@@ -21,6 +27,8 @@ const styles = {
       borderRadius: "5px",
       padding: "10px 20px",
       fontSize: "18px",
+      width: "80px",
+      height: "80px",
       cursor: "pointer",
     },
     message: {
@@ -35,7 +43,6 @@ const JamesGame = () => {
     const [answers, setAnswers] = useState([]);
     const [score, setScore] = useState(0);
     const [message, setMessage] = useState("");
-
     const {time, messageTimer} = useContext(TimerContext)
 
     // Generate a random question
@@ -65,11 +72,11 @@ const JamesGame = () => {
         const button = document.querySelectorAll("button");
         if (answer === question.correctAnswer) {
             gsap.to(button, { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
-            setMessage("Correct! 🎉");
+            setMessage("Réponse correct! 🎉");
             setScore((prev) => prev + 1);
         } else {
             gsap.to(button, { x: 10, duration: 0.2, yoyo: true, repeat: 1 }); // Shake animation
-            setMessage("Oops! Try again. 😅");
+            setMessage("Oops! Mauvaise réponse. 😅");
         }
     
         generateQuestion();
@@ -82,28 +89,54 @@ const JamesGame = () => {
 
     return(
         <>
-        <TimmerComponent />
-        { time > 0 && (
-            <div style={styles.container}>
-                <h1>Aide James le Hibooux à résoudre les calculs</h1>
-                <h2>
-                combien fait {question.num1} {question.operator} {question.num2}?
-                </h2>
-                <div style={styles.answers}>
-                {answers.map((answer, index) => (
-                    <button
-                    key={index}
-                    style={styles.button}
-                    onClick={() => handleAnswerClick(answer)}
-                    >
-                    {answer}
-                    </button>
-                ))}
+        <div className="layout">     
+            <h1 className="gameTitle">Aide James le Hiboux à résoudre les calculs</h1>
+            <div className="containerGame">
+                <div className="whiteBoard">
+                    { time > 0 ? (
+                        <div style={styles.container}>
+                            <div className="containerOperation">
+                                <h2>
+                                {question.num1} {question.operator} {question.num2}
+                                </h2>
+                                <p>=</p>
+                            </div>
+                            <div style={styles.answers}>
+                            {answers.map((answer, index) => (
+                                <button
+                                key={index}
+                                style={styles.button}
+                                onClick={() => handleAnswerClick(answer)}
+                                >
+                                {answer}
+                                </button>
+                            ))}
+                            </div>
+                            <h3>Score: {score}</h3>
+                        </div>
+                    ):(
+                        <div>
+                            <h3>Score: {score}</h3>
+                            <table>
+                                <th>User</th>
+                                <th>Score</th>
+                            </table>
+                        </div>
+                    )}
                 </div>
-                <div className="message" style={styles.message}>{message}</div>
-                <h3>Score: {score}</h3>
+                <TimmerComponent />
             </div>
-        )}
+            <div className="containerJames">
+                <img className="jamesTheHowl" src={ imageJamesTheHowl } alt="James le hibou" />
+                <div className="talkbubbleJames">
+                    { time > 0 ? (
+                        <div className="message" style={styles.message}>{message}</div>
+                    ):
+                    <p className="textEndTimer">{messageTimer}</p>
+                    }
+                </div>
+            </div>
+        </div>
         </>
     )
 }

@@ -33,6 +33,8 @@ const UserContextProvider = (props) => {
                     showNavbar: true
                 })
                 break;
+            default:
+                break;
         }
 
 

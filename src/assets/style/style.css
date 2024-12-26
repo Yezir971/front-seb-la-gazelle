@@ -152,3 +152,87 @@
     cursor: pointer;
 }
 
+
+/*
+    James le hibou
+*/
+.layout{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.gameTitle{
+    text-align: center;
+    margin-bottom: 24px;
+}
+.whiteBoard{
+    width: 50vw;
+    height: 50vh;
+    margin: auto;
+    background: white;
+}
+
+.containerOperation{
+    width: 60%;
+    font-size: 72px;
+}
+
+.containerGame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.clocks{
+    position: absolute;
+    top: 120px;
+    right: 100px;
+}
+.containerJames{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.jamesTheHowl{
+    width: 300px;
+    height: 300px;
+}
+.speechBubbles{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.talkbubbleJames{
+    width: 180px;
+    height: 120px;
+    background: transparent;
+    background: white;
+    border: 2px solid black;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .talkbubbleJames:before {
+    content: "";
+    position: absolute;
+    transform: rotate(-60deg);
+    left: -8px;
+    bottom: -12px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 26px solid white;
+    border-bottom: 13px solid transparent;
+  }

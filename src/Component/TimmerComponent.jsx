@@ -10,7 +10,7 @@ const TimmerComponent = () => {
         <>
             <div className="chart"></div>
             <p className="textTimer">{time}s</p>
-            <p className="textEndTimer">{messageTimer}</p>
+            {/* <p className="textEndTimer">{messageTimer}</p> */}
         </>
     )
 }
