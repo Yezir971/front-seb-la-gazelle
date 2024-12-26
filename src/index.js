@@ -5,11 +5,7 @@ import "../src/assets/style/style.css"
 import UserContextProvider from './context/UserContext';
 import { BrowserRouter } from 'react-router-dom';
 import TimerContextProvider from './context/TimerContext';
-<<<<<<< HEAD
 import GameContextProvider from './context/GameContext';
-=======
-
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,13 +13,9 @@ root.render(
     <BrowserRouter>
       <TimerContextProvider>
         <UserContextProvider>
-<<<<<<< HEAD
           <GameContextProvider>
           <App />
           </GameContextProvider>
-=======
-          <App />
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
         </UserContextProvider>
       </TimerContextProvider>
     </BrowserRouter>

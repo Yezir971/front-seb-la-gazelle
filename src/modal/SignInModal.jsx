@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useContext, useRef, useState } from 'react';
-=======
-import { useContext, useRef } from 'react';
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
 import {UserContext} from '../context/UserContext';
 import useFetch from '../assets/hooks/useFetch';
 
@@ -10,18 +6,12 @@ function SignInModal() {
     const refName = useRef()
     const refPassword = useRef()
     const {modalState, toggleModals } = useContext(UserContext);
-<<<<<<< HEAD
     const [responseApi, setResponseApi] = useState("") 
     const [error, setError] = useState(false)
     
     const { send } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
     const submit = async (e) => {
         // console.time("temps exécution")
-=======
-    const { send, isLoading, data, error, dataError } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
-    
-    const submit = async (e) => {
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
         e.preventDefault()
         // On défini le body de notre requete ici 
         let body = {
@@ -33,7 +23,6 @@ function SignInModal() {
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
-<<<<<<< HEAD
             const response = await send(body)
             console.log(`resultat api :`)
             if(response.data.token && response){
@@ -62,27 +51,6 @@ function SignInModal() {
         }
     }
 
-=======
-            await send(body)
-            console.log(`resultat api :`)
-            // data : représente les data recu de l'api donné erreurs 
-            // loading : représente le chargement de l'api 
-            // error : représente le boolean des erreurs liée au serveur de l'api. (si true c'est a cause d'une erreur 500)
-            // dataError : est le descriptif des errurs en cas d'erreur 500
-            console.log(`
-                data : ${data} // 
-                loading : ${isLoading} //
-                error : ${error} //
-                dataError : ${dataError}`)
-            console.log(JSON.stringify(data))
-            
-        } catch (error) {
-            console.log(`erreur de l'api : ${error}`)
-            console.table(dataError)
-        }
-    }
-    
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
     const closeModal = () => {
         toggleModals("close")
     }
@@ -104,13 +72,10 @@ function SignInModal() {
                             <input type="submit" value="Se connecter" className="formButton"/>
                         </div>
                     </form>
-<<<<<<< HEAD
                     {
                         error && <p>{responseApi}</p>
                     }
 
-=======
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
                 </div>
             )}
         </>

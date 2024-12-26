@@ -7,20 +7,13 @@
   
 .textTimer, .textEndTimer{
     font-weight: 600;
-<<<<<<< HEAD
-=======
     animation: colors 60s linear;
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
     font-size:xx-large;
 }
 
 .textTimer{
     color: #6D67C9;
-<<<<<<< HEAD
-    animation: colors 60s linear;
     text-align: center;
-=======
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
 
 }
 .textEndTimer{

@@ -1,62 +1,16 @@
-<<<<<<< HEAD
 import { useContext, useRef, useState } from "react"
-=======
-"use client"
-import { useContext, useRef } from "react"
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
 import { UserContext } from "../context/UserContext";
 import  useFetch  from "../assets/hooks/useFetch";
 
 function SignUpModal() {
-<<<<<<< HEAD
     const [data, setData] = useState({})
-=======
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
     
     const refEmail = useRef()
     const refName = useRef()
     const refPassword = useRef()
     const {modalState, toggleModals } = useContext(UserContext);
-<<<<<<< HEAD
     const { send, dataError } = useFetch('https://127.0.0.1:8000/api/validate-account', "POST")
     const [responseApi, setResponseApi] = useState({}) 
-=======
-    const { send, isLoading, data, error, dataError } = useFetch('https://127.0.0.1:8000/api/signup', "POST")
-
-
-
-
-
-
-    // const fetchUser = async () => {
-    //     try {
-    //         const response = await fetch('https://127.0.0.1:8000/api/signup', {
-    //             method:"POST", 
-    //             headers:{
-    //                 "Content-Type":"application/json",
-    //             },
-    //             body:  JSON.stringify({
-    //                 // "username": "james" ,
-    //                 // "email": "james@yahoo.com" ,
-    //                 // "password": "Ketchup971@"
-    //                 "username": refName.current.value ,
-    //                 "email": refEmail.current.value ,
-    //                 "password": refPassword.current.value
-    //             }),
-    //         })
-    //         if (!response.ok) {
-    //             throw new Error("La réponse n'est pas OK");
-    //         }
-    //         const data = await response.json();
-    //         setDatas(data)
-    //         console.log(datas)
-    //     } catch (error) {
-    //         console.log(`Error lors de la récupérations des données : ${error}`);
-    //         console.log(datas)
-    //         console.log(refPassword.current.value)
-    //     }
-    // }
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
 
     const submit = async (e) => {
         e.preventDefault()
@@ -65,7 +19,6 @@ function SignUpModal() {
             "username": refName.current.value ,
             "email": refEmail.current.value ,
             "password": refPassword.current.value
-<<<<<<< HEAD
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
@@ -89,44 +42,6 @@ function SignUpModal() {
         toggleModals("close")
     }
 
-=======
-            // "username": "james" ,
-            // "email": "james@yahoo.com" ,
-            // "password": "Ketchup971@"
-        }
-        // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
-        try {
-            await send(body)
-            console.log(`resultat de api :`)
-            // data : représente les data recu de l'api donné erreurs 
-            // loading : représente le chargement de l'api 
-            // error : représente le boolean des erreurs liée au serveur de l'api. (si true c'est a cause d'une erreur 500)
-            // dataError : est le descriptif des errurs en cas d'erreur 500
-            console.log(`
-                data : ${data} // 
-                loading : ${isLoading} //
-                error : ${error} //
-                dataError : ${dataError}`)
-            console.log(JSON.stringify(data))
-            
-        } catch (error) {
-            console.log(`erreur de l'api : ${error}`)
-            console.table(dataError)
-
-        }
-        
-
-
-
-
-
-    }
-
-
-    const closeModal = () => {
-        toggleModals("close")
-    }
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
     
     return(
         <>
@@ -147,7 +62,6 @@ function SignUpModal() {
                             <input type="submit" value="Créer mon compte" className="formButton" />
                         </div>
                     </form>
-<<<<<<< HEAD
                     {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}
                     {data && data.violations ? (
                         <>
@@ -168,8 +82,6 @@ function SignUpModal() {
                         </>
 
                     )}
-=======
->>>>>>> d3782d70f2776c96e94844069aa362dcbf558457
                 </div>
 
             )}
