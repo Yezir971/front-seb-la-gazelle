@@ -1,0 +1,61 @@
+/* --------------- spinner pie ----------------  */
+@property --percentage {
+    initial-value: 0%;
+    inherits: true;
+    syntax: "<percentage>";
+}
+  
+.textTimer, .textEndTimer{
+    font-weight: 600;
+    font-size:xx-large;
+}
+
+.textTimer{
+    color: #6D67C9;
+    animation: colors 60s linear;
+    text-align: center;
+
+}
+.textEndTimer{
+    color: #DB2222;
+}
+.chart {
+    /* border: solid red 4px; */
+    /* bg à supprimer si ya des bug  */
+    background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+    border-radius: 50%;
+    width: 87px;
+    height: 87px;
+    animation: timer 60s linear, bgColors 60s linear;
+}
+  
+@keyframes timer {
+    to {
+        --percentage: 100%;
+    }
+}
+
+@keyframes bgColors {
+    0% {
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+    }
+    50% {
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0);
+    }
+    100% {
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
+    }
+}
+@keyframes colors {
+    0% {
+        color: #6D67C9;
+    }
+    50% {
+        color: #EB9710;
+    }
+    100% {
+        color: #DB2222;
+    }
+}
+
+/* --------------- spinner pie ----------------  */

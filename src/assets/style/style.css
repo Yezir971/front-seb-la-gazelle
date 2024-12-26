@@ -1,0 +1,244 @@
+*, *::after , *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { 
+    background: url(../img/Nature_Vector_Backgrounds.jpeg) no-repeat center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/*
+    Style de la navBar
+*/
+.navBar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.buttonNavBar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.gestionButton{
+    background: #EF910F;
+    color: white;
+    width: 200px;
+    border-radius: 32px;
+    border: none;
+    height: 60px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.navbarSettingButton{
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+}
+
+/*
+    Style des formulaires d'inscription et de connexion
+*/
+.formContainer{
+    height: 100vh;
+    z-index: 2;
+    background: #ffffff30;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding-inline: 40px;
+}
+.formContainer form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formInput{
+    border-radius: 32px;
+    border: 2px solid #469106;
+    width: 600px;
+    height: 80px;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+.containerFormButton{
+    width: 600px;
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+.formButton{
+    background: #469106;
+    border-radius: 32px;
+    width: 300px;
+    height: 60px;
+    color: white;
+    border: none;
+    font-size: 32px;
+}
+
+.formLabel{
+    font-size: 32px;
+    width: 500px;
+    text-align: start;
+    margin-bottom: 10px;
+
+}
+
+.forgotPassword{
+    width: 600px;
+    text-align: start;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.forgotPassword:hover{
+    text-decoration: underline;
+}
+.svgForm{
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+}
+
+/*
+    Style de la page Setting
+*/
+
+.containerSetting{
+    height: 100vh;
+    background: #ffffff30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerBackgroundSetting{
+    background: url(../img/img-setting.png) no-repeat center fixed; 
+    width: 60%;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerContentSetting{
+    width: 60%;
+    height: 300px;
+    background: #ffffff30;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    border-radius: 32px;
+    padding-block: 20px;
+}
+
+.settingButton{
+    width: 200px;
+    height: 60px;
+    background: #469106;
+    color: white;
+    border: none;
+    border-radius: 32px;
+    margin: auto;
+    text-align: start;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+
+/*
+    James le hibou
+*/
+.layout{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.gameTitle{
+    text-align: center;
+    margin-bottom: 24px;
+}
+.whiteBoard{
+    width: 50vw;
+    height: 50vh;
+    margin: auto;
+    background: white;
+}
+
+.containerOperation{
+    width: 60%;
+    font-size: 72px;
+}
+
+.containerGame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.clocks{
+    position: absolute;
+    top: 120px;
+    right: 100px;
+}
+.containerJames{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.jamesTheHowl{
+    width: 300px;
+    height: 300px;
+}
+.speechBubbles{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.talkbubbleJames{
+    width: 180px;
+    height: 120px;
+    background: transparent;
+    background: white;
+    border: 2px solid black;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .talkbubbleJames:before {
+    content: "";
+    position: absolute;
+    transform: rotate(-60deg);
+    left: -8px;
+    bottom: -12px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 26px solid white;
+    border-bottom: 13px solid transparent;
+  }
