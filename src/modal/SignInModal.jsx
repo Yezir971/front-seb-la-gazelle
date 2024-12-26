@@ -9,8 +9,9 @@ function SignInModal() {
     const [responseApi, setResponseApi] = useState("") 
     const [error, setError] = useState(false)
     
-    const { send, dataError } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
+    const { send } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
     const submit = async (e) => {
+        // console.time("temps exécution")
         e.preventDefault()
         // On défini le body de notre requete ici 
         let body = {
@@ -41,14 +42,15 @@ function SignInModal() {
                 setResponseApi("Votre mot de passe ou mail n'est pas correcte")
                 setError(true)
             }
-
+            // console.timeEnd('temps exécution')
             
         } catch (error) {
             console.log(`erreur de l'api : ${error}`)
-            console.table(dataError)
+            // console.timeEnd('temps exécution')
+
         }
     }
-    
+
     const closeModal = () => {
         toggleModals("close")
     }

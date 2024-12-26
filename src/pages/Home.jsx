@@ -42,6 +42,7 @@ const Home = () => {
     }
     return(
         <>
+                {/* ternaire pour gérer le cas ou l'utilsateur est déjà connecter  */}
             {
                 isLocalAuth !== "" && auth  ? (
                     <>
@@ -53,13 +54,15 @@ const Home = () => {
                         <Navbar/>
                         <SignInModal />
                         <SignUpModal />
+                        <ShowAllAnimals />
+                        <JamesGameModal />
+                        <CharlyGameModal />
                     
                     </>
 
                 )
 
             }
-            {/* ternaire pour gérer le cas ou l'utilsateur est déjà connecter  */}
 
         </>
     )
