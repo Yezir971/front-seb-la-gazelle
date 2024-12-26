@@ -54,9 +54,9 @@ const Home = () => {
                         <Navbar/>
                         <SignInModal />
                         <SignUpModal />
-                        <ShowAllAnimals />
+                        {/* <ShowAllAnimals />
                         <JamesGameModal />
-                        <CharlyGameModal />
+                        <CharlyGameModal /> */}
                     
                     </>
 
