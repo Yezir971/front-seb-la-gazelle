@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react"
 import { UserContext } from "../context/UserContext";
 import  useFetch  from "../assets/hooks/useFetch";
+import Loader from "../Component/Loader";
 
 function SignUpModal() {
     const [data, setData] = useState({})
@@ -11,9 +12,11 @@ function SignUpModal() {
     const {modalState, toggleModals } = useContext(UserContext);
     const { send, dataError } = useFetch('https://127.0.0.1:8000/api/validate-account', "POST")
     const [responseApi, setResponseApi] = useState({}) 
+    const [loding, setLoading] = useState(false)
 
     const submit = async (e) => {
         e.preventDefault()
+        setLoading(true)
         // On défini le body de notre requete ici 
         let body = {
             "username": refName.current.value ,
@@ -35,7 +38,7 @@ function SignUpModal() {
             // console.table(dataError)
             // setResponseApi(error)
         }
-        
+        setLoading(false)
     }
 
     const closeModal = () => {
@@ -63,6 +66,17 @@ function SignUpModal() {
                         </div>
                     </form>
                     {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}
+                    {/* loader pour les requete api  */}
+                    {
+                        loding && (
+                            <>
+                                <p>Traitement en cours</p>
+                                <Loader />
+                            
+                            </>
+                        )
+                    }
+                    
                     {data && data.violations ? (
                         <>
                             <ul>
