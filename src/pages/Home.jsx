@@ -6,6 +6,15 @@ import useFetch from "../assets/hooks/useFetch"
 import JamesGameModal from "../modal/JamesGameModal"
 import ShowAllAnimals from "../Component/ShowAllAnimals"
 import CharlyGameModal from "../modal/CharlyGameModal"
+import styled from "styled-components"
+
+const ContainerHome = styled.div`
+     width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 const Home = () => {
     // on récupère le token dans le localStorage si il est présent sinon on créer une chaîne de caractère vide 
     const [isLocalAuth, setIsLocalAuth] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : "" )
@@ -56,9 +65,11 @@ const Home = () => {
                         <Navbar/>
                         <SignInModal />
                         <SignUpModal />
-                        <ShowAllAnimals />
-                        <JamesGameModal />
-                        <CharlyGameModal />
+                        <ContainerHome>
+                            <ShowAllAnimals />
+                            <JamesGameModal />
+                            <CharlyGameModal />
+                        </ContainerHome>
                     
                     </>
 

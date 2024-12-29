@@ -3,6 +3,9 @@ import TimmerComponent from "../Component/TimmerComponent";
 import gsap from "gsap";
 import imageJamesTheHowl from "../assets/img/james-avatar.png"
 import { TimerContext } from "../context/TimerContext";
+import NavBarGame from "../Component/NavBarGame";
+import { NavLink } from "react-router-dom";
+
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
     container: {
@@ -90,7 +93,7 @@ const JamesGame = () => {
     return(
         <>
         <div className="layout">     
-            <h1 className="gameTitle">Aide James le Hiboux à résoudre les calculs</h1>
+            <NavBarGame points={score}/>
             <div className="containerGame">
                 <div className="whiteBoard">
                     { time > 0 ? (
@@ -112,7 +115,6 @@ const JamesGame = () => {
                                 </button>
                             ))}
                             </div>
-                            <h3>Score: {score}</h3>
                         </div>
                     ):(
                         <div>
@@ -121,6 +123,9 @@ const JamesGame = () => {
                                 <th>User</th>
                                 <th>Score</th>
                             </table>
+                            {/* <button>
+                                <NavLink to={'/'}>Rejouer</NavLink>
+                            </button> */}
                         </div>
                     )}
                 </div>
