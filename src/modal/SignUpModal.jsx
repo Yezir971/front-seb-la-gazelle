@@ -10,7 +10,7 @@ function SignUpModal() {
     const refName = useRef()
     const refPassword = useRef()
     const {modalState, toggleModals } = useContext(UserContext);
-    const { send, dataError } = useFetch('https://127.0.0.1:8000/api/validate-account', "POST")
+    const { send, dataError } = useFetch('https://orange-wolf-959534.hostingersite.com/api/validate-account', "POST")
     const [responseApi, setResponseApi] = useState({}) 
     const [loding, setLoading] = useState(false)
 

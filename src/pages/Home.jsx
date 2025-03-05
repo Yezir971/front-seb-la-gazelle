@@ -9,11 +9,12 @@ import CharlyGameModal from "../modal/CharlyGameModal"
 const Home = () => {
     // on récupère le token dans le localStorage si il est présent sinon on créer une chaîne de caractère vide 
     const [isLocalAuth, setIsLocalAuth] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : "" )
+    
     const [auth, setAuth ] = useState()
     console.log(isLocalAuth)
 
     // requete vers l'api sebi la gazelle pour voir si le token est valide 
-    const { send } = useFetch('https://127.0.0.1:8000/api/user/validate-token', "POST")
+    const { send } = useFetch('https://orange-wolf-959534.hostingersite.com/api/user/validate-token', "POST")
 
 
     const verificationAuth = async () => {

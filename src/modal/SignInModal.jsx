@@ -11,7 +11,7 @@ function SignInModal() {
     const [error, setError] = useState(false)
     const [loding, setLoading] = useState(false)
     
-    const { send } = useFetch('https://127.0.0.1:8000/api/login_check', "POST")
+    const { send } = useFetch('https://orange-wolf-959534.hostingersite.com/api/login_check', "POST")
 
     const submit = async (e) => {
         // console.time("temps exécution")
@@ -40,6 +40,7 @@ function SignInModal() {
                 console.log(response)
                 // on save dans le localstorage le token de l'utilisateur 
                 localStorage.setItem("token", token);
+                document.cookie = "Bearer " + token
     
                 // si tout est ok on actualise la page  
                 window.location.reload();
