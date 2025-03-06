@@ -20,6 +20,7 @@ const BackgroundWrapper = ({ children }) => {
   // Définir un background différent en fonction de la route
   const backgrounds = {
     "/": `url(${NatureBackground})`, // Page d'accueil
+    "/settings": `url(${NatureBackground})`, // Page de settings
     "/charly_le_cameleon": `url(${ChameleonBackground})`,
     "/james_le_hibou": `url(${HibouBackground})`
   };

@@ -3,6 +3,7 @@ import SignInButton from "./SignInButton"
 import SettingButton from "./SettingButton"
 import {UserContext} from '../context/UserContext';
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     const {modalState } = useContext(UserContext);
@@ -15,7 +16,9 @@ function Navbar() {
                         <SignInButton />
                         <SignUpButton />
                     </div>
-                    <SettingButton />
+                    <Link to={"/settings"}>
+                        <SettingButton  />
+                    </Link>
                 </div>
             )}
         </>
