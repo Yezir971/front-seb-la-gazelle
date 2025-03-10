@@ -26,6 +26,8 @@ const BackgroundWrapper = ({ children }) => {
   };
   const currentBackground = backgrounds[location.pathname] || "white";
 
+  
+
   return <PageBackground $background={currentBackground}>{children}</PageBackground>;
   // return <PageBackground>{children}</PageBackground>;
 };  

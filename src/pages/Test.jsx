@@ -1,5 +1,4 @@
 import SettingModal from "../modal/SettingModal"
-import BackgroundImage from  "../assets/img/img-setting.png"
 import TimmerComponent from "../Component/TimmerComponent"
 
 const Test = () => {
@@ -7,7 +6,6 @@ const Test = () => {
         <>
             <SettingModal />
             <TimmerComponent />
-
         </>
     )
 }
