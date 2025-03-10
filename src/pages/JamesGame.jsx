@@ -5,6 +5,7 @@ import imageJamesTheHowl from "../assets/img/james-avatar.png"
 import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
 import { NavLink } from "react-router-dom";
+import { use } from "react";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -46,7 +47,8 @@ const JamesGame = () => {
     const [answers, setAnswers] = useState([]);
     const [score, setScore] = useState(0);
     const [message, setMessage] = useState("");
-    const {time, messageTimer} = useContext(TimerContext)
+    const {time, messageTimer, setTime} = useContext(TimerContext);
+
 
     // Generate a random question
     const generateQuestion = () => {
@@ -85,8 +87,13 @@ const JamesGame = () => {
         generateQuestion();
     };
 
-    // on généère la question a chaque chargement de page 
+    const handleReplay = () => {
+        window.location.reload();
+    };
+
     useEffect(() => {
+        setScore(0);
+        setTime(60);
         generateQuestion();
     }, []);
 
@@ -123,9 +130,9 @@ const JamesGame = () => {
                                 <th>User</th>
                                 <th>Score</th>
                             </table>
-                            {/* <button>
-                                <NavLink to={'/'}>Rejouer</NavLink>
-                            </button> */}
+                            <button>
+                                <NavLink onClick={handleReplay}>Rejouer</NavLink>
+                            </button>
                         </div>
                     )}
                 </div>

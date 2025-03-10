@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import NavBarGame from "../Component/NavBarGame";
 import styled from "styled-components";
 // import screen from "../assets/img/charly-game/charly-game-1.png";
@@ -48,9 +48,14 @@ const CharlyGames = () => {
     const [score, setScore] = useState(0);
     const [mouse, setMouse] = useState({ x: 0, y: 0 }); // position du click
     const [interactScore, setInteractScore] = useState('')
-    const {time} = useContext(TimerContext)
+    const {time, setTime} = useContext(TimerContext)
     console.log(mouse)
     console.log(interactScore);
+
+    useEffect(() => {
+      setScore(0);
+      setTime(60);
+    },[])
     
 
     const scoreContainerRef = useRef(null); // référence pour la taille de l'image
@@ -90,6 +95,10 @@ const CharlyGames = () => {
         }
     
     };
+    
+    const handleReplay = () => {
+      window.location.reload();
+    };
 
     return (
         <>
@@ -107,7 +116,7 @@ const CharlyGames = () => {
                 </PictureContainer>
               ):(
                 <>
-                  <button>Nouvelle partie</button>
+                  <button onClick={handleReplay}>Nouvelle partie</button>
                 </>
               )}
             </ContainerGame>
