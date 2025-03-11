@@ -3,6 +3,7 @@ import ReturLogo from "../Component/ReturnLogo"
 import { AudioContext } from "../context/AudioContext"
 import { useContext, useEffect } from "react"
 import cadre  from '../assets/img/cadre.png'
+import { CursorContext } from "../context/CursorContext"
 
 const Cadre = styled.div`
     width: 90vw;
@@ -70,6 +71,9 @@ const ListeItemPolitique = styled.li`
 `
 const Settings = () => {
     const {volumeOnOff, setVolumeOnOff, setMusiqueOnOff, musiqueOnOff, soundRef} = useContext(AudioContext)
+    const { setCursorType, pointer, cursor } = useContext(CursorContext);
+    
+    
     console.log(cadre)
     const volume = () =>{
         setVolumeOnOff(!volumeOnOff)
@@ -86,9 +90,6 @@ const Settings = () => {
             }
         }
     }
- 
-
-
 
     return(
         <>  

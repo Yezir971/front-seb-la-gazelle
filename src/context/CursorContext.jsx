@@ -16,46 +16,49 @@ const Cursor = styled.div`
   top: 0;
   left: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  transform: translate(-60%, -60%);
   z-index: 9999;
 `
 const CursorContextProvider = (props) => {
     const cursorRef = useRef(null);
     const [cursorType, setCursorType] = useState(cursor);
-  
-    useEffect(() => {
-      const mouseMove = e => {
-        gsap.to(cursorRef.current, {
-          x:e.clientX,
-          y:e.clientY,
-          duration:0.2,
-          ease:"power2.out"
-        })
-      }
-  
-      const handleMouseEnter = () => setCursorType(pointer);
-      const handleMouseLeave = () => setCursorType(cursor);
-  
-      window.addEventListener("mousemove", mouseMove);
-      document.querySelectorAll("button, a, gestionButton, boutonPlayGame").forEach((el) => {
-        el.addEventListener("mouseover", handleMouseEnter);
-        el.addEventListener("mouseout", handleMouseLeave);
-        el.addEventListener("mousedown", handleMouseEnter);
-        el.addEventListener("mouseup", handleMouseLeave);
-      });
-      return () => {
-        window.removeEventListener("mousemove", mouseMove);
-        document.querySelectorAll("button, a, gestionButton, boutonPlayGame").forEach((el) => {
-          el.removeEventListener("mouseover", handleMouseEnter);
-          el.removeEventListener("mouseout", handleMouseLeave);
-          el.removeEventListener("mousedown", handleMouseEnter);
-          el.removeEventListener("mouseup", handleMouseLeave);
+    const ResetCursor = () => {
+      useEffect(() => {
+        const mouseMove = e => {
+          gsap.to(cursorRef.current, {
+            x:e.clientX,
+            y:e.clientY,
+            duration:0.1,
+            ease:"power2.out"
+          })
+        }
+    
+        const handleMouseEnter = () => setCursorType(pointer);
+        const handleMouseLeave = () => setCursorType(cursor);
+    
+        window.addEventListener("mousemove", mouseMove);
+        document.querySelectorAll("button, a, gestionButton, boutonPlayGame, .pointerCursor").forEach((el) => {
+          el.addEventListener("mouseover", handleMouseEnter);
+          el.addEventListener("mouseout", handleMouseLeave);
+          el.addEventListener("mousedown", handleMouseEnter);
+          el.addEventListener("mouseup", handleMouseLeave);
         });
-      }
-  
-    }, [])
+        return () => {
+          window.removeEventListener("mousemove", mouseMove);
+          document.querySelectorAll("button, a, .gestionButton, .boutonPlayGame, .pointerCursor").forEach((el) => {
+            el.removeEventListener("mouseover", handleMouseEnter);
+            el.removeEventListener("mouseout", handleMouseLeave);
+            el.removeEventListener("mousedown", handleMouseEnter);
+            el.removeEventListener("mouseup", handleMouseLeave);
+          });
+        }
+    
+      }, [])
+
+    }
+    ResetCursor()
     return(
-        <CursorContext.Provider value={{cursorType, setCursorType, cursor}}>
+        <CursorContext.Provider value={{cursorType, setCursorType, cursor, ResetCursor,  pointer }}>
             <Cursor ref={cursorRef} type={cursorType}></Cursor>
             {props.children}
         </CursorContext.Provider>
