@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import TimerContextProvider from './context/TimerContext';
 import GameContextProvider from './context/GameContext';
 import AudioContextProvider from './context/AudioContext';
+import CursorContextProvider from './context/CursorContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,9 @@ root.render(
         <UserContextProvider>
           <GameContextProvider>
             <AudioContextProvider>
-              <App />
+              <CursorContextProvider>
+                <App />
+              </CursorContextProvider>
             </AudioContextProvider>
           </GameContextProvider>
         </UserContextProvider>

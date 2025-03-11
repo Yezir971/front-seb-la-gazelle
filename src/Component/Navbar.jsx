@@ -4,9 +4,11 @@ import SettingButton from "./SettingButton"
 import {UserContext} from '../context/UserContext';
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CursorContext } from "../context/CursorContext";
 
 function Navbar() {
     const {modalState } = useContext(UserContext);
+
     
     return(
         <>

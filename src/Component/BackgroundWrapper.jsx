@@ -2,16 +2,18 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import NatureBackground from "../assets/img/Nature_Vector_Backgrounds.jpeg";
 import ChameleonBackground from "../assets/img/background-charly-le-cameleon.png";
-import HibouBackground from "../assets/img/background_james_hibou.png"
+import HibouBackground from "../assets/img/background_james_hibou.png";
 const PageBackground = styled.div`
-  background: ${({ $background }) => $background } no-repeat center ;
+  background-image: ${({ $background }) => $background } ;
   height:100vh;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat:no-repeat;
   overflow:hidden;
 `
+
 
 // component qui permet de gérer le background 
 const BackgroundWrapper = ({ children }) => {
@@ -28,7 +30,10 @@ const BackgroundWrapper = ({ children }) => {
 
   
 
-  return <PageBackground $background={currentBackground}>{children}</PageBackground>;
+  return (
+    <PageBackground $background={currentBackground}>
+      {children}
+    </PageBackground>)
   // return <PageBackground>{children}</PageBackground>;
 };  
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Navbar from "../Component/Navbar"
 import SignInModal from "../modal/SignInModal"
 import SignUpModal from "../modal/SignUpModal"
@@ -7,6 +7,7 @@ import JamesGameModal from "../modal/JamesGameModal"
 import ShowAllAnimals from "../Component/ShowAllAnimals"
 import CharlyGameModal from "../modal/CharlyGameModal"
 import styled from "styled-components"
+import { CursorContext } from "../context/CursorContext"
 
 const ContainerHome = styled.div`
      width: 100%;
@@ -23,6 +24,8 @@ const Home = () => {
 
     // requete vers l'api sebi la gazelle pour voir si le token est valide 
     const { send } = useFetch('https://127.0.0.1:8000/api/user/validate-token', "POST")
+    const {ResetCursor} = useContext(CursorContext)
+    ResetCursor()
 
 
     const verificationAuth = async () => {

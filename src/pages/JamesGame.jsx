@@ -5,7 +5,7 @@ import imageJamesTheHowl from "../assets/img/james-avatar.png"
 import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
 import { NavLink } from "react-router-dom";
-import { use } from "react";
+import { CursorContext } from "../context/CursorContext";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -49,7 +49,8 @@ const JamesGame = () => {
     const [message, setMessage] = useState("");
     const {time, messageTimer, setTime} = useContext(TimerContext);
 
-
+    const { setCursorType, pointer, cursor } = useContext(CursorContext);
+    
     // Generate a random question
     const generateQuestion = () => {
         const num1 = getRandomInt(1, 10);
@@ -114,6 +115,11 @@ const JamesGame = () => {
                             <div style={styles.answers}>
                             {answers.map((answer, index) => (
                                 <button
+                                onMouseEnter={() => setCursorType(pointer)}
+                                onMouseLeave={() => setCursorType(cursor)} 
+                                onMouseDown={() => setCursorType(pointer)}
+                                onMouseUp={() => setCursorType(cursor)} 
+                                
                                 key={index}
                                 style={styles.button}
                                 onClick={() => handleAnswerClick(answer)}

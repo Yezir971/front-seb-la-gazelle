@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import ImageCharlyGame from "../assets/img/charly-game/charly-game-1.png";
 import  arrowReturn  from "../assets/img/Vector-return.svg"
 import styled from 'styled-components';
+import { CursorContext } from '../context/CursorContext';
 
 const Arrow = styled.img`
   width:30px;
@@ -21,19 +22,33 @@ const ContainerArrowLink = styled.div`
 
 const CharlyGameModal = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);
-  
+  // const {ResetCursor} = useContext(CursorContext)
+  // ResetCursor()
+  const { setCursorType, pointer, cursor } = useContext(CursorContext);
+
   return (
     <>
       {gameModalState.CharlyGameModal && (  
         <div className='containerModalGame'>
           <ContainerArrowLink>
-            <NavLink to={"/"}>
+            <NavLink
+            onMouseEnter={() => setCursorType(pointer)}
+            onMouseLeave={() => setCursorType(cursor)} 
+            onMouseDown={() => setCursorType(pointer)}
+            onMouseUp={() => setCursorType(cursor)} 
+
+            className="pointerCursor" to={"/"}>
               <Arrow draggable="false" src={arrowReturn} alt="flèche retour" onClick={()=> toggleGameModals("closeGame")}/>
             </NavLink>        
           </ContainerArrowLink>
           <img src={ImageCharlyGame} alt='aperçu du jeu de Charly le caméléon' className='pictureGame' draggable="false"/>
-          <button className='boutonPlayGame'>
-            <NavLink to={'charly_le_cameleon'}> Jouer </NavLink>
+          <button 
+          onMouseEnter={() => setCursorType(pointer)} 
+          onMouseLeave={() => setCursorType(cursor)} 
+          onMouseDown={() => setCursorType(pointer)}
+          onMouseUp={() => setCursorType(cursor)}
+          className='boutonPlayGame'>
+            <NavLink  to={'charly_le_cameleon'}> Jouer </NavLink>
           </button>
         </div>
       )}

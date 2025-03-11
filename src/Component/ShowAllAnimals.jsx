@@ -3,6 +3,7 @@ import { GameContext } from '../context/GameContext';
 import Charly from '../assets/img/Charly-avatar.png';
 import James from '../assets/img/james-avatar.png';
 import styled from 'styled-components';
+import { CursorContext } from '../context/CursorContext';
 
 const ImageLogoCharly = styled.img`
   left: -70px;
@@ -22,13 +23,25 @@ const ImageLogoJames = styled.img`
 `
 
 const ShowAllAnimals = () => {
-    const {gameModalState, toggleGameModals } = useContext(GameContext);
+  const {gameModalState, toggleGameModals } = useContext(GameContext);
+  const { setCursorType, pointer, cursor } = useContext(CursorContext);
+
   return (
     <>
      {gameModalState.showAllAnimals && (  
         <div>
-            <ImageLogoJames src={James} alt="Avatar de James" onClick={()=> toggleGameModals("JamesGame")} draggable="false"/>
-            <ImageLogoCharly src={Charly} alt="Avatar de Charly" onClick={()=> toggleGameModals("CharlyGame")} draggable="false"/>
+            <ImageLogoJames 
+            onMouseEnter={() => setCursorType(pointer)}
+            onMouseLeave={() => setCursorType(cursor)} 
+            onMouseDown={() => setCursorType(pointer)}
+            onMouseUp={() => setCursorType(cursor)} 
+            src={James} alt="Avatar de James" onClick={()=> toggleGameModals("JamesGame")} draggable="false"/>
+            <ImageLogoCharly 
+            onMouseEnter={() => setCursorType(pointer)}
+            onMouseLeave={() => setCursorType(cursor)} 
+            onMouseDown={() => setCursorType(pointer)}
+            onMouseUp={() => setCursorType(cursor)} 
+            src={Charly} alt="Avatar de Charly" onClick={()=> toggleGameModals("CharlyGame")} draggable="false"/>
         </div>
      )}
     </>

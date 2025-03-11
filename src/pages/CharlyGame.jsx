@@ -5,6 +5,7 @@ import styled from "styled-components";
 import data from "../data/charlyGame.js";
 import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
+import { CursorContext } from "../context/CursorContext.jsx";
 
 // Styled Components
 const PictureContainer = styled.div`
@@ -49,6 +50,8 @@ const CharlyGames = () => {
     const [mouse, setMouse] = useState({ x: 0, y: 0 }); // position du click
     const [interactScore, setInteractScore] = useState('')
     const {time, setTime} = useContext(TimerContext)
+    const { setCursorType, pointer, cursor } = useContext(CursorContext);
+
     console.log(mouse)
     console.log(interactScore);
 
@@ -112,7 +115,10 @@ const CharlyGames = () => {
 
               {(time > 0 && time <= 60) ? (
                 <PictureContainer>
-                    <PictureGameCharly draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
+                    <PictureGameCharly 
+                    onMouseEnter={() => setCursorType(pointer)}
+                    onMouseLeave={() => setCursorType(cursor)} 
+                    draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
                 </PictureContainer>
               ):(
                 <>

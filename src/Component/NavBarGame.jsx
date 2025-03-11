@@ -2,6 +2,8 @@ import styled from "styled-components"
 import  iconSebi  from "../assets/img/sebi_logo.png"
 import  arrowReturn  from "../assets/img/Vector-return.svg"
 import { NavLink } from "react-router-dom"
+import { useContext } from "react"
+import { CursorContext } from "../context/CursorContext"
 const Navbar = styled.nav`
     display:flex;
     justify-content:space-between;
@@ -37,15 +39,27 @@ const TextScore = styled.p`
 
 
 const NavBarGame = ({points}) => {
+    const { setCursorType, pointer, cursor } = useContext(CursorContext);
+
     return(
         <>
             <Navbar>
                 <ContainerIconReturn>
                     <NavLink to={"/"}> 
-                        <ImageSebi draggable="false" src={iconSebi} alt="icon de sebi la gazelle" />
+                        <ImageSebi 
+                        onMouseEnter={() => setCursorType(pointer)}
+                        onMouseLeave={() => setCursorType(cursor)} 
+                        onMouseDown={() => setCursorType(pointer)}
+                        onMouseUp={() => setCursorType(cursor)} 
+                        draggable="false" src={iconSebi} alt="icon de sebi la gazelle" />
                     </NavLink>
                     <NavLink to={"/"}>
-                        <Arrow draggable="false" src={arrowReturn} alt="flèche retour" />
+                        <Arrow 
+                        onMouseEnter={() => setCursorType(pointer)}
+                        onMouseLeave={() => setCursorType(cursor)} 
+                        onMouseDown={() => setCursorType(pointer)}
+                        onMouseUp={() => setCursorType(cursor)} 
+                        draggable="false" src={arrowReturn} alt="flèche retour" />
                     </NavLink>
                 </ContainerIconReturn>
                 <ContainerScorePoints>
