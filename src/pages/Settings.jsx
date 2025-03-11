@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import ReturLogo from "../Component/ReturnLogo"
 import { AudioContext } from "../context/AudioContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import cadre  from '../assets/img/cadre.png'
 
 const Cadre = styled.div`
@@ -86,6 +86,7 @@ const Settings = () => {
             }
         }
     }
+ 
 
 
 

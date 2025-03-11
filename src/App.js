@@ -8,44 +8,70 @@ import JamesGame from './pages/JamesGame'
 import CharlyGames from "./pages/CharlyGame";
 import BackgroundWrapper from "./Component/BackgroundWrapper";
 import Settings from "./pages/Settings";
-import styled from "styled-components";
-import cursor from "./cursor.png";
-import { useEffect, useState } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import cursor from "../src/assets/img/cursor/cursor.png";
+import pointer from "../src/assets/img/cursor/cursor-pointer.png"
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap"
 
-const Cursor = styled.div`
-  background-image: url(${cursor});
-  width: 32px;
-  height: 32px;
-  background-size: cover;
-  position: absolute;
-  transform: translate(-50%, -50%); 
-  // pointer-events: none;
-  cursor:none;
-  // z-index: 9999;
+const GlobalStyle=createGlobalStyle`
+  *, body{
+    cursor: none !important
+  }
+
 `
+// const Cursor = styled.div`
+//   background-image: url(${(props) => props.type});
+//   width: 32px;
+//   height: 32px;
+//   background-size: cover;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   pointer-events: none;
+//   transform: translate(-50%, -50%);
+//   z-index: 9999;
+// `
 function App() {
-  const [mousePosition, setMousePosition] = useState({
-    x:0,
-    y:0
-  })
-  console.log(mousePosition)
-  useEffect(() => {
-    const mouseMove = e => {
-      setMousePosition({
-        x:e.clientX,
-        y:e.clientY
-      })
-    }
+  // const cursorRef = useRef(null);
+  // const [cursorType, setCursorType] = useState(cursor);
 
-    window.addEventListener("mousemove", mouseMove)
-    return () => {
-      window.removeEventListener("mousemove", mouseMove)
-    }
+  // useEffect(() => {
+  //   const mouseMove = e => {
+  //     gsap.to(cursorRef.current, {
+  //       x:e.clientX,
+  //       y:e.clientY,
+  //       duration:0.2,
+  //       ease:"power2.out"
+  //     })
+  //   }
 
-  }, [])
+  //   const handleMouseEnter = () => setCursorType(pointer);
+  //   const handleMouseLeave = () => setCursorType(cursor);
+
+  //   window.addEventListener("mousemove", mouseMove);
+  //   document.querySelectorAll("button, a, gestionButton, boutonPlayGame").forEach((el) => {
+  //     el.addEventListener("mouseover", handleMouseEnter);
+  //     el.addEventListener("mouseout", handleMouseLeave);
+  //     el.addEventListener("mousedown", handleMouseEnter);
+  //     el.addEventListener("mouseup", handleMouseLeave);
+  //   });
+  //   return () => {
+  //     window.removeEventListener("mousemove", mouseMove);
+  //     document.querySelectorAll("button, a, gestionButton, boutonPlayGame").forEach((el) => {
+  //       el.removeEventListener("mouseover", handleMouseEnter);
+  //       el.removeEventListener("mouseout", handleMouseLeave);
+  //       el.removeEventListener("mousedown", handleMouseEnter);
+  //       el.removeEventListener("mouseup", handleMouseLeave);
+  //     });
+  //   }
+
+  // }, [])
+
   return (
     <div className="App">
-      <Cursor mousePosition={mousePosition}  style={{ top: mousePosition.y, left: mousePosition.x }}></Cursor>
+      {/* <Cursor ref={cursorRef} type={cursorType}></Cursor> */}
+      <GlobalStyle />
       <BackgroundWrapper>
         <Routes>
           <Route path="/james_le_hibou" element={<JamesGame />} />
