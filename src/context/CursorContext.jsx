@@ -43,6 +43,7 @@ const CursorContextProvider = (props) => {
           el.addEventListener("mousedown", handleMouseEnter);
           el.addEventListener("mouseup", handleMouseLeave);
         });
+        
         return () => {
           window.removeEventListener("mousemove", mouseMove);
           document.querySelectorAll("button, a, .gestionButton, .boutonPlayGame, .pointerCursor").forEach((el) => {

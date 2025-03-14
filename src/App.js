@@ -8,17 +8,12 @@ import JamesGame from './pages/JamesGame'
 import CharlyGames from "./pages/CharlyGame";
 import BackgroundWrapper from "./Component/BackgroundWrapper";
 import Settings from "./pages/Settings";
-import styled, { createGlobalStyle } from "styled-components";
-import cursor from "../src/assets/img/cursor/cursor.png";
-import pointer from "../src/assets/img/cursor/cursor-pointer.png"
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap"
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
     cursor: none !important
   }
-
 `
 // const Cursor = styled.div`
 //   background-image: url(${(props) => props.type});
@@ -75,7 +70,7 @@ function App() {
       <BackgroundWrapper>
         <Routes>
           <Route path="/james_le_hibou" element={<JamesGame />} />
-          <Route path="/route_du_sexy_seb_qui_est_trop_beau_wala_c_la_verite" element={<Test />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/" element={<Home />} />
           <Route path="/charly_le_cameleon" element={<CharlyGames />} />
           <Route path="settings" element={<Settings />} />
