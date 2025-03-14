@@ -26,7 +26,6 @@ const ContainerAnimals = styled.div`
   height:75vh;
   width:100%;
   position: relative;
-  border:solid 1px red;
 `
 
 const ShowAllAnimals = () => {
