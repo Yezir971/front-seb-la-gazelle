@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext, useState } from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 import styled from "styled-components";
@@ -8,6 +8,12 @@ import body from "../assets/img/components-sebi/body.png";
 import ears from "../assets/img/components-sebi/ears.png";
 import tail from "../assets/img/components-sebi/taill.png";
 
+// plugin pour l'animation du texte
+import { TextPlugin } from "gsap/TextPlugin";
+import { CursorContext } from "../context/CursorContext";
+gsap.registerPlugin(TextPlugin);
+
+// utilisation de drag nous sert a simuler la pression du click pour lancer l'animation 
 gsap.registerPlugin(Draggable);
 
 const Container = styled.div`
@@ -15,12 +21,12 @@ const Container = styled.div`
   height: 200px;
   position: relative;
   margin: auto;
-`;
+`
 
 const Image = styled.img`
   position: absolute;
   width: 100%;
-`;
+`
 
 const Drag = styled.div`
   position: absolute;
@@ -28,10 +34,12 @@ const Drag = styled.div`
   left: 0px;
   cursor: grab;
   width: 100%;
-  height: 100%;
+  height: 120%;
   z-index: 99999;
-`;
-
+`
+const Hearth = styled.img`
+  width:20px;
+`
 const Test = () => {
   const headRef = useRef(null);
   const headStartRef = useRef(null)
@@ -39,13 +47,15 @@ const Test = () => {
   const earsRef = useRef(null);
   const draggableRef = useRef(null);
   const animationTimeline = useRef(null); // Stocke l'animation en cours
+  const { stopCursorGrabAnimation ,startCursorGrabAnimation, setCursorType, cursor,  cursorGrabOpen} = useContext(CursorContext);
 
   // Animation au "caressage"
   const startAnimation = () => {
     // Arrêter toute animation en cours
     if (animationTimeline.current) {
-        animationTimeline.current.kill();
+      animationTimeline.current.kill();
     }
+    startCursorGrabAnimation()
     // on fait disparaitre headRef le temps de l'animation 
     gsap.to(headRef.current, { opacity: 1, duration:0.2 }); 
     gsap.to(headStartRef.current, { opacity: 0, duration:0.2});
@@ -54,42 +64,43 @@ const Test = () => {
     animationTimeline.current = gsap.timeline({ repeat: -1, yoyo: true });
   
     animationTimeline.current
-        .to(headRef.current, { rotation: -5, duration: 0.3, ease: "power1.inOut" },0)
-        // .to(headStartRef.current, { rotation: -5, duration: 0.3, ease: "power1.inOut"  }, 0) // Cache headStart
-        .to(tailRef.current, { rotateX: 40, rotateY: 40, duration: 0.3, ease: "power1.inOut" }, 0)
-        .to(earsRef.current, { scaleY: 0.9, duration: 0.3, ease: "power1.inOut" }, 0);
+      .to(headRef.current, { rotation: -5, duration: 0.3, ease: "power1.inOut" },0)
+      // .to(headStartRef.current, { rotation: -5, duration: 0.3, ease: "power1.inOut"  }, 0) // Cache headStart
+      .to(tailRef.current, { rotateX: 40, rotateY: 40, duration: 0.3, ease: "power1.inOut" }, 0)
+      .to(earsRef.current, { scaleY: 0.9, duration: 0.3, ease: "power1.inOut" }, 0);
+  };
+  // Stopper l'animation et remettre les éléments à l'état initial
+  const stopAnimation = () => {
+      if (animationTimeline.current) {
+        animationTimeline.current.kill();
+      }
 
-    };
-    // Stopper l'animation et remettre les éléments à l'état initial
-    const stopAnimation = () => {
-        if (animationTimeline.current) {
-            animationTimeline.current.kill();
-        }
-        // on affiche a nouveau headRef 
-        gsap.to(headRef.current, { opacity: 0, duration:0.2 });
-        gsap.to(headStartRef.current, { opacity: 1, duration:0.2 });
+      // on affiche a nouveau headRef 
+      gsap.to(headRef.current, { opacity: 0, duration:0.2 });
+      gsap.to(headStartRef.current, { opacity: 1, duration:0.2 });
 
-        // reset tout les éléments 
-        gsap.to([headRef.current, headStartRef.current], {
-            rotation: 0,
-            opacity: 1,
-            duration: 0.2,
-            ease: "power2.out",
-        });
-      
-        gsap.to(tailRef.current, {
-            rotateX: 0,
-            rotateY: 0,
-            duration: 0.2,
-            ease: "power2.out",
-        });
-      
-        gsap.to(earsRef.current, {
-            scaleY: 1,
-            duration: 0.2,
-            ease: "power2.out",
-        });
-    };
+      // reset tout les éléments 
+      gsap.to([headRef.current, headStartRef.current], {
+        rotation: 0,
+        opacity: 1,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+    
+      gsap.to(tailRef.current, {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+    
+      gsap.to(earsRef.current, {
+        scaleY: 1,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+      stopCursorGrabAnimation()
+  };
 
   // Initialisation du "glissement"
   useEffect(() => {
@@ -107,6 +118,7 @@ const Test = () => {
 
   return (
     <Container>
+      {/* <Hearth src="https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg"/> */}
       {/* Corps */}
       <Image src={body} alt="Corps" style={{ zIndex: 2 }} />
 
@@ -122,7 +134,13 @@ const Test = () => {
       <Image ref={earsRef} src={ears} alt="Oreilles" style={{ zIndex: 1 }} />
 
       {/* Zone draggable qui détecte le drag */}
-      <Drag ref={draggableRef} />
+      <Drag 
+        onMouseEnter={() => setCursorType(cursorGrabOpen)}
+        onMouseLeave={() => setCursorType(cursor)}
+        // compatibilité mobil 
+        onTouchStart={startAnimation} // Pour les téléphones
+        onTouchEnd={stopAnimation}  
+      ref={draggableRef} />
     </Container>
   );
 };
