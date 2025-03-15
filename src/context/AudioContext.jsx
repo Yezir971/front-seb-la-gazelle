@@ -10,7 +10,6 @@ const AudioContextProvider = (props) => {
 
 
     useEffect(() => {
-        console.log(soundRef)
         if(!soundRef.current){
             soundRef.current = new Howl({
                 src:[sound],

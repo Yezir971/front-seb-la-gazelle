@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react';
 import {UserContext} from '../context/UserContext';
 import useFetch from '../assets/hooks/useFetch';
 import { CursorContext } from '../context/CursorContext';
+import Cookies from 'js-cookie';
 
 function SignInModal() {
     const refName = useRef()
@@ -29,13 +30,12 @@ function SignInModal() {
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
             const response = await send(body)
-            console.log(`resultat api :`)
             if(response.data.token && response){
                 // on récupère le token de l'utilisateur 
                 const token = response.data.token
                 setResponseApi(response)
-                // on save dans le localstorage le token de l'utilisateur 
-                localStorage.setItem("token", token);
+                // on save dans les cookies le token de l'utilisateur 
+                Cookies.set('token', token, { expires: 1, secure: true });
     
                 // si tout est ok on actualise la page  
                 window.location.reload();

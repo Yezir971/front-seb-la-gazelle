@@ -19,7 +19,7 @@
 
 .buttonNavBar{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     gap: 20px;
 }
 .gestionButton{
@@ -32,13 +32,48 @@
     font-size: 32px;
     cursor: pointer;
 }
+.gestionButton a{
+    text-decoration: none;
+    color: white;
+}
 
+.disconnectButton{
+    background: #EF910F;
+    color: white;
+    width: auto;
+    border-radius: 32px;
+    border: none;
+    height: 60px;
+    padding-inline: 20px;
+    font-size: 32px;
+    cursor: pointer;
+}
 .navbarSettingButton{
     width: 60px;
     height: 60px;
     border-radius: 16px;
 }
-
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.profilButton{
+    background: #EF910F;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    padding-inline: 20px;
+    font-size: 32px;
+    cursor: pointer;
+}
+.profilButton a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*
     Style des formulaires d'inscription et de connexion
 */

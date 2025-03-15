@@ -72,8 +72,6 @@ const CharlyGames = () => {
     const {time, setTime} = useContext(TimerContext)
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
 
-    console.log(mouse)
-    console.log(interactScore);
 
     useEffect(() => {
       setScore(0);

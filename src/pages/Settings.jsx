@@ -74,14 +74,12 @@ const Settings = () => {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     
     
-    console.log(cadre)
     const volume = () =>{
         setVolumeOnOff(!volumeOnOff)
     }
     // musique de fond 
     const musique = () => {
         setMusiqueOnOff(!musiqueOnOff)
-        console.log(soundRef.current)
         if (soundRef.current) {
             if(musiqueOnOff){
                 soundRef.current.pause()

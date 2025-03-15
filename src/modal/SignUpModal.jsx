@@ -25,16 +25,11 @@ function SignUpModal() {
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
             const response = await send(body)
-            // console.log(`resultat de api :`)
             setResponseApi(response)
-            // console.log(response)
             
-            console.log(data)
             setData(response.data)
         } catch (error) {
             console.log(`erreur de l'api : ${error}`)
-            // console.log(responseApi)
-            // console.table(dataError)
             // setResponseApi(error)
         }
         

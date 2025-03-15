@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import "../src/assets/style/style.css"
-import UserContextProvider from './context/UserContext';
 import { BrowserRouter } from 'react-router-dom';
+import UserContextProvider from './context/UserContext';
 import TimerContextProvider from './context/TimerContext';
 import GameContextProvider from './context/GameContext';
 import AudioContextProvider from './context/AudioContext';
 import CursorContextProvider from './context/CursorContext';
+import AuthContextProvider from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +19,9 @@ root.render(
           <GameContextProvider>
             <AudioContextProvider>
               <CursorContextProvider>
-                <App />
+                <AuthContextProvider>
+                  <App />
+                </AuthContextProvider>
               </CursorContextProvider>
             </AudioContextProvider>
           </GameContextProvider>
