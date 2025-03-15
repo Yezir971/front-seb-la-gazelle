@@ -1,25 +1,27 @@
 import React, { useContext } from 'react'
 import { GameContext } from '../context/GameContext';
-import Charly from '../assets/img/Charly-avatar.png';
+import Charly from '../assets/img/charly-full-body.webp';
 import James from '../assets/img/james-full-body-without-fond.png';
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
 import Sebi from "../Component/Sebi"
 
 const ImageLogoCharly = styled.img`
-  left: -70px;
-  top: 450px;
-  width: 200px;
-  height: 200px;
+  left: 4%;
+  top: 65%;
+  transform: translate(-50%, 0%);
+  width: auto;
+  height: 300px;
   position: absolute;
 
 `
 
 const ImageLogoJames = styled.img`
-  right: 600px;
-  top: 130px;
-  width: 200px;
-  height: 200px;
+  right: 50%;
+  top: 40%;
+  transform: translate(50%, -50%);
+  width: auto;
+  height: 300px;
   position: absolute;
 `
 const ContainerAnimals = styled.div`
