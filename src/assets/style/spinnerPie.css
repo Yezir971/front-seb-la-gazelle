@@ -26,7 +26,7 @@
     border-radius: 50%;
     width: 87px;
     height: 87px;
-    animation: timer 60s linear, bgColors 60s linear;
+    animation: timer 61s linear, bgColors 61s linear;
 }
   
 @keyframes timer {

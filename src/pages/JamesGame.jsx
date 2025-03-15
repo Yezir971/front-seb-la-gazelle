@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import TimmerComponent from "../Component/TimmerComponent";
 import gsap from "gsap";
-import imageJamesTheHowl from "../assets/img/james-avatar.png"
+import imageJamesTheHowl from "../assets/img/james-full-body-without-fond.png"
 import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
 import { NavLink } from "react-router-dom";
