@@ -3,6 +3,7 @@ import NavBarGame from "../Component/NavBarGame";
 import styled from "styled-components";
 // import screen from "../assets/img/charly-game/charly-game-1.png";
 import data from "../data/charlyGame.js";
+import imageCharly from "../assets/img/charly-full-body.webp";
 import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
 import { CursorContext } from "../context/CursorContext.jsx";
@@ -41,7 +42,26 @@ const ContainerTimer = styled.div`
   flex-direction:column;
   justify-content:center;
   align-items:center;
+`
+const ScoreContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 700px;
+  padding: 10px;
 
+  @media (min-width: 768px) {
+    padding: 20px;
+  }
+`
+const CharlyPicture = styled.img`
+    width: auto;
+    height: 350px;
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    transform: translate(-50%, -50%);
 `
 
 
@@ -107,10 +127,9 @@ const CharlyGames = () => {
         <>
             <NavBarGame points={score} />
             <ContainerGame>
-
+              <CharlyPicture className="imageCharly" src={ imageCharly } alt="Charly le caméléon" />
               <ContainerTimer>
                 <TimmerComponent  />
-
               </ContainerTimer>
 
               {(time > 0 && time <= 60) ? (
@@ -121,9 +140,9 @@ const CharlyGames = () => {
                     draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
                 </PictureContainer>
               ):(
-                <>
+                <ScoreContainer>
                   <button onClick={handleReplay}>Nouvelle partie</button>
-                </>
+                </ScoreContainer>
               )}
             </ContainerGame>
         </>
