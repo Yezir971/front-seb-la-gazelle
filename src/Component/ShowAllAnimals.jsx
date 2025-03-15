@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { GameContext } from '../context/GameContext';
 import Charly from '../assets/img/Charly-avatar.png';
-import James from '../assets/img/james-avatar.png';
+import James from '../assets/img/james-full-body-without-fond.png';
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
+import Sebi from "../Component/Sebi"
 
 const ImageLogoCharly = styled.img`
   left: -70px;
@@ -21,6 +22,11 @@ const ImageLogoJames = styled.img`
   height: 200px;
   position: absolute;
 `
+const ContainerAnimals = styled.div`
+  height:75vh;
+  width:100%;
+  position: relative;
+`
 
 const ShowAllAnimals = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);
@@ -29,20 +35,21 @@ const ShowAllAnimals = () => {
   return (
     <>
      {gameModalState.showAllAnimals && (  
-        <div>
-            <ImageLogoJames 
-            onMouseEnter={() => setCursorType(pointer)}
-            onMouseLeave={() => setCursorType(cursor)} 
-            onMouseDown={() => setCursorType(pointer)}
-            onMouseUp={() => setCursorType(cursor)} 
-            src={James} alt="Avatar de James" onClick={()=> toggleGameModals("JamesGame")} draggable="false"/>
-            <ImageLogoCharly 
-            onMouseEnter={() => setCursorType(pointer)}
-            onMouseLeave={() => setCursorType(cursor)} 
-            onMouseDown={() => setCursorType(pointer)}
-            onMouseUp={() => setCursorType(cursor)} 
-            src={Charly} alt="Avatar de Charly" onClick={()=> toggleGameModals("CharlyGame")} draggable="false"/>
-        </div>
+        <ContainerAnimals>
+          <ImageLogoJames 
+          onMouseEnter={() => setCursorType(pointer)}
+          onMouseLeave={() => setCursorType(cursor)} 
+          onMouseDown={() => setCursorType(pointer)}
+          onMouseUp={() => setCursorType(cursor)} 
+          src={James} alt="Avatar de James" onClick={()=> toggleGameModals("JamesGame")} draggable="false"/>
+          <ImageLogoCharly 
+          onMouseEnter={() => setCursorType(pointer)}
+          onMouseLeave={() => setCursorType(cursor)} 
+          onMouseDown={() => setCursorType(pointer)}
+          onMouseUp={() => setCursorType(cursor)} 
+          src={Charly} alt="Avatar de Charly" onClick={()=> toggleGameModals("CharlyGame")} draggable="false"/>
+          <Sebi />
+        </ContainerAnimals>
      )}
     </>
   )
