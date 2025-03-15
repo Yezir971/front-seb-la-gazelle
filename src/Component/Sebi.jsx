@@ -8,10 +8,8 @@ import body from "../assets/img/components-sebi/body.png";
 import ears from "../assets/img/components-sebi/ears.png";
 import tail from "../assets/img/components-sebi/taill.png";
 
-// plugin pour l'animation du texte
-import { TextPlugin } from "gsap/TextPlugin";
 import { CursorContext } from "../context/CursorContext";
-gsap.registerPlugin(TextPlugin);
+import Bubble from "./Bubble";
 
 // utilisation de drag nous sert a simuler la pression du click pour lancer l'animation 
 gsap.registerPlugin(Draggable);
@@ -19,21 +17,20 @@ gsap.registerPlugin(Draggable);
 const Container = styled.div`
   width: 200px;
   height: 200px;
-  position: absolute;
-  bottom:0px;
-  right:0px;
+  position: relative;
+  // bottom:0px;
+  // right:200px;
 `
 
 const Image = styled.img`
   position: absolute;
-  width: 100%;
+  width: 200px;
 `
 
 const Drag = styled.div`
   position: absolute;
   top: 0px;
-  left: 0px;
-  cursor: grab;
+  right: 0px;
   width: 100%;
   height: 120%;
   z-index: 99999;
@@ -41,6 +38,17 @@ const Drag = styled.div`
 const Hearth = styled.img`
   width:20px;
 `
+const ContaineAnimation = styled.div`
+  display:flex;
+  position:absolute;
+  bottom:0px;
+  right:0px;
+
+`
+const ContaineBubble = styled.div`
+
+`
+
 
 const Sebi = () => {
     const headRef = useRef(null);
@@ -119,31 +127,37 @@ const Sebi = () => {
     }, []);
   
     return (
-      <Container>
-        {/* <Hearth src="https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg"/> */}
-        {/* Corps */}
-        <Image src={body} alt="Corps" style={{ zIndex: 2 }} />
-  
-        {/* Tête */}
-        <Image ref={headRef} src={head} alt="Tête" style={{ zIndex: 2, opacity: 0  }} />
-        <Image ref={headStartRef} src={headStart} alt="Tête start" style={{ zIndex: 2}} />
-  
-  
-        {/* Queue */}
-        <Image ref={tailRef} src={tail} alt="Queue" style={{ zIndex: 1 }} />
-  
-        {/* Oreilles */}
-        <Image ref={earsRef} src={ears} alt="Oreilles" style={{ zIndex: 1 }} />
-  
-        {/* Zone draggable qui détecte le drag */}
-        <Drag 
-          onMouseEnter={() => setCursorType(cursorGrabOpen)}
-          onMouseLeave={() => setCursorType(cursor)}
-          // compatibilité mobil 
-          onTouchStart={startAnimation} // Pour les téléphones
-          onTouchEnd={stopAnimation}  
-        ref={draggableRef} />
-      </Container>
+      <ContaineAnimation>
+        <ContaineBubble>
+          <Bubble />
+        </ContaineBubble>
+        <Container>
+              {/* <Hearth src="https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg"/> */}
+              {/* Corps */}
+              <Image src={body} alt="Corps" style={{ zIndex: 2 }} />
+        
+              {/* Tête */}
+              <Image ref={headRef} src={head} alt="Tête" style={{ zIndex: 2, opacity: 0  }} />
+              <Image ref={headStartRef} src={headStart} alt="Tête start" style={{ zIndex: 2}} />
+        
+        
+              {/* Queue */}
+              <Image ref={tailRef} src={tail} alt="Queue" style={{ zIndex: 1 }} />
+        
+              {/* Oreilles */}
+              <Image ref={earsRef} src={ears} alt="Oreilles" style={{ zIndex: 1 }} />
+        
+              {/* Zone draggable qui détecte le drag */}
+              <Drag 
+                onMouseEnter={() => setCursorType(cursorGrabOpen)}
+                onMouseLeave={() => setCursorType(cursor)}
+                // compatibilité mobil 
+                onTouchStart={startAnimation} // Pour les téléphones
+                onTouchEnd={stopAnimation}  
+              ref={draggableRef} />
+        </Container>
+
+      </ContaineAnimation>
     );
 }
 
