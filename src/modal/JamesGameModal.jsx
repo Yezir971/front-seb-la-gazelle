@@ -5,6 +5,7 @@ import ImageJamesGames from '../assets/img/imageJeuJames.png'
 import  arrowReturn  from "../assets/img/Vector-return.svg"
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
+import { t } from "i18next";
 
 const Arrow = styled.img`
   width:30px;
@@ -44,7 +45,7 @@ const JamesGameModal = () => {
           onMouseLeave={() => setCursorType(cursor)} 
           onMouseDown={() => setCursorType(pointer)}
           onMouseUp={() => setCursorType(cursor)} 
-          to={'james_le_hibou'}> Jouer </NavLink>
+          to={'james_le_hibou'}> {t('jouer')} </NavLink>
         </button>
       </div>
     )}

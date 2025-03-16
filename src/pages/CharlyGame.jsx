@@ -7,6 +7,7 @@ import imageCharly from "../assets/img/charly-full-body.webp";
 import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
 import { CursorContext } from "../context/CursorContext.jsx";
+import { t } from "i18next";
 
 // Styled Components
 const PictureContainer = styled.div`
@@ -100,7 +101,7 @@ const CharlyGames = () => {
 
         // Vérifiez si le clic est dans une zone spécifique
         if (proportionalX >= data[randomPicture].position[0].xMin && proportionalX <= data[randomPicture].position[0].xMax && proportionalY >= data[randomPicture].position[1].yMin && proportionalY <= data[randomPicture].position[1].yMax) {
-          setInteractScore("win");
+          setInteractScore(t("gagner"));
           setScore((prev) => prev + 1);
           // si l'utilisateur à réussi a trouver charly on trouve aléatoirement une autre image 
           let newRandomNumber = Math.floor(Math.random() * (data.length ) )
@@ -112,7 +113,7 @@ const CharlyGames = () => {
           setRandomPicture(newRandomNumber)
         } else {
           // gsap.to(scoreContainerRef.current, { x: 10, duration: 0.3, yoyo: true, repeat: 2 }); // Shake animation
-          setInteractScore("lose");
+          setInteractScore(t("perdu"));
         }
     
     };

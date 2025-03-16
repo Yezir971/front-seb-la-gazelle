@@ -7,6 +7,7 @@ import JamesGameModal from "../modal/JamesGameModal"
 import ShowAllAnimals from "../Component/ShowAllAnimals"
 import CharlyGameModal from "../modal/CharlyGameModal"
 import styled from "styled-components"
+import { t } from "i18next";
 
 const ContainerHome = styled.div`
      width: 100%;
@@ -57,7 +58,7 @@ const Home = () => {
                 isLocalAuth !== "" && auth  ? (
                     <>
                         <p>Vous etes connecter ici logo avatar</p>
-                        <button onClick={deleteToken}>deconnecter</button>
+                        <button onClick={deleteToken}>{t('deconnecter')}</button>
                     </>
                 ):(
                     <>

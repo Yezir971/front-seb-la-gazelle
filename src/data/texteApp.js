@@ -4,6 +4,7 @@ const resources = {
             guili: "Oh no, tickles!",
             connecte: "Log in",
             inscription: "Sign up",
+            seDeconnecter:"Log out",
             volume: "Volume",
             musique: "Music",
             mentions: "Legal notices",
@@ -16,6 +17,7 @@ const resources = {
             monPseudo: "My username",
             monMotDePasse: "My password",
             seConnecter: "Log in",
+            mdpIncorrect:"Your password or email is incorrect.",
             creerMonCompte: "Create my account",
             jouer: "Play",
             nouvellePartie: "New game",
@@ -32,7 +34,11 @@ const resources = {
             jamesJeuBonneReponse: "Correct answer!",
             message404: "Oh no, you got lost!",
             cta404: "Home page",
-            avatarList: "Collected avatar"
+            avatarList: "Collected avatar",
+            Utilisateur:"User",
+            gagner:"Win",
+            perdu:"Lose",
+            deconnecter:"Disconnect"
         }
     },
     fr: {
@@ -40,6 +46,7 @@ const resources = {
             guili: "Oh non, des guilis !",
             connecte: "Connecte-toi",
             inscription: "Inscris-toi",
+            seDeconnecter:"Se déconnecter",
             volume: "Volume",
             musique: "Musique",
             mentions: "Mentions légales",
@@ -52,6 +59,7 @@ const resources = {
             monPseudo: "Mon pseudo",
             monMotDePasse: "Mon mot de passe",
             seConnecter: "Se connecter",
+            mdpIncorrect:"Votre mot de passe ou mail n'est pas correct.",
             creerMonCompte: "Créer mon compte",
             jouer: "Jouer",
             nouvellePartie: "Nouvelle partie",
@@ -68,7 +76,11 @@ const resources = {
             jamesJeuBonneReponse: "Réponse correcte !",
             message404: "Oh mince, tu t’es perdu !",
             cta404: "Page d’accueil",
-            avatarList: "Avatar collecté"
+            avatarList: "Avatar collecté",
+            Utilisateur:"Utilisateur",
+            gagner:"Gagner",
+            perdu:"Perdu",
+            deconnecter:"Déconnecter"
         }
     }
 }

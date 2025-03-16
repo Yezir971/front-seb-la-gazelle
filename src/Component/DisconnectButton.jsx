@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CursorContext } from "../context/CursorContext";
+import { t } from "i18next";
 
 function DisconnectButton() {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
@@ -10,7 +11,7 @@ function DisconnectButton() {
     onMouseLeave={() => setCursorType(cursor)} 
     onMouseDown={() => setCursorType(pointer)}
     onMouseUp={() => setCursorType(cursor)} 
-    className="disconnectButton">Se déconnecter</button>
+    className="disconnectButton">{t('seDeconnecter')}</button>
   );
 }
 

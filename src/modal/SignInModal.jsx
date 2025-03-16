@@ -3,6 +3,7 @@ import {UserContext} from '../context/UserContext';
 import useFetch from '../assets/hooks/useFetch';
 import { CursorContext } from '../context/CursorContext';
 import Cookies from 'js-cookie';
+import { t } from "i18next";
 
 function SignInModal() {
     const refName = useRef()
@@ -44,7 +45,7 @@ function SignInModal() {
 
             }
             else if(response.data.code === 401){
-                setResponseApi("Votre mot de passe ou mail n'est pas correcte")
+                setResponseApi(t("mdpIncorrect"))
                 setError(true)
             }
             // console.timeEnd('temps exécution')
@@ -71,11 +72,11 @@ function SignInModal() {
                     onMouseUp={() => setCursorType(cursor)} 
                     className="svgForm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" onClick={closeModal}/></svg>
                     <form onSubmit={submit}>
-                        <label htmlFor="" className="formLabel">Mon mail</label>
-                        <input type="text" ref={refName} name="emailNickname" placeholder="Mon mail..." className="formInput"/>
+                        <label htmlFor="" className="formLabel">{t('monMail')}</label>
+                        <input type="text" ref={refName} name="emailNickname" placeholder={`${t('monMail')}...`} className="formInput"/>
 
-                        <label htmlFor="" className="formLabel">Mon Mot de passe</label>
-                        <input type="password" ref={refPassword} name="pwd" placeholder="Mot de passe..." className="formInput"/>
+                        <label htmlFor="" className="formLabel">{t('monMotDePasse')}</label>
+                        <input type="password" ref={refPassword} name="pwd" placeholder={`${t('monMotDePasse')}...`} className="formInput"/>
 
                         {/* <a href="#" className="forgotPassword">Mot de passe oublié ?</a> */}
                         <div 
@@ -84,7 +85,7 @@ function SignInModal() {
                         onMouseDown={() => setCursorType(pointer)}
                         onMouseUp={() => setCursorType(cursor)} 
                         className="containerFormButton">
-                            <input type="submit" value="Se connecter" className="formButton"/>
+                            <input type="submit" value={t('seConnecter')} className="formButton"/>
                         </div>
                     </form>
                     {

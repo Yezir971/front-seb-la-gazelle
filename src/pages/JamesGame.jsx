@@ -6,6 +6,7 @@ import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
 import { NavLink } from "react-router-dom";
 import { CursorContext } from "../context/CursorContext";
+import { t } from "i18next";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -78,11 +79,11 @@ const JamesGame = () => {
         const button = document.querySelectorAll("button");
         if (answer === question.correctAnswer) {
             gsap.to(button, { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
-            setMessage("Réponse correct! 🎉");
+            setMessage(t("jamesJeuBonneReponse"));
             setScore((prev) => prev + 1);
         } else {
             gsap.to(button, { x: 10, duration: 0.2, yoyo: true, repeat: 1 }); // Shake animation
-            setMessage("Oops! Mauvaise réponse. 😅");
+            setMessage(t("jamesJeuMauvaiseReponse"));
         }
     
         generateQuestion();
@@ -133,11 +134,11 @@ const JamesGame = () => {
                         <div>
                             <h3>Score: {score}</h3>
                             <table>
-                                <th>User</th>
+                                <th>{t("Utilisateur")}</th>
                                 <th>Score</th>
                             </table>
                             <button>
-                                <NavLink onClick={handleReplay}>Rejouer</NavLink>
+                                <NavLink onClick={handleReplay}>{t("rejouer")}</NavLink>
                             </button>
                         </div>
                     )}

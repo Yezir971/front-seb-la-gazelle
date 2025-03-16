@@ -5,6 +5,7 @@ import ImageCharlyGame from "../assets/img/charly-game/charly-game-1.png";
 import  arrowReturn  from "../assets/img/Vector-return.svg"
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
+import { t } from "i18next";
 
 const Arrow = styled.img`
   width:30px;
@@ -48,7 +49,7 @@ const CharlyGameModal = () => {
           onMouseDown={() => setCursorType(pointer)}
           onMouseUp={() => setCursorType(cursor)}
           className='boutonPlayGame'>
-            <NavLink  to={'charly_le_cameleon'}> Jouer </NavLink>
+            <NavLink  to={'charly_le_cameleon'}>{t('jouer')}</NavLink>
           </button>
         </div>
       )}

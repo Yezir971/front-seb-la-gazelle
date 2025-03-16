@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import {UserContext} from '../context/UserContext';
 import { CursorContext } from '../context/CursorContext';
+import { t } from "i18next";
 
 function SignUpButton() {
     const {modalState, toggleModals } = useContext(UserContext);
@@ -14,7 +15,7 @@ function SignUpButton() {
             onMouseDown={() => setCursorType(pointer)}
             onMouseUp={() => setCursorType(cursor)} 
             className="gestionButton"
-            onClick={()=> toggleModals("signUp")}>Inscris-toi</button>
+            onClick={()=> toggleModals("signUp")}>{t('inscription')}</button>
     )
 }
 

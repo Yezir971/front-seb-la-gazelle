@@ -1,5 +1,6 @@
 import { createContext } from "react"
 import { useEffect, useState } from "react"
+import { t } from "i18next";
 
 export const TimerContext = createContext()
 
@@ -13,7 +14,7 @@ const TimerContextProvider = (props) => {
         }, 1000);
         if(time<=0){
             setTime(0)
-            setMessageTimer('Fin du jeu !')
+            setMessageTimer(t('finDujeu'))
             return
         }
         return () => {
