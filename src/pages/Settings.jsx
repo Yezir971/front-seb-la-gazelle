@@ -1,9 +1,12 @@
 import styled from "styled-components"
 import ReturLogo from "../Component/ReturnLogo"
 import { AudioContext } from "../context/AudioContext"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import cadre  from '../assets/img/cadre.png'
 import { CursorContext } from "../context/CursorContext"
+import ButtonSwitchEnFr from "../Component/ButtonSwitchEnFr"
+import { useTranslation } from "react-i18next";
+
 
 const Cadre = styled.div`
     width: 90vw;
@@ -60,6 +63,8 @@ const ListeItem = styled.li`
     font-size:1.2rem;
     display:flex;
     align-items:center;
+    justify-content:center;
+    text-transform:uppercase;
 `
 const ListeItemPolitique = styled.li`
     background-color: rgb(69 145 7 / 77%);
@@ -72,7 +77,8 @@ const ListeItemPolitique = styled.li`
 const Settings = () => {
     const {volumeOnOff, setVolumeOnOff, setMusiqueOnOff, musiqueOnOff, soundRef} = useContext(AudioContext)
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
-    
+    const {t} = useTranslation()
+
     
     const volume = () =>{
         setVolumeOnOff(!volumeOnOff)
@@ -94,11 +100,11 @@ const Settings = () => {
             <ReturLogo />
             <Cadre>
                 <ContainerListe>
-                    <ListeItem onClick={volume}>VOLUME {volumeOnOff ? "🔊" : "🔇"}</ListeItem>
-                    <ListeItem onClick={musique}>MUSIQUE {musiqueOnOff ? "🎵" : "🎶"} </ListeItem>
-                    <ListeItem>MENTIONS LEGALES</ListeItem>
-                    <ListeItem>LANGUES</ListeItem>
-                    <ListeItemPolitique>POLITIQUES DE CONFIDENTIALITES</ListeItemPolitique>
+                    <ListeItem onClick={volume}>{t('volume')} {volumeOnOff ? "🔊" : "🔇"}</ListeItem>
+                    <ListeItem onClick={musique}>{t('musique')} {musiqueOnOff ? "🎵" : "🎶"} </ListeItem>
+                    <ListeItem>{t('mentions')}</ListeItem>
+                    <ListeItem><ButtonSwitchEnFr /></ListeItem>
+                    <ListeItemPolitique>{t('politique')}</ListeItemPolitique>
                 </ContainerListe>
             </Cadre>
         </>

@@ -1,6 +1,7 @@
 import gsap from "gsap";
 // plugin pour l'animation du texte
 import { TextPlugin } from "gsap/TextPlugin";
+import { t } from "i18next";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
 gsap.registerPlugin(TextPlugin);
@@ -32,7 +33,7 @@ const Bubble = () => {
         //replaces yourElement's text with "This is the new text" 
         gsap.to(textBubbleRef.current, {
             duration: 2,
-            text: "Aide-moi à trouver mes amis",
+            text: t('aideSebi'),
             ease: "none",
         });
     }, [])

@@ -11,6 +11,9 @@ import tail from "../assets/img/components-sebi/taill.png";
 // plugin pour l'animation du texte
 import { TextPlugin } from "gsap/TextPlugin";
 import { CursorContext } from "../context/CursorContext";
+import ButtonSwitchEnFr from "../Component/ButtonSwitchEnFr";
+import { useTranslation } from "react-i18next";
+import { LanguageContext } from "../context/LanguageContext";
 gsap.registerPlugin(TextPlugin);
 
 // utilisation de drag nous sert a simuler la pression du click pour lancer l'animation 
@@ -41,6 +44,10 @@ const Hearth = styled.img`
   width:20px;
 `
 const Test = () => {
+  const {t} = useTranslation()
+  const { language, change } = useContext(LanguageContext);
+
+
   const headRef = useRef(null);
   const headStartRef = useRef(null)
   const tailRef = useRef(null);
@@ -71,6 +78,9 @@ const Test = () => {
   };
   // Stopper l'animation et remettre les éléments à l'état initial
   const stopAnimation = () => {
+
+
+
       if (animationTimeline.current) {
         animationTimeline.current.kill();
       }
@@ -117,31 +127,36 @@ const Test = () => {
   }, []);
 
   return (
-    <Container>
-      {/* <Hearth src="https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg"/> */}
-      {/* Corps */}
-      <Image src={body} alt="Corps" style={{ zIndex: 2 }} />
+    <>
+      <p>{t('guili')}</p>
+      <h1 onClick={() => change()}>click</h1>
+      <ButtonSwitchEnFr />
+      <Container>
+        {/* <Hearth src="https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg"/> */}
+        {/* Corps */}
+        <Image src={body} alt="Corps" style={{ zIndex: 2 }} />
 
-      {/* Tête */}
-      <Image ref={headRef} src={head} alt="Tête" style={{ zIndex: 2, opacity: 0  }} />
-      <Image ref={headStartRef} src={headStart} alt="Tête start" style={{ zIndex: 2}} />
+        {/* Tête */}
+        <Image ref={headRef} src={head} alt="Tête" style={{ zIndex: 2, opacity: 0  }} />
+        <Image ref={headStartRef} src={headStart} alt="Tête start" style={{ zIndex: 2}} />
 
 
-      {/* Queue */}
-      <Image ref={tailRef} src={tail} alt="Queue" style={{ zIndex: 1 }} />
+        {/* Queue */}
+        <Image ref={tailRef} src={tail} alt="Queue" style={{ zIndex: 1 }} />
 
-      {/* Oreilles */}
-      <Image ref={earsRef} src={ears} alt="Oreilles" style={{ zIndex: 1 }} />
+        {/* Oreilles */}
+        <Image ref={earsRef} src={ears} alt="Oreilles" style={{ zIndex: 1 }} />
 
-      {/* Zone draggable qui détecte le drag */}
-      <Drag 
-        onMouseEnter={() => setCursorType(cursorGrabOpen)}
-        onMouseLeave={() => setCursorType(cursor)}
-        // compatibilité mobil 
-        onTouchStart={startAnimation} // Pour les téléphones
-        onTouchEnd={stopAnimation}  
-      ref={draggableRef} />
-    </Container>
+        {/* Zone draggable qui détecte le drag */}
+        <Drag 
+          onMouseEnter={() => setCursorType(cursorGrabOpen)}
+          onMouseLeave={() => setCursorType(cursor)}
+          // compatibilité mobil 
+          onTouchStart={startAnimation} // Pour les téléphones
+          onTouchEnd={stopAnimation}  
+        ref={draggableRef} />
+      </Container>
+    </>
   );
 };
 

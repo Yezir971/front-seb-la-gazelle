@@ -1,3 +1,5 @@
+import ButtonSwitchEnFr from "../Component/ButtonSwitchEnFr"
+
 function SettingModal() {
 
 
@@ -10,7 +12,7 @@ function SettingModal() {
                         <button className="settingButton">Musique</button>
                         <button className="settingButton">Bruitage</button>
                         <button className="settingButton">Politiques de confidentialités</button>
-                        <button className="settingButton">Langues</button>
+                        <button className="settingButton">Langues <ButtonSwitchEnFr /></button>
                         <button className="settingButton">Mentions légales</button>
                     </div>
                 </div>
