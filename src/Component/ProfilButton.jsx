@@ -17,7 +17,7 @@ function ProfilButton() {
         <NavLink>
             {!isLoading && user ? 
                 user.avatar == null ? <img src={defaultUser} alt="avatar" className="avatar"/> : <img src={user.avatar} alt="avatar" className="avatar"/>
-            : "Profil"}
+            : ""}
         </NavLink>
     </button>
   );
