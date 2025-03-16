@@ -8,6 +8,8 @@ import TimerContextProvider from './context/TimerContext';
 import GameContextProvider from './context/GameContext';
 import AudioContextProvider from './context/AudioContext';
 import CursorContextProvider from './context/CursorContext';
+import AuthContextProvider from './context/AuthContext';
+import LanguageProvider from './context/LanguageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +20,11 @@ root.render(
           <GameContextProvider>
             <AudioContextProvider>
               <CursorContextProvider>
-                <App />
+                <AuthContextProvider>
+                  <LanguageProvider>
+                    <App />
+                  </LanguageProvider>
+                </AuthContextProvider>
               </CursorContextProvider>
             </AudioContextProvider>
           </GameContextProvider>
