@@ -6,7 +6,6 @@ const useFetch = (url, method) => {
     const [error, setError] = useState(false)
     const [dataError, setDataError] = useState()
 
-    
     const send = async (body) => {
         // Réinitialisation des états avant chaque requête
         setIsLoading(true);
