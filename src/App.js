@@ -9,6 +9,7 @@ import CharlyGames from "./pages/CharlyGame";
 import BackgroundWrapper from "./Component/BackgroundWrapper";
 import Settings from "./pages/Settings";
 import { createGlobalStyle } from "styled-components";
+import Page404 from "./pages/Page404";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
@@ -26,7 +27,8 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/" element={<Home />} />
           <Route path="/charly_le_cameleon" element={<CharlyGames />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </BackgroundWrapper>
     </div>

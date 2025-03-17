@@ -38,7 +38,9 @@ const resources = {
             Utilisateur:"User",
             gagner:"Win",
             perdu:"Lose",
-            deconnecter:"Disconnect"
+            deconnecter:"Disconnect",
+            page404:"Oh dear, you've lost your way!",
+            accueilPage:"Home page"
         }
     },
     fr: {
@@ -80,7 +82,9 @@ const resources = {
             Utilisateur:"Utilisateur",
             gagner:"Gagner",
             perdu:"Perdu",
-            deconnecter:"Déconnecter"
+            deconnecter:"Déconnecter",
+            page404:"Oh, mince, tu t’es perdu !",
+            accueilPage:"Page d'accueil"
         }
     }
 }
