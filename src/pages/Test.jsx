@@ -156,6 +156,7 @@ const Test = () => {
           onTouchEnd={stopAnimation}  
         ref={draggableRef} />
       </Container>
+      <p>ceci est un test</p>
     </>
   );
 };
