@@ -23,8 +23,9 @@ const BackgroundWrapper = ({ children }) => {
   const backgrounds = {
     "/": `url(${NatureBackground})`, // Page d'accueil
     "/settings": `url(${NatureBackground})`, // Page de settings
-    "/charly_le_cameleon": `url(${ChameleonBackground})`, // page jeux charly le caméléon
-    "/james_le_hibou": `url(${HibouBackground})`, // page jeux james le hiboux
+    "/charly_le_cameleon": `url(${ChameleonBackground})`,
+    "/james_le_hibou": `url(${HibouBackground})`,
+    "/profil": `url(${NatureBackground})`
   };
   // Si l'url est reconnu on applique les background de notre objet background sinon c'est que la route n'existe pas et que l'on est sur la page 404
   const currentBackground = backgrounds[location.pathname] || `url(${NatureBackground})`; 

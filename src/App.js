@@ -10,6 +10,7 @@ import BackgroundWrapper from "./Component/BackgroundWrapper";
 import Settings from "./pages/Settings";
 import { createGlobalStyle } from "styled-components";
 import Page404 from "./pages/Page404";
+import Profil from "./pages/Profil";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
@@ -29,6 +30,8 @@ function App() {
           <Route path="/charly_le_cameleon" element={<CharlyGames />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<Page404 />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/profil" element={<Profil />} />
         </Routes>
       </BackgroundWrapper>
     </div>
