@@ -44,7 +44,7 @@ const Profil = () => {
     const token = Cookies.get('token');
     const [score, setScore] = useState(null);
 
-    const scoreUser = async (token, user) => {
+    const scoreUser = async (token) => {
         if (!token) return;
         try{
             const response = await fetch(`https://orange-wolf-959534.hostingersite.com/api/scores/user`, {
@@ -68,7 +68,7 @@ const Profil = () => {
     }
     
     useEffect(() => {
-        scoreUser(token, user);
+        scoreUser(token);
     },[user])
 
     if(score){

@@ -4,9 +4,9 @@ import gsap from "gsap";
 import imageJamesTheHowl from "../assets/img/james-full-body-without-fond.png"
 import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
-import { NavLink } from "react-router-dom";
 import { CursorContext } from "../context/CursorContext";
 import { t } from "i18next";
+import EndGame from "../Component/EndGame";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -49,9 +49,7 @@ const JamesGame = () => {
     const [score, setScore] = useState(0);
     const [message, setMessage] = useState("");
     const {time, messageTimer, setTime} = useContext(TimerContext);
-
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
-    
     // Generate a random question
     const generateQuestion = () => {
         const num1 = getRandomInt(1, 10);
@@ -87,10 +85,6 @@ const JamesGame = () => {
         }
     
         generateQuestion();
-    };
-
-    const handleReplay = () => {
-        window.location.reload();
     };
 
     useEffect(() => {
@@ -131,16 +125,7 @@ const JamesGame = () => {
                             </div>
                         </div>
                     ):(
-                        <div>
-                            <h3>Score: {score}</h3>
-                            <table>
-                                <th>{t("Utilisateur")}</th>
-                                <th>Score</th>
-                            </table>
-                            <button>
-                                <NavLink onClick={handleReplay}>{t("rejouer")}</NavLink>
-                            </button>
-                        </div>
+                        <EndGame score={score} nameGame={"James le hibou"}/>
                     )}
                 </div>
                 <TimmerComponent />

@@ -8,6 +8,7 @@ import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
 import { CursorContext } from "../context/CursorContext.jsx";
 import { t } from "i18next";
+import EndGame from "../Component/EndGame.jsx";
 
 // Styled Components
 const PictureContainer = styled.div`
@@ -43,18 +44,6 @@ const ContainerTimer = styled.div`
   flex-direction:column;
   justify-content:center;
   align-items:center;
-`
-const ScoreContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 700px;
-  padding: 10px;
-
-  @media (min-width: 768px) {
-    padding: 20px;
-  }
 `
 const CharlyPicture = styled.img`
     width: auto;
@@ -117,10 +106,6 @@ const CharlyGames = () => {
         }
     
     };
-    
-    const handleReplay = () => {
-      window.location.reload();
-    };
 
     return (
         <>
@@ -139,9 +124,7 @@ const CharlyGames = () => {
                     draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
                 </PictureContainer>
               ):(
-                <ScoreContainer>
-                  <button onClick={handleReplay}>Nouvelle partie</button>
-                </ScoreContainer>
+                <EndGame score={score} nameGame={"Charly le caméléon"}/>
               )}
             </ContainerGame>
         </>
