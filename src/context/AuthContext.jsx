@@ -7,6 +7,7 @@ const AuthContextProvider = (props) => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const token = Cookies.get('token');
+    const [score, setScore] = useState(null);
 
     const login = async (token) => {
         setIsLoading(true);
@@ -30,12 +31,11 @@ const AuthContextProvider = (props) => {
             setIsLoading(false);
         }
     }
+    
     useEffect(() => {
         login(token);
     },[])
-    if(!isLoading){
-        console.log(user);
-    }
+    
     return (
         <AuthContext.Provider value={{ isLoading ,user}}>
             {props.children}

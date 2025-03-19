@@ -24,7 +24,8 @@ const BackgroundWrapper = ({ children }) => {
     "/": `url(${NatureBackground})`, // Page d'accueil
     "/settings": `url(${NatureBackground})`, // Page de settings
     "/charly_le_cameleon": `url(${ChameleonBackground})`,
-    "/james_le_hibou": `url(${HibouBackground})`
+    "/james_le_hibou": `url(${HibouBackground})`,
+    "/profil": `url(${NatureBackground})`
   };
   const currentBackground = backgrounds[location.pathname] || "white";
 
