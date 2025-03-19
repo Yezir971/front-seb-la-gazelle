@@ -40,7 +40,12 @@ const resources = {
             perdu:"Lose",
             deconnecter:"Disconnect",
             page404:"Oh dear, you've lost your way!",
-            accueilPage:"Home page"
+            accueilPage:"Home page",
+            // voix
+            // sebi 
+
+            // sebi 
+
         }
     },
     fr: {
@@ -84,7 +89,9 @@ const resources = {
             perdu:"Perdu",
             deconnecter:"Déconnecter",
             page404:"Oh, mince, tu t’es perdu !",
-            accueilPage:"Page d'accueil"
+            accueilPage:"Page d'accueil",
+            // voix
+
         }
     }
 }

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import sound from "../assets/audios/les-amis-de-sebi.mp3"
+import sound from "../assets/musique/les-amis-de-sebi.mp3"
 import { Howl } from "howler"
 export const AudioContext = createContext()
 
