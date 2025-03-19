@@ -14,6 +14,7 @@ import { CursorContext } from "../context/CursorContext";
 import ButtonSwitchEnFr from "../Component/ButtonSwitchEnFr";
 import { useTranslation } from "react-i18next";
 import { LanguageContext } from "../context/LanguageContext";
+import AudioPlayer from "../Component/AudioPlayer";
 gsap.registerPlugin(TextPlugin);
 
 // utilisation de drag nous sert a simuler la pression du click pour lancer l'animation 
@@ -157,6 +158,7 @@ const Test = () => {
         ref={draggableRef} />
       </Container>
       <p>ceci est un test</p>
+      <AudioPlayer src={t('sebiReplique1')} />
     </>
   );
 };
