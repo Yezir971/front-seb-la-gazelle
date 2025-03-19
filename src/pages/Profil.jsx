@@ -47,7 +47,7 @@ const Profil = () => {
     const scoreUser = async (token, user) => {
         if (!token) return;
         try{
-            const response = await fetch(`https://orange-wolf-959534.hostingersite.com/api/scores/${user.id}`, {
+            const response = await fetch(`https://orange-wolf-959534.hostingersite.com/api/scores/user`, {
                 method: 'GET',
                 headers:{
                     "Authorization": `Bearer ${token}`,
@@ -56,7 +56,7 @@ const Profil = () => {
             });
             const data = await response.json();
             if(response.status === 404){
-                console.log('Erreur 404');
+                setScore(null);
             }else{
                 if(data){
                     setScore(data);
