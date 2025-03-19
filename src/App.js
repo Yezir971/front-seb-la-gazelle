@@ -28,7 +28,6 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/" element={<Home />} />
           <Route path="/charly_le_cameleon" element={<CharlyGames />} />
-          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<Page404 />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profil" element={<Profil />} />
