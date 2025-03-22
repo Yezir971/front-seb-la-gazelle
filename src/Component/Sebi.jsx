@@ -142,7 +142,6 @@ const Sebi = ({replique ,repliqueSound}) => {
               <Image ref={headRef} src={head} alt="Tête" style={{ zIndex: 2, opacity: 0  }} />
               <Image ref={headStartRef} src={headStart} alt="Tête start" style={{ zIndex: 2}} />
         
-        
               {/* Queue */}
               <Image ref={tailRef} src={tail} alt="Queue" style={{ zIndex: 1 }} />
         

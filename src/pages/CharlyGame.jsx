@@ -9,6 +9,8 @@ import { TimerContext } from "../context/TimerContext.jsx";
 import { CursorContext } from "../context/CursorContext.jsx";
 import { t } from "i18next";
 import EndGame from "../Component/EndGame.jsx";
+import Charly from "../Component/Charly.jsx";
+import Sebi from "../Component/Sebi.jsx";
 
 // Styled Components
 const PictureContainer = styled.div`
@@ -36,6 +38,7 @@ const PictureGameCharly = styled.img`
 `
 const ContainerGame = styled.div`
   position:relative;
+  height:75vh;
 `
 const ContainerTimer = styled.div`
   position:absolute;
@@ -45,20 +48,21 @@ const ContainerTimer = styled.div`
   justify-content:center;
   align-items:center;
 `
-const CharlyPicture = styled.img`
-    width: auto;
-    height: 350px;
-    position: absolute;
-    top: 70%;
-    left: 10%;
-    transform: translate(-50%, -50%);
+const CharlyContainer = styled.div`
+  height: 350px;
+  position: absolute;
+  bottom:0px;
+  right:0px;
+  transform: translate(-50%, -50%);
 `
+
 
 
 const CharlyGames = () => {
     const [score, setScore] = useState(0);
     const [mouse, setMouse] = useState({ x: 0, y: 0 }); // position du click
     const [interactScore, setInteractScore] = useState('')
+    const [isFirstAnser, setIsFirstAnser] = useState(false)
     const {time, setTime} = useContext(TimerContext)
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
 
@@ -76,6 +80,7 @@ const CharlyGames = () => {
     
     //fonction qui va permettre de savoir où exactement l'utilisateur a clicker 
     const handleClick = (event) => {
+
         // getBoundingClientRect permet d'avoir la position de l'image par rapport a la fenêter 
         const rect = scoreContainerRef.current.getBoundingClientRect();
         const relativeX = event.clientX - rect.left; // Position X relative à l'image
@@ -91,6 +96,7 @@ const CharlyGames = () => {
         // Vérifiez si le clic est dans une zone spécifique
         if (proportionalX >= data[randomPicture].position[0].xMin && proportionalX <= data[randomPicture].position[0].xMax && proportionalY >= data[randomPicture].position[1].yMin && proportionalY <= data[randomPicture].position[1].yMax) {
           setInteractScore(t("gagner"));
+          setIsFirstAnser("true")
           setScore((prev) => prev + 1);
           // si l'utilisateur à réussi a trouver charly on trouve aléatoirement une autre image 
           let newRandomNumber = Math.floor(Math.random() * (data.length ) )
@@ -111,20 +117,29 @@ const CharlyGames = () => {
         <>
             <NavBarGame points={score} />
             <ContainerGame>
-              <CharlyPicture className="imageCharly" src={ imageCharly } alt="Charly le caméléon" />
+
+              
               <ContainerTimer>
                 <TimmerComponent  />
               </ContainerTimer>
 
               {(time > 0 && time <= 60) ? (
-                <PictureContainer>
-                    <PictureGameCharly 
-                    onMouseEnter={() => setCursorType(pointer)}
-                    onMouseLeave={() => setCursorType(cursor)} 
-                    draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
-                </PictureContainer>
+                <>
+                  <PictureContainer>
+                      <PictureGameCharly 
+                      onMouseEnter={() => setCursorType(pointer)}
+                      onMouseLeave={() => setCursorType(cursor)} 
+                      draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
+                  </PictureContainer>
+                  <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
+                
+                </>
+
               ):(
-                <EndGame score={score} nameGame={"Charly le caméléon"}/>
+                <>
+                  <EndGame score={score} nameGame={"Charly le caméléon"}/>
+                  <Sebi key={randomPicture} replique="sebiOnjoueEncore" repliqueSound="sebiReplique6"/>
+                </>
               )}
             </ContainerGame>
         </>
