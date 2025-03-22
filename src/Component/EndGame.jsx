@@ -40,7 +40,7 @@ export default function EndGame({score, nameGame}) {
 
   return (
     <div>
-        <h3>James le hiboux</h3>
+        <h3>{nameGame}</h3>
         <table>
             <th>{t("Utilisateur")} :{score}</th>
             <th>Score</th>
