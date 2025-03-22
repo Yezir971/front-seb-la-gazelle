@@ -1,14 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.48fe8ac4.css",
-    "main.js": "/static/js/main.29396c1b.js",
-    "static/media/les-amis-de-sebi.mp3": "/static/media/les-amis-de-sebi.5de0138580c7ca3fbd0a.mp3",
+    "main.css": "/static/css/main.5f0c6e1f.css",
+    "main.js": "/static/js/main.01d74c84.js",
+    "static/media/sebi-la-gazelle-sound.mp3": "/static/media/sebi-la-gazelle-sound.d87d1882ede6f1e1961c.mp3",
     "static/media/charly-game-3.png": "/static/media/charly-game-3.dbfd1d66a254b5839909.png",
     "static/media/charly-game-5.png": "/static/media/charly-game-5.003c7ce234815918b0aa.png",
     "static/media/charly-game-2.png": "/static/media/charly-game-2.74a2296f93aba37ba1e7.png",
     "static/media/charly-game-1.png": "/static/media/charly-game-1.9af2fb4e60cf82059c09.png",
     "static/media/charly-game-4.png": "/static/media/charly-game-4.7e9c9792783106eb91a4.png",
     "static/media/mel_la_marmotte.svg": "/static/media/mel_la_marmotte.0c4bf37f06b01932058bfb0eaf05bf5d.svg",
+    "static/media/sebi-la-gazelle_mixage.wav": "/static/media/sebi-la-gazelle_mixage.936887d15f3ab0ef5fb4.wav",
+    "static/media/sebi-la-gazelle2_mixage.wav": "/static/media/sebi-la-gazelle2_mixage.958de3338b1b8b1ed34c.wav",
     "static/media/background_james_hibou.png": "/static/media/background_james_hibou.683458b842c4ebba9d09.png",
     "static/media/background-charly-le-cameleon.png": "/static/media/background-charly-le-cameleon.99700cf6891c960ff5f2.png",
     "static/media/head-start.png": "/static/media/head-start.98fc7e1b7790256c92b1.png",
@@ -28,11 +30,11 @@
     "static/media/cursor-grab-open.png": "/static/media/cursor-grab-open.d513a92f8682e50306e9.png",
     "index.html": "/index.html",
     "static/media/Vector-return.svg": "/static/media/Vector-return.75783eac89bb6ebc54180040aa8dabbf.svg",
-    "main.48fe8ac4.css.map": "/static/css/main.48fe8ac4.css.map",
-    "main.29396c1b.js.map": "/static/js/main.29396c1b.js.map"
+    "main.5f0c6e1f.css.map": "/static/css/main.5f0c6e1f.css.map",
+    "main.01d74c84.js.map": "/static/js/main.01d74c84.js.map"
   },
   "entrypoints": [
-    "static/css/main.48fe8ac4.css",
-    "static/js/main.29396c1b.js"
+    "static/css/main.5f0c6e1f.css",
+    "static/js/main.01d74c84.js"
   ]
 }
