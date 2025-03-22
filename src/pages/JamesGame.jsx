@@ -7,6 +7,8 @@ import NavBarGame from "../Component/NavBarGame";
 import { CursorContext } from "../context/CursorContext";
 import { t } from "i18next";
 import EndGame from "../Component/EndGame";
+import James from "../Component/James";
+import Sebi from "../Component/Sebi";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -47,7 +49,9 @@ const JamesGame = () => {
     const [question, setQuestion] = useState({});
     const [answers, setAnswers] = useState([]);
     const [score, setScore] = useState(0);
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(false);
+    const [firstAnswer, setFirstAnswer] = useState(true);
+    const [countAnswer, setCountAnswer] = useState(0);
     const {time, messageTimer, setTime} = useContext(TimerContext);
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     // Generate a random question
@@ -69,19 +73,21 @@ const JamesGame = () => {
 
         setQuestion({ num1, num2, operator, correctAnswer });
         setAnswers(shuffledAnswers);
-        // setMessage("");
     };
+
 
     // Handle answer click
     const handleAnswerClick = (answer) => {
+        setFirstAnswer(false);
+        setCountAnswer(countAnswer + 1);
         const button = document.querySelectorAll("button");
         if (answer === question.correctAnswer) {
             gsap.to(button, { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
-            setMessage(t("jamesJeuBonneReponse"));
+            setMessage(true);
             setScore((prev) => prev + 1);
         } else {
             gsap.to(button, { x: 10, duration: 0.2, yoyo: true, repeat: 1 }); // Shake animation
-            setMessage(t("jamesJeuMauvaiseReponse"));
+            setMessage(false);
         }
     
         generateQuestion();
@@ -91,13 +97,16 @@ const JamesGame = () => {
         setScore(0);
         setTime(60);
         generateQuestion();
+        setFirstAnswer(true);
     }, []);
-
+    console.log(message);
+    
     return(
         <>
         <div className="layout">     
             <NavBarGame points={score}/>
             <div className="containerGame">
+                <TimmerComponent />
                 <div className="whiteBoard">
                     { time > 0 ? (
                         <div style={styles.container}>
@@ -125,21 +134,19 @@ const JamesGame = () => {
                             </div>
                         </div>
                     ):(
-                        <EndGame score={score} nameGame={"James le hibou"}/>
+                        <EndGame score={score} nameGame={"James le hiboux"}/>
                     )}
                 </div>
-                <TimmerComponent />
             </div>
-            <div className="containerJames">
-                <img className="jamesTheHowl" src={ imageJamesTheHowl } alt="James le hibou" />
-                <div className="talkbubbleJames">
-                    { time > 0 ? (
-                        <div className="message" style={styles.message}>{message}</div>
-                    ):
-                    <p className="textEndTimer">{messageTimer}</p>
-                    }
+            { time > 0 ? (
+                <div className="containerJames">
+                    <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>
                 </div>
-            </div>
+            ):(
+                <div className="containerJames">
+                    <Sebi replique="sebiOnjoueEncore" repliqueSound="sebiReplique6"/>
+                </div>    
+            )}
         </div>
         </>
     )

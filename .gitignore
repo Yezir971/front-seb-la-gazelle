@@ -25,3 +25,6 @@ yarn-error.log*
 # audio et musique 
 # src/assets/audios
 src/assets/musique
+src/assets/audios/sebi
+src/assets/audios/james
+src/assets/audios/charly
