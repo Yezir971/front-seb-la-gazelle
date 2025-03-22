@@ -74,6 +74,25 @@ const Profil = () => {
     if(score){
         console.log(score)
     }
+
+    const totalScoreForJamesGame = () => {
+        const jamesGame = score.scores.filter(s => s.name_game === "James le Hiboux");
+        if(jamesGame){
+            const scoreForJamesGame = jamesGame.reduce((acc, s) => acc + s.score, 0);
+            return scoreForJamesGame
+        }else{
+            return null
+        }
+    }
+    const totalScoreForCharlyGame = () => {
+        const CharlyGame = score.scores.filter(s => s.name_game === "Charly le caméléon");
+        if(CharlyGame){
+        const scoreForCharlyGame = CharlyGame.reduce((acc, s) => acc + s.score, 0);
+        return scoreForCharlyGame 
+        }else{
+            return null
+        }
+    }
     return (
         <ContainerProfil>
             <NavBarProfil />
@@ -86,7 +105,7 @@ const Profil = () => {
                     <Cadre>
                         {score ?
                             <div>
-                                <h2>Score</h2>
+                                <h2>Score :</h2>
                                 {score.scores && Array.isArray(score.scores) ? (
                                     score.scores.map((s, index) => (
                                     <p key={index}>Jeux de {s.name_game} : {s.score}</p>
@@ -94,6 +113,13 @@ const Profil = () => {
                                 ) : (
                                     <p>Aucun score disponible</p>
                                 )}
+                                {totalScoreForJamesGame() && totalScoreForCharlyGame() ?
+                                <div>
+                                    <h2>Total score :</h2>
+                                    <p>Total score pour James le Hiboux : {totalScoreForJamesGame()}</p>
+                                    <p>Total score pour Charly le caméléon : {totalScoreForCharlyGame()}</p>
+                                </div>
+                                : null}
                             </div>
                             :   
                             <div>

@@ -125,7 +125,7 @@ const JamesGame = () => {
                             </div>
                         </div>
                     ):(
-                        <EndGame score={score} nameGame={"James le hibou"}/>
+                        <EndGame score={score} nameGame={"James le hiboux"}/>
                     )}
                 </div>
                 <TimmerComponent />
