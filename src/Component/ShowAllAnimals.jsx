@@ -50,7 +50,7 @@ const ShowAllAnimals = () => {
           onMouseDown={() => setCursorType(pointer)}
           onMouseUp={() => setCursorType(cursor)} 
           src={Charly} alt="Avatar de Charly" onClick={()=> toggleGameModals("CharlyGame")} draggable="false"/>
-          <Sebi />
+          <Sebi replique="aideSebi" repliqueSound="sebiReplique1"/>
         </ContainerAnimals>
      )}
     </>

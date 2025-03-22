@@ -4,6 +4,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { t } from "i18next";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import AudioPlayer from "./AudioPlayer";
 gsap.registerPlugin(TextPlugin);
 
 const Container = styled.div`
@@ -27,13 +28,13 @@ const Container = styled.div`
     }
 `
 
-const Bubble = () => {
+const Bubble = ({guili, replique,repliqueSound}) => {
     const textBubbleRef = useRef(null)
     useEffect(() => {
         //replaces yourElement's text with "This is the new text" 
         gsap.to(textBubbleRef.current, {
             duration: 2,
-            text: t('aideSebi'),
+            text: t(replique),
             ease: "none",
         });
     }, [])
@@ -41,6 +42,14 @@ const Bubble = () => {
         <>
             <Container ref={textBubbleRef}>
             </Container>
+            {
+                guili ? (
+                    <AudioPlayer src={t('sebiReplique7')} />
+                ):(
+                    <AudioPlayer src={t(repliqueSound)} />
+                )
+            }
+            
         </>
     )
 }

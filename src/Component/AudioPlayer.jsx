@@ -1,31 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Howl } from "howler";
 
 const AudioPlayer = ({ src, volume = 1.0, loop = false }) => {
-    const [sound, setSound] = useState(null);
+  useEffect(() => {
+    if (!src) return;
 
-    useEffect(() => {
-        if (src) {
-            const newSound = new Howl({
-                src: [src],
-                volume,
-                loop,
-                html5: true, // Permet de bien charger le son sur mobile
-            });
+    const sound = new Howl({
+      src: [src],
+      volume,
+      loop,
+      html5: true,
+    });
 
-            newSound.play();
-            setSound(newSound);
-        }
+    // Tentative de lecture automatique dès le montage
+    sound.play();
 
-        return () => {
-            if (sound) {
-                sound.stop(); // Arrête le son avant de démonter
-                sound.unload();
-            }
-        };
-    }, [src]); // Joue un nouveau son à chaque changement de src
+    // Nettoyage lors du démontage
+    return () => {
+      sound.stop();
+      sound.unload();
+    };
+  }, [src]);
 
-    return null;
+  return null;
 };
 
 export default AudioPlayer;

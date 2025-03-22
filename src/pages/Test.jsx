@@ -158,7 +158,7 @@ const Test = () => {
         ref={draggableRef} />
       </Container>
       <p>ceci est un test</p>
-      <AudioPlayer src={t('sebiReplique1')} />
+      {/* <AudioPlayer src={t('sebiReplique1')} /> */}
     </>
   );
 };
