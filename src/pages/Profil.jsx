@@ -81,7 +81,7 @@ const Profil = () => {
             const scoreForJamesGame = jamesGame.reduce((acc, s) => acc + s.score, 0);
             return scoreForJamesGame
         }else{
-            return 0
+            return <p>Total score pour James le Hiboux :0</p>
         }
     }
     const totalScoreForCharlyGame = () => {
@@ -90,7 +90,7 @@ const Profil = () => {
         const scoreForCharlyGame = CharlyGame.reduce((acc, s) => acc + s.score, 0);
         return scoreForCharlyGame 
         }else{
-            return 0
+            return <p>Total score pour Charly le caméléon : 0</p>
         }
     }
     return (
