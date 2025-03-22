@@ -228,22 +228,13 @@
 }
 .containerJames{
     display: flex;
+    width: 400px;
+    position: absolute;
+    bottom: 190px;
+    right: 0px;
     align-items: center;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
 }
-.jamesTheHowl{
-    width: auto;
-    height: 350px;
-}
-.speechBubbles{
-    text-align: center;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-
 
 .talkbubbleJames{
     width: 180px;

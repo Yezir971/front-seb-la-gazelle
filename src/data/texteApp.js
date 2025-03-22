@@ -137,6 +137,7 @@ const resources = {
             sebiAideCharlyCameleon: "Oh non ! Charly, le caméléon, s’est caché. Aide-moi à le retrouver.",
             sebiOnjoueEncore: "On joue encore ?",
             charlyJeu: "Je me suis caché, trouve-moi !",
+            JamesDebutJeu: "Joue à mon jeu pour gagner des points !",
             jamesJeuMauvaiseReponse: "Oups ! Mauvaise réponse.",
             jamesJeuBonneReponse: "Réponse correcte !",
             message404: "Oh mince, tu t’es perdu !",
