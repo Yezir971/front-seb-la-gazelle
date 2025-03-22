@@ -50,7 +50,7 @@ const ContaineBubble = styled.div`
 `
 
 
-const Sebi = () => {
+const Sebi = ({replique ,repliqueSound}) => {
     const headRef = useRef(null);
     const headStartRef = useRef(null)
     const tailRef = useRef(null);
@@ -58,13 +58,15 @@ const Sebi = () => {
     const draggableRef = useRef(null);
     const animationTimeline = useRef(null); // Stocke l'animation en cours
     const { stopCursorGrabAnimation ,startCursorGrabAnimation, setCursorType, cursor,  cursorGrabOpen} = useContext(CursorContext);
-  
+    const [guili, setGuili] = useState(false)
+    
     // Animation au "caressage"
     const startAnimation = () => {
       // Arrêter toute animation en cours
       if (animationTimeline.current) {
         animationTimeline.current.kill();
       }
+      setGuili(true)
       startCursorGrabAnimation()
       // on fait disparaitre headRef le temps de l'animation 
       gsap.to(headRef.current, { opacity: 1, duration:0.2 }); 
@@ -84,7 +86,7 @@ const Sebi = () => {
         if (animationTimeline.current) {
           animationTimeline.current.kill();
         }
-  
+        setGuili(false)
         // on affiche a nouveau headRef 
         gsap.to(headRef.current, { opacity: 0, duration:0.2 });
         gsap.to(headStartRef.current, { opacity: 1, duration:0.2 });
@@ -129,7 +131,7 @@ const Sebi = () => {
     return (
       <ContaineAnimation>
         <ContaineBubble>
-          <Bubble />
+          <Bubble guili={guili} replique={replique} repliqueSound={repliqueSound} />
         </ContaineBubble>
         <Container>
               {/* <Hearth src="https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg"/> */}

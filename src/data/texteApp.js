@@ -1,3 +1,42 @@
+import sebiReplique1En from '../assets/audios/sebi/Replique_1/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique2En from '../assets/audios/sebi/Replique_2/en/sebi-la-gazelle2_mixage.wav';
+import sebiReplique3En from '../assets/audios/sebi/Replique_3/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique4En from '../assets/audios/sebi/Replique_4/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique5En from '../assets/audios/sebi/Replique_5/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique6En from '../assets/audios/sebi/Replique_6/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique7En from '../assets/audios/sebi/Replique_7/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique8En from '../assets/audios/sebi/Replique_8/en/sebi-la-gazelle_mixage.wav';
+import sebiReplique9En from '../assets/audios/sebi/Replique_9/en/sebi-la-gazelle_mixage.wav';
+
+import sebiReplique1Fr from '../assets/audios/sebi/Replique_1/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique2Fr from '../assets/audios/sebi/Replique_2/fr/sebi-la-gazelle2_mixage.wav';
+import sebiReplique3Fr from '../assets/audios/sebi/Replique_3/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique4Fr from '../assets/audios/sebi/Replique_4/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique5Fr from '../assets/audios/sebi/Replique_5/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique6Fr from '../assets/audios/sebi/Replique_6/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique7Fr from '../assets/audios/sebi/Replique_7/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique8Fr from '../assets/audios/sebi/Replique_8/fr/sebi-la-gazelle_mixage.wav';
+import sebiReplique9Fr from '../assets/audios/sebi/Replique_9/fr/sebi-la-gazelle_mixage.wav';
+
+import charlyReplique1En from '../assets/audios/charly/replique_1/en/sebi-la-gazelle_mixage.wav';
+import charlyReplique1Fr from '../assets/audios/charly/replique_1/fr/sebi-la-gazelle_mixage.wav';
+
+import jamesReplique1En from '../assets/audios/james/Replique_1/en/sebi-la-gazelle_mixage.wav';
+import jamesReplique2En from '../assets/audios/james/Replique_2/en/sebi-la-gazelle_mixage.wav';
+import jamesReplique3En from '../assets/audios/james/Replique_3/en/sebi-la-gazelle_mixage.wav';
+import jamesReplique4En from '../assets/audios/james/Replique_4/en/sebi-la-gazelle_mixage.wav';
+import jamesReplique5En from '../assets/audios/james/Replique_5/en/sebi-la-gazelle_mixage.wav';
+import jamesReplique6En from '../assets/audios/james/Replique_6/en/sebi-la-gazelle_mixage.wav';
+import jamesReplique7En from '../assets/audios/james/Replique_7/en/sebi-la-gazelle_mixage.wav';
+
+import jamesReplique1Fr from '../assets/audios/james/Replique_1/fr/sebi-la-gazelle_mixage.wav';
+import jamesReplique2Fr from '../assets/audios/james/Replique_2/fr/sebi-la-gazelle_mixage.wav';
+import jamesReplique3Fr from '../assets/audios/james/Replique_3/fr/sebi-la-gazelle_mixage.wav';
+import jamesReplique4Fr from '../assets/audios/james/Replique_4/fr/sebi-la-gazelle_mixage.wav';
+import jamesReplique5Fr from '../assets/audios/james/Replique_5/fr/sebi-la-gazelle_mixage.wav';
+import jamesReplique6Fr from '../assets/audios/james/Replique_6/fr/sebi-la-gazelle_mixage.wav';
+import jamesReplique7Fr from '../assets/audios/james/Replique_7/fr/sebi-la-gazelle_mixage.wav';
+
 const resources = {
     en: {
         translation: {
@@ -40,7 +79,31 @@ const resources = {
             perdu:"Lose",
             deconnecter:"Disconnect",
             page404:"Oh dear, you've lost your way!",
-            accueilPage:"Home page"
+            accueilPage:"Home page",
+            // voix
+            // sebi 
+            sebiReplique1: sebiReplique1En,
+            sebiReplique2: sebiReplique2En,
+            sebiReplique3: sebiReplique3En,
+            sebiReplique4: sebiReplique4En,
+            sebiReplique5: sebiReplique5En,
+            sebiReplique6: sebiReplique6En,
+            sebiReplique7: sebiReplique7En,
+            sebiReplique8: sebiReplique8En,
+            sebiReplique9: sebiReplique9En,
+            // sebi 
+            // charly 
+            charlyReplique1: charlyReplique1En,
+            // charly 
+            // james 
+            jamesReplique1: jamesReplique1En,
+            jamesReplique2: jamesReplique2En,
+            jamesReplique3: jamesReplique3En,
+            jamesReplique4: jamesReplique4En,
+            jamesReplique5: jamesReplique5En,
+            jamesReplique6: jamesReplique6En,
+            jamesReplique7: jamesReplique7En,
+            // james 
         }
     },
     fr: {
@@ -84,7 +147,31 @@ const resources = {
             perdu:"Perdu",
             deconnecter:"Déconnecter",
             page404:"Oh, mince, tu t’es perdu !",
-            accueilPage:"Page d'accueil"
+            accueilPage:"Page d'accueil",
+            // voix
+            // sebi 
+            sebiReplique1: sebiReplique1Fr,
+            sebiReplique2: sebiReplique2Fr,
+            sebiReplique3: sebiReplique3Fr,
+            sebiReplique4: sebiReplique4Fr,
+            sebiReplique5: sebiReplique5Fr,
+            sebiReplique6: sebiReplique6Fr,
+            sebiReplique7: sebiReplique7Fr,
+            sebiReplique8: sebiReplique8Fr,
+            sebiReplique9: sebiReplique9Fr,
+            // sebi 
+            // charly 
+            charlyReplique1: charlyReplique1Fr,
+            // charly 
+            // james 
+            jamesReplique1: jamesReplique1Fr,
+            jamesReplique2: jamesReplique2Fr,
+            jamesReplique3: jamesReplique3Fr,
+            jamesReplique4: jamesReplique4Fr,
+            jamesReplique5: jamesReplique5Fr,
+            jamesReplique6: jamesReplique6Fr,
+            jamesReplique7: jamesReplique7Fr,
+            // james 
         }
     }
 }
