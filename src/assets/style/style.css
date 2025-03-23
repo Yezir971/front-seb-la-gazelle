@@ -26,7 +26,8 @@
 .gestionButton{
     background: #EF910F;
     color: white;
-    width: 200px;
+    width: auto;
+    padding-inline: 20px;
     border-radius: 32px;
     border: none;
     height: 60px;
@@ -204,7 +205,9 @@
 .whiteBoard{
     width: 50vw;
     height: 50vh;
-    margin: auto;
+    margin-block: auto;
+    margin-left: 20px;
+    margin-right: auto;
     background: white;
 }
 
@@ -229,7 +232,7 @@
 }
 .containerJames{
     display: flex;
-    width: 400px;
+    width: 500px;
     position: absolute;
     bottom: 190px;
     right: 0px;

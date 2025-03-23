@@ -125,7 +125,7 @@ const Profil = () => {
                 </ContainerInfoProfil>
                 : <p>Chargement...</p>
             }
-            <Sebi />
+            <Sebi replique="sebiProfil" repliqueSound="sebiReplique9"/>
         </ContainerProfil>
     );
 }

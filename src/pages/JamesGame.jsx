@@ -111,9 +111,7 @@ const JamesGame = () => {
                     { time > 0 ? (
                         <div style={styles.container}>
                             <div className="containerOperation">
-                                <h2>
-                                {question.num1} {question.operator} {question.num2}
-                                </h2>
+                                <h2>{question.num1} {question.operator} {question.num2}</h2>
                                 <p>=</p>
                             </div>
                             <div style={styles.answers}>
