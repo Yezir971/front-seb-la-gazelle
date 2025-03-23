@@ -87,8 +87,8 @@ const Profil = () => {
     const totalScoreForCharlyGame = () => {
         const CharlyGame = score.scores.filter(s => s.name_game === "Charly le caméléon");
         if(CharlyGame){
-        const scoreForCharlyGame = CharlyGame.reduce((acc, s) => acc + s.score, 0);
-        return scoreForCharlyGame 
+            const scoreForCharlyGame = CharlyGame.reduce((acc, s) => acc + s.score, 0);
+            return scoreForCharlyGame 
         }else{
             return
         }
