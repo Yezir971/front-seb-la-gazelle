@@ -2,7 +2,20 @@ import { useEffect, React } from 'react';
 import { t } from "i18next";
 import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
-
+import GameEndScreen from './EndGameScreen';
+import styled from 'styled-components';
+const AppWrapper = styled.div`
+    display: flex;
+    flex-direction:column;
+    gap:16px;
+    align-items: center;
+    justify-content: center;
+    max-width:400px;
+    padding:32px;
+    margin:auto;
+    background:rgba(255, 204, 0, 0.58);
+    border-radius:30px;
+`;
 export default function EndGame({score, nameGame}) {
     const token = Cookies.get('token');
 
@@ -40,14 +53,17 @@ export default function EndGame({score, nameGame}) {
 
   return (
     <div>
-        <h3>{nameGame}</h3>
-        <table>
-            <th>{t("Utilisateur")} :{score}</th>
-            <th>Score</th>
-        </table>
-        <button>
-            <NavLink onClick={handleReplay}>{t("rejouer")}</NavLink>
-        </button>
+        <AppWrapper>
+            <h3>{nameGame}</h3>
+            <table>
+                <th>{t("Utilisateur")} :{score}</th>
+                <th>Score</th>
+            </table>
+            <GameEndScreen score={score} />
+            <button>
+                <NavLink onClick={handleReplay}>{t("rejouer")}</NavLink>
+            </button>
+        </AppWrapper>
     </div>
   )
 }
