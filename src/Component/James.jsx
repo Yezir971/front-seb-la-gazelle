@@ -8,8 +8,6 @@ const Container = styled.div`
   width: 200px;
   height: 200px;
   position: relative;
-  // bottom:0px;
-  // right:200px;
 `
 const Image = styled.img`
   position: absolute;

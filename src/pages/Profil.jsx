@@ -76,7 +76,7 @@ const Profil = () => {
     }
 
     const totalScoreForJamesGame = () => {
-        const jamesGame = score.scores.filter(s => s.name_game === "James le Hiboux");
+        const jamesGame = score.scores.filter(s => s.name_game === "James le hiboux");
         if(jamesGame){
             const scoreForJamesGame = jamesGame.reduce((acc, s) => acc + s.score, 0);
             return scoreForJamesGame
