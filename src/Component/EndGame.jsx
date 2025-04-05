@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 import GameEndScreen from './EndGameScreen';
 import styled from 'styled-components';
+import generatePrompt from "../data/promptCaracteres";
+
 const AppWrapper = styled.div`
     display: flex;
     flex-direction:column;
@@ -43,8 +45,30 @@ export default function EndGame({score, nameGame}) {
         }
     }
 
+    const fetchImage = async (token) => {
+        if(!token) return;
+        try {
+            const prompt = generatePrompt()
+            const response = await fetch('https://orange-wolf-959534.hostingersite.com/api/make-picture/user',{
+                method: 'POST',
+                headers:{
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify(prompt)
+            })
+            const data = await response.json()
+            console.log(data)
+        } catch (error) {
+            throw new Error("Erreur de l'api au moment de la génération de l'image");
+        }
+    }
+    
     useEffect(() => {
-        setScoreUser(token);
+        if(score > 15){
+            fetchImage(token);
+        }
+        // setScoreUser(token);
     },[]);
 
     const handleReplay = () => {

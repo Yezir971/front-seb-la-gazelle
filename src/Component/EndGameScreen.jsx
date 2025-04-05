@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Stars from "./Stars";
 import ScoreJauge from "./ScoreJauge";
-import { useEffect, useState } from "react";
-import generatePrompt from "../data/promptCaracteres";
-import Cookies from "js-cookie";
+// import { useEffect, useState } from "react";
+// import generatePrompt from "../data/promptCaracteres";
+// import Cookies from "js-cookie";
 
 
 const GameEndWrapper = styled.div`
@@ -31,32 +31,32 @@ const ScoreText = styled.p`
 const GameEndScreen = ({ score }) => {
 
     // généraation de l'image en cas de réussite 
-    const token = Cookies.get('token');
+    // const token = Cookies.get('token');
     
-    const fetchImage = async (token) => {
-        if(!token) return;
-        try {
-            const prompt = generatePrompt()
-            console.log(JSON.stringify(prompt))
-            const response = await fetch('https://orange-wolf-959534.hostingersite.com/api/make-picture/user',{
-                method: 'POST',
-                headers:{
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type":"application/json",
-                },
-                body: JSON.stringify(prompt)
-            })
-            const data = await response.json()
-            console.log(data)
-        } catch (error) {
-            throw new Error("Erreur de l'api au moment de la génération de l'image");
-        }
-    }
-    useEffect(() => {
-        if(score > 15){
-            fetchImage(token);
-        }
-    },[]);
+    // const fetchImage = async (token) => {
+    //     if(!token) return;
+    //     try {
+    //         const prompt = generatePrompt()
+    //         console.log(JSON.stringify(prompt))
+    //         const response = await fetch('https://orange-wolf-959534.hostingersite.com/api/make-picture/user',{
+    //             method: 'POST',
+    //             headers:{
+    //                 "Authorization": `Bearer ${token}`,
+    //                 "Content-Type":"application/json",
+    //             },
+    //             body: JSON.stringify(prompt)
+    //         })
+    //         const data = await response.json()
+    //         console.log(data)
+    //     } catch (error) {
+    //         throw new Error("Erreur de l'api au moment de la génération de l'image");
+    //     }
+    // }
+    // useEffect(() => {
+    //     if(score > 15){
+    //         fetchImage(token);
+    //     }
+    // },[]);
     const getMessage = (score) => {
         if (score >= 0 && score <= 7) return "Tu peux mieux faire...";
         if (score > 7 && score <= 14) return "Bien joué, continue comme ça ! 💪";
