@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import ReturLogo from "../Component/ReturnLogo"
+import ReturnLogo from "../Component/ReturnLogo"
 import { AudioContext } from "../context/AudioContext"
 import { useContext } from "react"
 import cadre  from '../assets/img/cadre.png'
@@ -19,8 +19,7 @@ const Cadre = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin:auto;
-    
+    margin: -124px auto;    
 
 
 
@@ -97,7 +96,7 @@ const Settings = () => {
 
     return(
         <>  
-            <ReturLogo />
+            <ReturnLogo />
             <Cadre>
                 <ContainerListe>
                     <ListeItem onClick={volume}>{t('volume')} {volumeOnOff ? "🔊" : "🔇"}</ListeItem>
