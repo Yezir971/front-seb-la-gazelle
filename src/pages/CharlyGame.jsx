@@ -31,6 +31,7 @@ const PictureGameCharly = styled.img`
   // height: auto;
   object-fit: contain;
   cursor: pointer;
+  margin:-124px auto;
 
   @media (min-width: 768px) {
     max-width: 700px;
