@@ -4,10 +4,13 @@ import { Howl } from "howler"
 export const AudioContext = createContext()
 
 const AudioContextProvider = (props) => {
-    const [volumeOnOff, setVolumeOnOff] = useState(true)
+    const [volumeOnOff, setVolumeOnOff] = useState(()=>{
+        const saved = localStorage.getItem("volumeOnOff");
+        return saved !== null ? JSON.parse(saved) : true; 
+    })
     const [musiqueOnOff, setMusiqueOnOff] = useState(false)
     const soundRef = useRef(null); // Référence pour stocker l'instance Howl
-
+    
     useEffect(() => {
         if(!soundRef.current){
             soundRef.current = new Howl({
@@ -18,9 +21,12 @@ const AudioContextProvider = (props) => {
         }
     }, [])
 
+    useEffect(() => {
+        localStorage.setItem("volumeOnOff", JSON.stringify(volumeOnOff));
+    }, [volumeOnOff]);
     
     return(
-        <AudioContext.Provider value={{volumeOnOff, setVolumeOnOff, setMusiqueOnOff, musiqueOnOff, soundRef }}>
+        <AudioContext.Provider value={{volumeOnOff, setVolumeOnOff, setMusiqueOnOff, musiqueOnOff, soundRef}}>
             {props.children}
         </AudioContext.Provider>
     )

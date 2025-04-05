@@ -78,9 +78,9 @@ const Settings = () => {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     const {t} = useTranslation()
 
-    
+
     const volume = () =>{
-        setVolumeOnOff(!volumeOnOff)
+        setVolumeOnOff(prev => !prev)
     }
     // musique de fond 
     const musique = () => {
