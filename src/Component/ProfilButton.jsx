@@ -13,7 +13,7 @@ function ProfilButton() {
     onMouseLeave={() => setCursorType(cursor)} 
     onMouseDown={() => setCursorType(pointer)}
     onMouseUp={() => setCursorType(cursor)} 
-    class="profilButton">
+    className="profilButton">
         <NavLink to={"/profil"}>
             {!isLoading && user ? 
                 user.avatar == null ? <img src={defaultUser} alt="avatar" className="avatar"/> : <img src={user.avatar} alt="avatar" className="avatar"/>

@@ -43,7 +43,8 @@ const Profil = () => {
     const { isLoading, user } = useContext(AuthContext);
     const token = Cookies.get('token');
     const [score, setScore] = useState(null);
-
+    console.log(token);
+    
     const scoreUser = async (token) => {
         if (!token) return;
         try{

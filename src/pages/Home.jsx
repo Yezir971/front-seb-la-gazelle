@@ -8,9 +8,9 @@ import ShowAllAnimals from "../Component/ShowAllAnimals"
 import CharlyGameModal from "../modal/CharlyGameModal"
 import styled from "styled-components"
 import { t } from "i18next";
-
+import Cookies from "js-cookie"
 const ContainerHome = styled.div`
-     width: 100%;
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -18,22 +18,27 @@ const ContainerHome = styled.div`
 `
 const Home = () => {
     // on récupère le token dans le localStorage si il est présent sinon on créer une chaîne de caractère vide 
-    const [isLocalAuth, setIsLocalAuth] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : "" )
+    const [isLocalAuth, setIsLocalAuth] = useState(Cookies.get('token') ? Cookies.get('token') : "" )
     const [auth, setAuth ] = useState()
-
-    // requete vers l'api sebi la gazelle pour voir si le token est valide 
-    const { send } = useFetch('https://127.0.0.1:8000/api/user/validate-token', "POST")
-
-
-
+    
+    
     const verificationAuth = async () => {
-        if(localStorage.getItem('token')){
-            let body = {
-                'token' : localStorage.getItem('token')
-            }
+        if(Cookies.get('token')){
+            const token = Cookies.get('token')
+            console.log(token);            
             try {
-                let response = await send(body)
-                setAuth(response.data.isValide)
+                const response = await fetch(`https://orange-wolf-959534.hostingersite.com/api/user/validate-token`, {
+                    method: 'POST',
+                    headers:{
+                        "Content-Type":"application/json",
+                    },
+                    body:JSON.stringify({
+                        token: token
+                    })
+                });
+                const data = await response.json();
+                setAuth(data.isValide);
+                console.log(data.isValide);
             } catch (error) {
                 console.log(error)
             }
@@ -42,11 +47,11 @@ const Home = () => {
     // on effectue une vérivication du token au chargement de la page 
     useEffect(() => {
         verificationAuth()
-    }, [isLocalAuth])
+    }, [])
 
     const deleteToken = () => {
         // si on click sur le button de deconnaxion on détruit le token en session 
-        let newToken = localStorage.removeItem('token')
+        let newToken = Cookies.remove('token')
         setIsLocalAuth(newToken)
         // si tout est ok on actualise la page  
         window.location.reload();
@@ -55,10 +60,10 @@ const Home = () => {
         <>
                 {/* ternaire pour gérer le cas ou l'utilsateur est déjà connecter  */}
             {
-                isLocalAuth !== "" && auth  ? (
+                isLocalAuth !== "" && !auth  ? (
                     <>
-                        <p>Vous etes connecter ici logo avatar</p>
-                        <button onClick={deleteToken}>{t('deconnecter')}</button>
+                        <p>Votre session à expiré</p>
+                        <button onClick={deleteToken}>{t('revenirAccueil')}</button>
                     </>
                 ):(
                     <>

@@ -82,6 +82,7 @@ const resources = {
             deconnecter:"Disconnect",
             page404:"Oh dear, you've lost your way!",
             accueilPage:"Home page",
+            revenirAccueil: "Return to home page",
             // voix
             // sebi 
             sebiReplique1: sebiReplique1En,
@@ -153,6 +154,7 @@ const resources = {
             deconnecter:"Déconnecter",
             page404:"Oh, mince, tu t’es perdu !",
             accueilPage:"Page d'accueil",
+            revenirAccueil: "Revenir à la page d'accueil",
             // voix
             // sebi 
             sebiReplique1: sebiReplique1Fr,

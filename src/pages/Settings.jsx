@@ -78,7 +78,7 @@ const Settings = () => {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     const {t} = useTranslation()
 
-
+    
     const volume = () =>{
         setVolumeOnOff(prev => !prev)
     }
