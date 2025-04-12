@@ -155,6 +155,8 @@ const resources = {
             page404:"Oh, mince, tu t’es perdu !",
             accueilPage:"Page d'accueil",
             revenirAccueil: "Revenir à la page d'accueil",
+            jamesgames: "Ici tu vas pouvoir gagner des points en répondant à des calculs !",
+            charlygames: "Ici tu vas pouvoir gagner des points en trouvant la cachette de Charly !",
             // voix
             // sebi 
             sebiReplique1: sebiReplique1Fr,
