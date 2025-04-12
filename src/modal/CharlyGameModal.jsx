@@ -49,7 +49,7 @@ const CharlyGameModal = () => {
                 <Arrow draggable="false" src={arrowReturn} alt="flèche retour" onClick={()=> toggleGameModals("closeGame")}/>
               </NavLink>        
             </ContainerArrowLink>
-            <img src={ImageCharlyGame} alt='aperçu du jeu de Charly le caméléon' className='pictureGame' draggable="false"/>
+            <img src={ImageCharlyGame} alt="aperçu du jeu de Charly le caméléon" className='pictureGame' draggable="false"/>
             <button 
             onMouseEnter={() => setCursorType(pointer)} 
             onMouseLeave={() => setCursorType(cursor)} 

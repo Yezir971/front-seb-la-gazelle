@@ -45,7 +45,7 @@ const JamesGameModal = () => {
                 <Arrow draggable="false" src={arrowReturn} alt="flèche retour" onClick={()=> toggleGameModals("closeGame")}/>
             </NavLink>        
           </ContainerArrowLink>
-          <img className='pictureGame' src={ImageJamesGames} alt='jeu de James' draggable="false"/>
+          <img className='pictureGame' src={ImageJamesGames} alt="jeu de James" draggable="false"/>
           <button className='boutonPlayGame'>
             <NavLink 
             onMouseEnter={() => setCursorType(pointer)}
