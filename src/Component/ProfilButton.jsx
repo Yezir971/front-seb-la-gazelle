@@ -16,7 +16,7 @@ function ProfilButton() {
     className="profilButton">
         <NavLink to={"/profil"}>
             {!isLoading && user ? 
-                user.avatar == null ? <img src={defaultUser} alt="avatar" className="avatar"/> : <img src={user.avatar} alt="avatar" className="avatar"/>
+                user.avatar == null ? <img src={defaultUser} alt="avatar" className="avatar"/> : <img src={`https://orange-wolf-959534.hostingersite.com/${user.avatar.src}`} alt="avatar" className="avatar"/>
             : ""}
         </NavLink>
     </button>
