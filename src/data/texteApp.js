@@ -83,6 +83,8 @@ const resources = {
             page404:"Oh dear, you've lost your way!",
             accueilPage:"Home page",
             revenirAccueil: "Return to home page",
+            jamesgames: "Here you can earn points by answering calculations!",
+            charlygames: "Here you can earn points by finding Charly's hiding place!",
             // voix
             // sebi 
             sebiReplique1: sebiReplique1En,

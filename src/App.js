@@ -25,7 +25,7 @@ function App() {
       <BackgroundWrapper>
         <Routes>
           <Route path="/james_le_hibou" element={<JamesGame />} />
-          <Route path="/test" element={<Test />} />
+          {/* <Route path="/test" element={<Test />} /> */}
           <Route path="/" element={<Home />} />
           <Route path="/charly_le_cameleon" element={<CharlyGames />} />
           <Route path="*" element={<Page404 />} />

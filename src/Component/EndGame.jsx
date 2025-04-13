@@ -1,9 +1,10 @@
-import { useEffect, React } from 'react';
+import { useEffect, React, useContext } from 'react';
 import { t } from "i18next";
 import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 import GameEndScreen from './EndGameScreen';
 import styled from 'styled-components';
+import { CursorContext } from '../context/CursorContext';
 const AppWrapper = styled.div`
     display: flex;
     flex-direction:column;
@@ -16,7 +17,19 @@ const AppWrapper = styled.div`
     background:rgba(255, 204, 0, 0.58);
     border-radius:30px;
 `;
+const RetryAgain = styled(NavLink)`
+    background: #EF910F;
+    color: white;
+    border-radius: 32px;
+    border: none;
+    height: 60px;
+    font-size: 32px;
+    text-decoration: none;
+    text-align:center;
+    padding:12px;
+`
 export default function EndGame({score, nameGame}) {
+    const { setCursorType, pointer, cursor } = useContext(CursorContext);
     const token = Cookies.get('token');
 
     const setScoreUser = async (token) => {
@@ -60,9 +73,17 @@ export default function EndGame({score, nameGame}) {
                 <th>Score</th>
             </table>
             <GameEndScreen score={score} />
-            <button>
-                <NavLink onClick={handleReplay}>{t("rejouer")}</NavLink>
-            </button>
+
+            <RetryAgain 
+            className="disconnectButton" 
+            onClick={handleReplay}
+            onMouseEnter={() => setCursorType(pointer)}
+            onMouseLeave={() => setCursorType(cursor)} 
+            onMouseDown={() => setCursorType(pointer)}
+            onMouseUp={() => setCursorType(cursor)} 
+            >
+                {t("rejouer")}
+            </RetryAgain>
         </AppWrapper>
     </div>
   )

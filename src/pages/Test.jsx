@@ -137,7 +137,7 @@ const Test = () => {
       });
     }
   }, []);
-  const [score] = useState(20);
+  const [score] = useState(10);
 
   return (
     <>

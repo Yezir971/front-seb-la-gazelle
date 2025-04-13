@@ -49,6 +49,7 @@
     padding-inline: 20px;
     font-size: 32px;
     cursor: pointer;
+    text-decoration: none;
 }
 .navbarSettingButton{
     width: 50px;
