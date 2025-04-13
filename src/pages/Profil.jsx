@@ -32,18 +32,81 @@ const Cadre = styled.div`
     text-align: center;
     margin:auto;
 `
+const CadreEdit = styled.div`
+    width: 90vw;
+    max-width: 780px;
+    height: 80vh;
+    aspect-ratio: 1 / 1; /* Maintient un carré parfait */
+    background: url(${cadre}) no-repeat center center;
+    background-size: contain; /* Ajuste l'image sans la couper */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin:auto;
+`
 const ContainerUser = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 `
+const ContainerAvatar = styled.div`
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    position: relative;
+`
+const EditButton = styled.button`
+    position: absolute;
+    top: 50%;
+    right: 39%;
+    border: none;
+    border-radius: 5px;
+`
+const Avatar= styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+`
+
+const ContainerEdit = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+`
+const ContainerPicture = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap: 10px;
+    width:500px;
+    height:320px;
+    padding-inline: 10px;
+    overflow-y: scroll;
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+`
+const ReturnButton = styled.button`
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+`
 const Profil = () => {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     const { isLoading, user } = useContext(AuthContext);
     const token = Cookies.get('token');
     const [score, setScore] = useState(null);
-    console.log(token);
+    const [edit, setEdit] = useState(false);
+    const [avatar, setAvatar] = useState(null);
     
     const scoreUser = async (token) => {
         if (!token) return;
@@ -70,11 +133,7 @@ const Profil = () => {
     
     useEffect(() => {
         scoreUser(token);
-    },[user])
-
-    if(score){
-        console.log(score)
-    }
+    },[!edit])
 
     const totalScoreForJamesGame = () => {
         const jamesGame = score.scores.filter(s => s.name_game === "James le hiboux");
@@ -94,35 +153,129 @@ const Profil = () => {
             return
         }
     }
+    const handleEdit = () => {
+        setEdit(true);
+    }
+    const handleClose = () => {
+        setEdit(false);
+    }
+    useEffect(() => {
+        setEdit(false);
+    }, []);
+
+    useEffect(() => {
+        showAvatar(token);
+    }, [handleEdit]);
+
+    const showAvatar = async (token) => {
+        if (!token) return;
+        try{
+            const response = await fetch(`https://orange-wolf-959534.hostingersite.com/api/pictures/user`, {
+                method: 'GET',
+                headers:{
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type":"application/json",
+                },
+            });
+            const data = await response.json();
+            if(response.status === 404){
+                setAvatar(null);
+            }else{
+                if(data){
+                    setAvatar(data);
+                }
+            }
+        }catch(e){
+            console.log(e);
+        }
+    } 
+
+    const editAvatar = async (id, token) => {
+        if (!token) return;
+        try{
+            const response = await fetch(`https://orange-wolf-959534.hostingersite.com/api/picture/setavatar/${id}`, {
+                method: 'PUT',
+                headers:{
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type":"application/json",
+                },
+            });
+            
+            if(response.status === 200){
+                setEdit(false);
+                window.location.reload();
+            }
+        }catch(e){
+            console.log(e);
+        }
+    } 
     return (
         <ContainerProfil>
             <NavBarProfil />
             {!isLoading && user ?
                 <ContainerInfoProfil>
-                    <ContainerUser>
-                        {user.avatar == null ? <img src={defaultUser} alt="avatar" className="avatarProfil"/> : <img src={user.avatar} alt="avatar" className="avatarProfil"/>}
-                        <h2>{user.name}</h2>
-                    </ContainerUser>
-                    <Cadre>
-                        {score ?
-                            <div>
+                    {!edit ?
+                        <>
+                        <ContainerUser>
+                            <ContainerAvatar>
+                                {user.avatar == null ? <Avatar src={defaultUser} alt="avatar"/> : <Avatar src={`https://orange-wolf-959534.hostingersite.com/${user.avatar.src}`} alt="avatar"/>}
+                                <EditButton 
+                                    onClick={handleEdit}
+                                    onMouseEnter={() => setCursorType(pointer)}
+                                    onMouseLeave={() => setCursorType(cursor)} 
+                                    onMouseDown={() => setCursorType(pointer)}
+                                    onMouseUp={() => setCursorType(cursor)} 
+                                >Modifier</EditButton>
+                            </ContainerAvatar>
+                            <h2>{user.name}</h2>
+                        </ContainerUser>
+                        <Cadre>
+                            {score ?
                                 <div>
-                                    <h2>Total score :</h2>
-                                {totalScoreForJamesGame()  &&
-                                    <p>Total score pour James le Hiboux : {totalScoreForJamesGame()}</p>
-                                }
-                                {totalScoreForCharlyGame() &&
-                                    <p>Total score pour Charly le caméléon : {totalScoreForCharlyGame()}</p>
-                                } 
+                                    <div>
+                                        <h2>Total score :</h2>
+                                    {totalScoreForJamesGame()  &&
+                                        <p>Total score pour James le Hiboux : {totalScoreForJamesGame()} pts</p>
+                                    }
+                                    {totalScoreForCharlyGame() &&
+                                        <p>Total score pour Charly le caméléon : {totalScoreForCharlyGame()} pts</p>
+                                    } 
+                                    </div>
                                 </div>
-                            </div>
-                            :   
-                            <div>
-                                <h2>Score</h2>
-                                <p>Joue à des jeux pour avoir tes scores</p>  
-                            </div>
-                        }
-                    </Cadre>
+                                :   
+                                <div>
+                                    <h2>Score</h2>
+                                    <p>Joue à des jeux pour avoir tes scores</p>  
+                                </div>
+                            }
+                        </Cadre>
+                        </>
+                      :
+                        <ContainerEdit>
+                            <CadreEdit>
+                                <ReturnButton 
+                                    onClick={handleClose}
+                                    onMouseEnter={() => setCursorType(pointer)}
+                                    onMouseLeave={() => setCursorType(cursor)} 
+                                    onMouseDown={() => setCursorType(pointer)}
+                                    onMouseUp={() => setCursorType(cursor)} 
+                                >Retour</ReturnButton>
+                                <ContainerPicture>
+                                    {avatar && avatar.pictures && avatar.pictures.map((element) => (
+                                        <img
+                                            key={element.id}
+                                            src={`https://orange-wolf-959534.hostingersite.com/${element.src}`}
+                                            alt=""
+                                            onClick={() => editAvatar(element.id, token)}
+                                            onMouseEnter={() => setCursorType(pointer)}
+                                            onMouseLeave={() => setCursorType(cursor)} 
+                                            onMouseDown={() => setCursorType(pointer)}
+                                        />
+                                    ))}
+                                </ContainerPicture>
+                            </CadreEdit>
+                        </ContainerEdit>
+                      }
                 </ContainerInfoProfil>
                 : <p>Chargement...</p>
             }
