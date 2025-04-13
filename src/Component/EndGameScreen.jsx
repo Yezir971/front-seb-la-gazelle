@@ -45,6 +45,8 @@ const GameEndScreen = ({ score }) => {
                     "Content-Type":"application/json",
                 },
                 body: JSON.stringify(prompt)
+                // body: JSON.stringify({"prompt":"Sebi, the central figure, is a kawaii-style anthropomorphic gazelle with a light brown coat and white accents on her face, belly, and tail tip. She has a large head, expressive eyes, and soft pink inner ears. Seated and reading a colorful, glowing book, her calm, absorbed expression adds to the fairytale atmosphere."})
+                
             })
             const data = await response.json()
             console.log(data)
