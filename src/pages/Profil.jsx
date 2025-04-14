@@ -86,10 +86,12 @@ const ContainerPicture = styled.div`
     justify-content:center;
     flex-wrap:wrap;
     gap: 10px;
-    width:500px;
-    height:320px;
+    width:400px;
+    height:280px;
     padding-inline: 10px;
     overflow-y: scroll;
+    scrollbar-color: #459107 #fff;
+    scrollbar-width: auto;
     img{
         width: 100px;
         height: 100px;
@@ -111,6 +113,7 @@ const Score = styled.div`
     align-items: center;
     justify-content: center;
     margin: 40px;
+    width: 400px;
     h2{
         margin-bottom: 10px;
     }
@@ -125,7 +128,7 @@ const Score = styled.div`
         border-radius: 5px;
         width: 300px;
         p{
-            margin: 5px;
+            margin-bottom: 5px;
         }
     }
 `
