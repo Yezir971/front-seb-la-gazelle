@@ -156,7 +156,7 @@
 }
 
 .containerBackgroundSetting{
-    background: url(../img/img-setting.png) no-repeat center fixed; 
+    /* background: url(../img/img-setting.png) no-repeat center fixed;  */
     width: 60%;
     height: 800px;
     display: flex;

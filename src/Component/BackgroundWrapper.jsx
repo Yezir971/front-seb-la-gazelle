@@ -1,17 +1,16 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import NatureBackground from "../assets/img/Nature_Vector_Backgrounds.jpeg";
+import NatureBackground from "../assets/img/Nature_Vector_Backgrounds.png";
 import ChameleonBackground from "../assets/img/background-charly-le-cameleon.png";
 import HibouBackground from "../assets/img/background_james_hibou.png";
 const PageBackground = styled.div`
   background-image: ${({ $background }) => $background } ;
   height:100vh;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat:no-repeat;
   overflow:hidden;
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-attachment: fixed; /* Fixe l'image en arrière-plan */
+  background-size: cover;
 `
 
 
@@ -32,10 +31,11 @@ const BackgroundWrapper = ({ children }) => {
 
   
 
-  return (
+  return(
     <PageBackground $background={currentBackground}>
       {children}
-    </PageBackground>)
+    </PageBackground>
+  )
   // return <PageBackground>{children}</PageBackground>;
 };  
 

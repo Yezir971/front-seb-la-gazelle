@@ -9,9 +9,7 @@ import { useTranslation } from "react-i18next";
 
 
 const Cadre = styled.div`
-    width: 90vw;
-    max-width: 780px;
-    height: auto;
+    max-width: 1100px;
     aspect-ratio: 1 / 1; /* Maintient un carré parfait */
     background: url(${cadre}) no-repeat center center;
     background-size: contain; /* Ajuste l'image sans la couper */
