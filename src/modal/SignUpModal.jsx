@@ -39,7 +39,7 @@ function SignUpModal() {
     const closeModal = () => {
         toggleModals("close")
     }
-
+    const datas = 1
     
     return(
         <>
