@@ -64,6 +64,9 @@ const EditButton = styled.button`
     right: 39%;
     border: none;
     border-radius: 5px;
+    background: #EF910F;
+    color: #fff;
+    padding: 5px;
 `
 const Avatar= styled.img`
     width: 100%;
@@ -97,8 +100,34 @@ const ReturnButton = styled.button`
     border: none;
     border-radius: 5px;
     background-color: #fff;
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 20px;
+    background: #EF910F;
+    color: #fff;
+`
+const Score = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    h2{
+        margin-bottom: 10px;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: space-around;
+        justify-content: center;
+        background: #EF910F;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        width: 300px;
+        p{
+            margin: 5px;
+        }
+    }
 `
 const Profil = () => {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
@@ -144,11 +173,29 @@ const Profil = () => {
             return
         }
     }
+    const bestScoreForJamesGame = () => {
+        const jamesGame = score.scores.filter(s => s.name_game === "James le hiboux");
+        if(jamesGame){
+            const bestScoreForJamesGame = jamesGame.reduce((acc, s) => Math.max(acc, s.score), 0);
+            return bestScoreForJamesGame
+        }else{
+            return
+        }
+    }
     const totalScoreForCharlyGame = () => {
         const CharlyGame = score.scores.filter(s => s.name_game === "Charly le caméléon");
         if(CharlyGame){
             const scoreForCharlyGame = CharlyGame.reduce((acc, s) => acc + s.score, 0);
             return scoreForCharlyGame 
+        }else{
+            return
+        }
+    }
+    const bestScoreForCharlyGame = () => {
+        const CharlyGame = score.scores.filter(s => s.name_game === "Charly le caméléon");
+        if(CharlyGame){
+            const bestScoreForCharlyGame = CharlyGame.reduce((acc, s) => Math.max(acc, s.score), 0);
+            return bestScoreForCharlyGame
         }else{
             return
         }
@@ -232,15 +279,28 @@ const Profil = () => {
                         <Cadre>
                             {score ?
                                 <div>
-                                    <div>
-                                        <h2>Total score :</h2>
-                                    {totalScoreForJamesGame()  &&
-                                        <p>Total score pour James le Hiboux : {totalScoreForJamesGame()} pts</p>
-                                    }
-                                    {totalScoreForCharlyGame() &&
-                                        <p>Total score pour Charly le caméléon : {totalScoreForCharlyGame()} pts</p>
-                                    } 
-                                    </div>
+                                    <Score>
+                                        <h2>Total score James le hiboux:</h2>
+                                        <div>
+                                            {totalScoreForJamesGame()  &&
+                                                <p>Total des scores : {totalScoreForJamesGame()} pts</p>
+                                            }
+                                            {bestScoreForJamesGame() &&
+                                                <p>Meilleur score : {bestScoreForJamesGame()} pts</p>
+                                            }
+                                        </div>
+                                    </Score>
+                                    <Score>
+                                        <h2>Total score Charly le caméléon:</h2>
+                                        <div>
+                                            {totalScoreForCharlyGame() &&
+                                                <p>Total des scores : {totalScoreForCharlyGame()} pts</p>
+                                            }
+                                            {bestScoreForCharlyGame() &&
+                                                <p>Meilleur score : {bestScoreForCharlyGame()} pts</p>
+                                            }
+                                        </div>
+                                    </Score>
                                 </div>
                                 :   
                                 <div>
