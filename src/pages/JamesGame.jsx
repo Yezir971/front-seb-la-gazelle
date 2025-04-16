@@ -168,7 +168,7 @@ const JamesGame = () => {
                     ):(
                         <EndGame score={score} nameGame={"James le hiboux"}/>
                     )}
-            { time > 0 ? (
+            { (time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
                 <div className="containerJames">
                     <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>
                 </div>
