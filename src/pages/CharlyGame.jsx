@@ -31,8 +31,7 @@ const PictureGameCharly = styled.img`
   // height: auto;
   object-fit: contain;
   cursor: pointer;
-  margin:-124px auto;
-
+  margin:-40px auto;
   @media (min-width: 768px) {
     max-width: 700px;
   }
@@ -64,6 +63,9 @@ const CharlyGames = () => {
     const [mouse, setMouse] = useState({ x: 0, y: 0 }); // position du click
     const [interactScore, setInteractScore] = useState('')
     const [isFirstAnser, setIsFirstAnser] = useState(false)
+    const [nbLifeMin, setNbLifeMin] = useState(0)
+    const [nbLife, setNbLife] = useState(3)
+
     const {time, setTime} = useContext(TimerContext)
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
 
@@ -108,6 +110,9 @@ const CharlyGames = () => {
           }
           setRandomPicture(newRandomNumber)
         } else {
+          if(nbLifeMin < nbLife){
+              setNbLifeMin((prev) => prev+1)
+          }
           // gsap.to(scoreContainerRef.current, { x: 10, duration: 0.3, yoyo: true, repeat: 2 }); // Shake animation
           setInteractScore(t("perdu"));
         }
@@ -116,16 +121,16 @@ const CharlyGames = () => {
 
     return (
         <>
-            <NavBarGame points={score} />
+            <NavBarGame points={score} nbLife={nbLife} nbLifeMin={nbLifeMin} />
             <ContainerGame>
 
               
-              <ContainerTimer>
-                <TimmerComponent  />
-              </ContainerTimer>
 
-              {(time > 0 && time <= 60) ? (
+              {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
                 <>
+                  <ContainerTimer>
+                    <TimmerComponent  />
+                  </ContainerTimer>
                   <PictureContainer>
                       <PictureGameCharly 
                       onMouseEnter={() => setCursorType(pointer)}

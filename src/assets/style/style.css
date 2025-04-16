@@ -203,14 +203,7 @@
     text-align: center;
     margin-bottom: 24px;
 }
-.whiteBoard{
-    width: 50vw;
-    height: 50vh;
-    margin-block: auto;
-    margin-left: 20px;
-    margin-right: auto;
-    background: white;
-}
+
 
 .containerOperation{
     width: 60%;
@@ -221,7 +214,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    width: 100vw;
 }
 
 

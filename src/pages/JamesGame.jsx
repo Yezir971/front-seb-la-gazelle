@@ -9,6 +9,7 @@ import { t } from "i18next";
 import EndGame from "../Component/EndGame";
 import James from "../Component/James";
 import Sebi from "../Component/Sebi";
+import styled from "styled-components";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const styles = {
@@ -44,6 +45,26 @@ const styles = {
       color: "green",
     },
 };
+const ContainerGame = styled.div`
+    display: flex;
+`
+const ContainerTimer = styled.div`
+  position:absolute;
+  right:15px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+`
+const WhiteBoard = styled.div`
+    width: 50vw;
+    height: 50vh;
+    // margin-block: auto;
+    // margin-left: 20px;
+    // margin-right: auto;
+    margin:auto;
+    background: white;
+`
 
 const JamesGame = () => {
     const [question, setQuestion] = useState({});
@@ -52,6 +73,8 @@ const JamesGame = () => {
     const [message, setMessage] = useState(false);
     const [firstAnswer, setFirstAnswer] = useState(true);
     const [countAnswer, setCountAnswer] = useState(0);
+    const [nbLifeMin, setNbLifeMin] = useState(0)
+    const [nbLife, setNbLife] = useState(3)
     const {time, messageTimer, setTime} = useContext(TimerContext);
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     // Generate a random question
@@ -86,6 +109,9 @@ const JamesGame = () => {
             setMessage(true);
             setScore((prev) => prev + 1);
         } else {
+            if(nbLifeMin < nbLife){
+                setNbLifeMin((prev) => prev+1)
+            }
             gsap.to(button, { x: 10, duration: 0.2, yoyo: true, repeat: 1 }); // Shake animation
             setMessage(false);
         }
@@ -104,38 +130,44 @@ const JamesGame = () => {
     return(
         <>
         <div className="layout">     
-            <NavBarGame points={score}/>
-            <div className="containerGame">
-                <TimmerComponent />
-                <div className="whiteBoard">
-                    { time > 0 ? (
-                        <div style={styles.container}>
-                            <div className="containerOperation">
-                                <h2>{question.num1} {question.operator} {question.num2}</h2>
-                                <p>=</p>
-                            </div>
-                            <div style={styles.answers}>
-                            {answers.map((answer, index) => (
-                                <button
-                                onMouseEnter={() => setCursorType(pointer)}
-                                onMouseLeave={() => setCursorType(cursor)} 
-                                onMouseDown={() => setCursorType(pointer)}
-                                onMouseUp={() => setCursorType(cursor)} 
-                                
-                                key={index}
-                                style={styles.button}
-                                onClick={() => handleAnswerClick(answer)}
-                                >
-                                {answer}
-                                </button>
-                            ))}
-                            </div>
-                        </div>
+            <NavBarGame points={score} nbLife={nbLife} nbLifeMin={nbLifeMin}/>
+                    { (time > 0 && time <= 60) && (nbLifeMin !== nbLife) ?  (
+                        <>  
+                            <ContainerTimer>
+                                <TimmerComponent />
+                            </ContainerTimer>
+                            <ContainerGame>
+                            <WhiteBoard>
+                                <div style={styles.container}>
+                                    <div className="containerOperation">
+                                        <h2>{question.num1} {question.operator} {question.num2}</h2>
+                                        <p>=</p>
+                                    </div>
+                                    <div style={styles.answers}>
+                                    {answers.map((answer, index) => (
+                                        <button
+                                        onMouseEnter={() => setCursorType(pointer)}
+                                        onMouseLeave={() => setCursorType(cursor)} 
+                                        onMouseDown={() => setCursorType(pointer)}
+                                        onMouseUp={() => setCursorType(cursor)} 
+                                        
+                                        key={index}
+                                        style={styles.button}
+                                        onClick={() => handleAnswerClick(answer)}
+                                        >
+                                        {answer}
+                                        </button>
+                                    ))}
+                                    </div>
+                                </div>
+                        
+                            </WhiteBoard>
+                        </ContainerGame>
+                        
+                        </>
                     ):(
                         <EndGame score={score} nameGame={"James le hiboux"}/>
                     )}
-                </div>
-            </div>
             { time > 0 ? (
                 <div className="containerJames">
                     <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>

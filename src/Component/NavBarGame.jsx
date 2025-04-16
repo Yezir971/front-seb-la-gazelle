@@ -4,16 +4,20 @@ import  arrowReturn  from "../assets/img/Vector-return.svg"
 import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { CursorContext } from "../context/CursorContext"
+import LifeComponents from "./LifeComponents"
 const Navbar = styled.nav`
-    display:flex;
+    display:grid;
+    grid-template-columns: 268px 268px 268px;
+    // display:flex;
     justify-content:space-between;
-    margin:10px 21px;
     align-items:center;
+    margin:10px 21px;
 `
 const ContainerIconReturn = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-self: start;
 `
 const ImageSebi = styled.img`
     width:72px;
@@ -31,6 +35,7 @@ const ContainerScorePoints = styled.div`
     width: 137px;
     height: 63px;
     border-radius: 30px;
+    justify-self: center;
 `
 const TextScore = styled.p`
     font-weight:bold;
@@ -38,7 +43,7 @@ const TextScore = styled.p`
 `
 
 
-const NavBarGame = ({points}) => {
+const NavBarGame = ({points, nbLife, nbLifeMin}) => {
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
 
     return(
@@ -65,6 +70,7 @@ const NavBarGame = ({points}) => {
                 <ContainerScorePoints>
                     <TextScore>SCORE {points} pt</TextScore>
                 </ContainerScorePoints>
+                <LifeComponents nbLifeMin={nbLifeMin} nbLife={nbLife} />
             </Navbar>
         
         </>
