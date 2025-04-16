@@ -3,6 +3,23 @@ import { UserContext } from "../context/UserContext";
 import  useFetch  from "../assets/hooks/useFetch";
 import { CursorContext } from "../context/CursorContext";
 import { t } from "i18next";
+import styled from "styled-components";
+
+const Errors = styled.ul`
+    color:black;
+    list-style: none;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+`
+
+const ErrorsItems = styled.li`
+    background: red;
+    padding:16px;
+    border-radius:16px;
+
+`
 
 function SignUpModal() {
     const [data, setData] = useState({})
@@ -39,7 +56,32 @@ function SignUpModal() {
     const closeModal = () => {
         toggleModals("close")
     }
-    const datas = 1
+    const translateMessageError = (message) => {
+        switch (message) {
+            case "Le nom de l'utilisateur doit faire au moins 1 caractère.":
+                return t('errorNameUserLengthForm');
+        
+            case "Le nom de l'utilisateur est obligatoire.":
+                return t('errorNameUserRequiredForm');
+        
+            case "Le mail de l'utilisateur doit faire au moins 1 caractère.":
+                return t('errorEmailUserLengthForm');
+        
+            case "Le mail de l'utilisateur est obligatoire.":
+                return t('errorEmailUserRequiredForm');
+        
+            case "Cette adresse email est déjà utilisée.":
+                return t('errorEmailUserUsedForm');
+        
+            case "Le mot de passe de l'utilisateur ne peut pas être vide.":
+                return t('errorPasswordUserEmptyForm');
+        
+            case "Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.":
+                return t('errorPasswordUserSyntaxeForm');
+            default:
+                break;
+        }
+    }
     
     return(
         <>
@@ -73,11 +115,12 @@ function SignUpModal() {
                     {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}
                     {data && data.violations ? (
                         <>
-                            <ul>
+                            <Errors>
                                 {data.violations.map((violation, idKey) => 
-                                    <li key={idKey}>{violation.title}</li>
+
+                                    <ErrorsItems key={idKey}>{translateMessageError(violation.title)}</ErrorsItems>
                                 )}
-                            </ul>
+                            </Errors>
                         
                         </>
 

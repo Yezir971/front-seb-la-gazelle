@@ -4,7 +4,22 @@ import useFetch from '../assets/hooks/useFetch';
 import { CursorContext } from '../context/CursorContext';
 import Cookies from 'js-cookie';
 import { t } from "i18next";
+import styled from 'styled-components';
+const Errors = styled.ul`
+    color:black;
+    list-style: none;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+`
 
+const ErrorsItems = styled.li`
+    background: red;
+    padding:16px;
+    border-radius:16px;
+
+`
 function SignInModal() {
     const refName = useRef()
     const refPassword = useRef()
@@ -60,7 +75,6 @@ function SignInModal() {
     const closeModal = () => {
         toggleModals("close")
     }
-
     return(
         <> 
             {modalState.signInModal && (
@@ -89,7 +103,11 @@ function SignInModal() {
                         </div>
                     </form>
                     {
-                        error && <p>{responseApi}</p>
+                        error && (
+                            <Errors>
+                                <ErrorsItems>{responseApi}</ErrorsItems>
+                            </Errors>
+                    )
                     }
 
                 </div>

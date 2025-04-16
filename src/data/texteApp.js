@@ -109,6 +109,15 @@ const resources = {
             jamesReplique6: jamesReplique6En,
             jamesReplique7: jamesReplique7En,
             // james 
+            // Errors Messages formulaire 
+            errorNameUserLengthForm: "The username must be at least 1 character long.",
+            errorNameUserRequiredForm: "The username is required.",
+            errorEmailUserLengthForm: "The user's email must be at least 1 character long.",
+            errorEmailUserRequiredForm: "The user's email is required.",
+            errorEmailUserUsedForm: "This email address is already in use.",
+            errorPasswordUserEmptyForm: "The user's password cannot be empty.",
+            errorPasswordUserSyntaxeForm: "The password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.",
+
         }
     },
     fr: {
@@ -183,6 +192,15 @@ const resources = {
             jamesReplique6: jamesReplique6Fr,
             jamesReplique7: jamesReplique7Fr,
             // james 
+            // Errors Messages formulaire 
+            errorNameUserLengthForm: "Le nom de l'utilisateur doit faire au moins 1 caractère.",
+            errorNameUserRequiredForm:"Le nom de l'utilisateur est obligatoire.",
+            errorEmailUserLengthForm: "Le mail de l'utilisateur doit faire au moins 1 caractère.",
+            errorEmailUserRequiredForm:"Le mail de l'utilisateur est obligatoire.",
+            errorEmailUserUsedForm:"Cette adresse email est déjà utilisée.",
+            errorPasswordUserEmptyForm: "Le mot de passe de l'utilisateur ne peut pas être vide.",
+            errorPasswordUserSyntaxeForm:"Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
+            
         }
     }
 }
