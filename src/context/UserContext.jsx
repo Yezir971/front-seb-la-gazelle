@@ -6,6 +6,7 @@ const UserContextProvider = (props) => {
     const [modalState, setModalState] = useState({
         signInModal: false,
         signUpModal: false,
+        changePassword: false,
         showNavbar: true
     })
 
@@ -16,6 +17,15 @@ const UserContextProvider = (props) => {
                 setModalState({
                     signUpModal: false,
                     signInModal: true,
+                    changePassword: false,
+                    showNavbar: false
+                })
+                break;
+            case "changePassword":
+                setModalState({
+                    signUpModal: false,
+                    signInModal: false,
+                    changePassword: true,
                     showNavbar: false
                 })
                 break;
@@ -23,6 +33,7 @@ const UserContextProvider = (props) => {
                 setModalState({
                     signUpModal: true,
                     signInModal: false,
+                    changePassword: false,
                     showNavbar: false
                 })
                 break;
@@ -30,6 +41,7 @@ const UserContextProvider = (props) => {
                 setModalState({
                     signUpModal: false,
                     signInModal: false,
+                    changePassword: false,
                     showNavbar: true
                 })
                 break;

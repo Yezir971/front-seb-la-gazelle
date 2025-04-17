@@ -106,9 +106,15 @@
 .containerFormButton{
     width: 600px;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
 }
+.containerFormButton a{
+    text-decoration: none;
+
+}
+
 .formButton{
     background: #469106;
     border-radius: 32px;

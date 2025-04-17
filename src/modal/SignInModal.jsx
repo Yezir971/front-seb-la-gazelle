@@ -20,6 +20,13 @@ const ErrorsItems = styled.li`
     border-radius:16px;
 
 `
+const ForgotMdpButton = styled.button`
+    border:none;
+    font-size:1rem;
+    background:none;
+    text-decoration:underline;
+
+`
 function SignInModal() {
     const refName = useRef()
     const refPassword = useRef()
@@ -94,12 +101,21 @@ function SignInModal() {
 
                         {/* <a href="#" className="forgotPassword">Mot de passe oublié ?</a> */}
                         <div 
-                        onMouseEnter={() => setCursorType(pointer)}
-                        onMouseLeave={() => setCursorType(cursor)} 
-                        onMouseDown={() => setCursorType(pointer)}
-                        onMouseUp={() => setCursorType(cursor)} 
+
                         className="containerFormButton">
-                            <input type="submit" value={t('seConnecter')} className="formButton"/>
+                            <ForgotMdpButton
+                                onMouseEnter={() => setCursorType(pointer)}
+                                onMouseLeave={() => setCursorType(cursor)} 
+                                onMouseDown={() => setCursorType(pointer)}
+                                onMouseUp={() => setCursorType(cursor)} 
+                                onClick={()=> toggleModals("changePassword")}
+                            >{t('resetPassword')}</ForgotMdpButton>
+                            <input 
+                                onMouseEnter={() => setCursorType(pointer)}
+                                onMouseLeave={() => setCursorType(cursor)} 
+                                onMouseDown={() => setCursorType(pointer)}
+                                onMouseUp={() => setCursorType(cursor)} 
+                            type="submit" value={t('seConnecter')} className="formButton"/>
                         </div>
                     </form>
                     {

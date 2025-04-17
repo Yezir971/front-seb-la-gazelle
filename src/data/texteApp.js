@@ -117,7 +117,12 @@ const resources = {
             errorEmailUserUsedForm: "This email address is already in use.",
             errorPasswordUserEmptyForm: "The user's password cannot be empty.",
             errorPasswordUserSyntaxeForm: "The password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.",
-
+            // reset du mot de passe 
+            resetPassword: "I've forgotten my password.",
+            send:"send",
+            sendMail: "Send me an e-mail to change my password.",
+            errorMailReset:"The e-mail address does not exist.",
+            emailSendSuccess:"An e-mail has been sent to you.",
         }
     },
     fr: {
@@ -200,7 +205,14 @@ const resources = {
             errorEmailUserUsedForm:"Cette adresse email est déjà utilisée.",
             errorPasswordUserEmptyForm: "Le mot de passe de l'utilisateur ne peut pas être vide.",
             errorPasswordUserSyntaxeForm:"Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
-            
+            // reset du mot de passe 
+            resetPassword: "J'ai oublié mon mot de passe.",
+            send:"Envoyer",
+            sendMail: "Envoyer un mail pour changer mon mot de passe.",
+            errorMailReset:"L'adresse e-mail n'existe pas.",
+            emailSendSuccess:"Un e-mail vous a été envoyé.",
+
+
         }
     }
 }

@@ -27,7 +27,7 @@ function SignUpModal() {
     const refEmail = useRef()
     const refName = useRef()
     const refPassword = useRef()
-    const {modalState, toggleModals } = useContext(UserContext);
+    const { modalState, toggleModals } = useContext(UserContext);
     const { send, dataError } = useFetch('https://orange-wolf-959534.hostingersite.com/api/validate-account', "POST")
     const [responseApi, setResponseApi] = useState({}) 
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
@@ -104,12 +104,13 @@ function SignUpModal() {
                         <input ref={refPassword} id="password" type="password" name="pwd" placeholder={`${t('monMotDePasse')}...`} className="formInput"/>
 
                         <div 
-                        onMouseEnter={() => setCursorType(pointer)}
-                        onMouseLeave={() => setCursorType(cursor)} 
-                        onMouseDown={() => setCursorType(pointer)}
-                        onMouseUp={() => setCursorType(cursor)} 
                         className="containerFormButton">
-                            <input type="submit" value={t('creerMonCompte')} className="formButton" />
+                            <input 
+                                onMouseEnter={() => setCursorType(pointer)}
+                                onMouseLeave={() => setCursorType(cursor)} 
+                                onMouseDown={() => setCursorType(pointer)}
+                                onMouseUp={() => setCursorType(cursor)} 
+                            type="submit" value={t('creerMonCompte')} className="formButton" />
                         </div>
                     </form>
                     {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}

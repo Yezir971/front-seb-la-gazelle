@@ -2,13 +2,13 @@ import { useEffect, useState } from "react"
 import Navbar from "../Component/Navbar"
 import SignInModal from "../modal/SignInModal"
 import SignUpModal from "../modal/SignUpModal"
-import useFetch from "../assets/hooks/useFetch"
 import JamesGameModal from "../modal/JamesGameModal"
 import ShowAllAnimals from "../Component/ShowAllAnimals"
 import CharlyGameModal from "../modal/CharlyGameModal"
 import styled from "styled-components"
 import { t } from "i18next";
 import Cookies from "js-cookie"
+import ChangePassword from "../modal/ChangePassword"
 const ContainerHome = styled.div`
     width: 100%;
     position: relative;
@@ -70,6 +70,7 @@ const Home = () => {
                         <Navbar/>
                         <SignInModal />
                         <SignUpModal />
+                        <ChangePassword />
                         <ContainerHome>
                             <ShowAllAnimals />
                             <JamesGameModal />
