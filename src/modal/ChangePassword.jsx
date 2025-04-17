@@ -98,20 +98,17 @@ const ChangePassword = () => {
                     {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}
                     {(data.message !== undefined ) && (
                         <>
-                            {data.message !== "Un e-mail vous a été envoyé." ? (
-                                <>
-                                    <Errors>
+                            <Errors>
+                                {data.message !== "Un e-mail vous a été envoyé." ? (
+                                    <>
                                         <ErrorsItems>{t('errorMailReset')}</ErrorsItems>
-                                    </Errors>
-                                
-                                </>
-                            ):(
-                                <>
-                                    <Errors>
+                                    </>
+                                ):(
+                                    <>
                                         <SuccessItems>{t('emailSendSuccess')}</SuccessItems>
-                                    </Errors>
-                                </>
-                            )}
+                                    </>
+                                )}
+                            </Errors>
                         </>
                     )}
                 </div>
