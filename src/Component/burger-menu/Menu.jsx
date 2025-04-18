@@ -14,9 +14,11 @@ const StyledMenu = styled.nav`
     background: #effffa;
     transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(100%)")};
     height: 100vh;
+    width: 100vw; 
+    overflow-x: hidden;
     text-align: left;
     padding: 2rem;
-    position: absolute;
+    position: fixed;
     gap:1rem;
     top: 0;
     right: 0;
