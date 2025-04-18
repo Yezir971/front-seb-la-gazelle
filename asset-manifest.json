@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f70d606f.css",
-    "main.js": "/static/js/main.2bc750c0.js",
+    "main.css": "/static/css/main.62146cb2.css",
+    "main.js": "/static/js/main.17000fc1.js",
     "static/media/sebi-la-gazelle-sound.mp3": "/static/media/sebi-la-gazelle-sound.d87d1882ede6f1e1961c.mp3",
     "static/media/charly-game-3.png": "/static/media/charly-game-3.dbfd1d66a254b5839909.png",
     "static/media/charly-game-5.png": "/static/media/charly-game-5.003c7ce234815918b0aa.png",
@@ -29,11 +29,11 @@
     "static/media/cursor-grab-open.png": "/static/media/cursor-grab-open.d513a92f8682e50306e9.png",
     "index.html": "/index.html",
     "static/media/Vector-return.svg": "/static/media/Vector-return.75783eac89bb6ebc54180040aa8dabbf.svg",
-    "main.f70d606f.css.map": "/static/css/main.f70d606f.css.map",
-    "main.2bc750c0.js.map": "/static/js/main.2bc750c0.js.map"
+    "main.62146cb2.css.map": "/static/css/main.62146cb2.css.map",
+    "main.17000fc1.js.map": "/static/js/main.17000fc1.js.map"
   },
   "entrypoints": [
-    "static/css/main.f70d606f.css",
-    "static/js/main.2bc750c0.js"
+    "static/css/main.62146cb2.css",
+    "static/js/main.17000fc1.js"
   ]
 }
