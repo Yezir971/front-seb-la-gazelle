@@ -18,6 +18,10 @@ const Container = styled.div`
   width: 200px;
   height: 200px;
   position: relative;
+  @media (max-width: 768px) {
+    height:150px;
+    width:150px;
+  }
   // bottom:0px;
   // right:200px;
 `
@@ -25,6 +29,9 @@ const Container = styled.div`
 const Image = styled.img`
   position: absolute;
   width: 200px;
+  @media (max-width: 768px) {
+    width:150px;
+  }
 `
 
 const Drag = styled.div`

@@ -15,6 +15,10 @@ const Container = styled.div`
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     font-size: 16px;
     max-width: 250px;
+    @media (max-width: 768px) {
+        font-size: 8px;
+
+    }
     &:after {
         content: "";
         position: absolute;

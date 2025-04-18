@@ -6,23 +6,14 @@
 }
 
 
-
+body{
+    overflow: hidden;
+}
 
 /*
     Style de la navBar
 */
-.navBar{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 40px;
-}
 
-.buttonNavBar{
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px;
-}
 .gestionButton{
     background: #EF910F;
     color: white;
@@ -39,7 +30,7 @@
     color: white;
 }
 
-.disconnectButton{
+/* .disconnectButton{
     background: #EF910F;
     color: white;
     width: auto;
@@ -50,7 +41,7 @@
     font-size: 32px;
     cursor: pointer;
     text-decoration: none;
-}
+} */
 .navbarSettingButton{
     width: 50px;
     height: 50px;
@@ -60,8 +51,9 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+
 }
-.profilButton{
+/* .profilButton{
     background: #EF910F;
     color: white;
     width: 60px;
@@ -76,7 +68,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 /*
     Style des formulaires d'inscription et de connexion
 */

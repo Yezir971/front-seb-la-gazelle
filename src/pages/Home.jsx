@@ -16,6 +16,7 @@ const ContainerHome = styled.div`
     justify-content: center;
     align-items: center;
 `
+
 const Home = () => {
     // on récupère le token dans le localStorage si il est présent sinon on créer une chaîne de caractère vide 
     const [isLocalAuth, setIsLocalAuth] = useState(Cookies.get('token') ? Cookies.get('token') : "" )

@@ -13,6 +13,9 @@ const ImageLogoCharly = styled.img`
   width: auto;
   height: 300px;
   position: absolute;
+  @media (max-width: 768px) {
+    height:200px;
+  }
 
 `
 
@@ -23,6 +26,10 @@ const ImageLogoJames = styled.img`
   width: auto;
   height: 300px;
   position: absolute;
+  @media (max-width: 768px) {
+    height: 150px;
+    top: 50%;
+  }
 `
 const ContainerAnimals = styled.div`
   height:75vh;

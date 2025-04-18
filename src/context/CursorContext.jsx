@@ -21,6 +21,11 @@ const Cursor = styled.div`
   pointer-events: none;
   transform: translate(-60%, -60%);
   z-index: 9999;
+  @media (max-width: 768px) {
+    display:none;
+    pointer-events: initial;
+
+  }
 `
 const CursorContextProvider = (props) => {
   const cursorRef = useRef(null);
