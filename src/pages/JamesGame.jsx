@@ -12,6 +12,11 @@ import Sebi from "../Component/Sebi";
 import styled from "styled-components";
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const breakpoints = {
+    mobile: '600px',
+    tablet: '900px',
+    medium: '1607px',
+}
 const styles = {
     container: {
       fontFamily: "Arial, sans-serif",
@@ -49,12 +54,13 @@ const ContainerGame = styled.div`
     display: flex;
 `
 const ContainerTimer = styled.div`
-  position:absolute;
-  right:15px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+    // position:absolute;
+    // left:1rem;
+    // bottom:1rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 `
 const WhiteBoard = styled.div`
     width: 50vw;
@@ -64,6 +70,27 @@ const WhiteBoard = styled.div`
     // margin-right: auto;
     margin:auto;
     background: white;
+    @media (max-width: ${breakpoints.tablet}) {
+        width:100%;
+    }
+`
+const ContainerOperation = styled.div`
+    width: 60%;
+    font-size: 4rem;
+    @media (max-width: ${breakpoints.mobile}) {
+        font-size: 2rem;
+    }
+
+`
+const ContainerJamesTimer = styled.div`
+    display:grid;
+    grid-template-columns:1fr auto 1fr;    
+    justify-content:space-around;
+    align-items: center;
+    margin-top:30px;
+    @media (max-width: 900px) {
+        grid-template-columns:auto 1fr;    
+    }
 `
 
 const JamesGame = () => {
@@ -129,55 +156,56 @@ const JamesGame = () => {
     
     return(
         <>
-        <div className="layout">     
-            <NavBarGame points={score} nbLife={nbLife} nbLifeMin={nbLifeMin}/>
-                    { (time > 0 && time <= 60) && (nbLifeMin !== nbLife) ?  (
-                        <>  
-                            <ContainerTimer>
-                                <TimmerComponent />
-                            </ContainerTimer>
-                            <ContainerGame>
+            <div className="layout">     
+                <NavBarGame points={score} nbLife={nbLife} nbLifeMin={nbLifeMin}/>
+                { (time > 0 && time <= 60) && (nbLifeMin !== nbLife) ?  (
+                    <>  
+
+                        <ContainerGame>
                             <WhiteBoard>
                                 <div style={styles.container}>
-                                    <div className="containerOperation">
+                                    <ContainerOperation>
                                         <h2>{question.num1} {question.operator} {question.num2}</h2>
                                         <p>=</p>
-                                    </div>
+                                    </ContainerOperation>
                                     <div style={styles.answers}>
-                                    {answers.map((answer, index) => (
-                                        <button
-                                        onMouseEnter={() => setCursorType(pointer)}
-                                        onMouseLeave={() => setCursorType(cursor)} 
-                                        onMouseDown={() => setCursorType(pointer)}
-                                        onMouseUp={() => setCursorType(cursor)} 
-                                        
-                                        key={index}
-                                        style={styles.button}
-                                        onClick={() => handleAnswerClick(answer)}
-                                        >
-                                        {answer}
-                                        </button>
-                                    ))}
+                                        {answers.map((answer, index) => (
+                                            <button
+                                            onMouseEnter={() => setCursorType(pointer)}
+                                            onMouseLeave={() => setCursorType(cursor)} 
+                                            onMouseDown={() => setCursorType(pointer)}
+                                            onMouseUp={() => setCursorType(cursor)} 
+                                            
+                                            key={index}
+                                            style={styles.button}
+                                            onClick={() => handleAnswerClick(answer)}
+                                            >
+                                            {answer}
+                                            </button>
+                                        ))}
                                     </div>
                                 </div>
                         
                             </WhiteBoard>
                         </ContainerGame>
-                        
-                        </>
-                    ):(
+                        <ContainerJamesTimer>
+                            <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>
+                            <ContainerTimer>
+                                <TimmerComponent />
+                            </ContainerTimer>
+                        </ContainerJamesTimer>                           
+                    
+                    </>
+                ):(
+                    <>
                         <EndGame score={score} nameGame={"James le hiboux"}/>
-                    )}
-            { (time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
-                <div className="containerJames">
-                    <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>
-                </div>
-            ):(
-                <div className="containerJames">
-                    <Sebi replique="sebiOnjoueEncore" repliqueSound="sebiReplique6"/>
-                </div>    
-            )}
-        </div>
+                        <Sebi replique="sebiOnjoueEncore" repliqueSound="sebiReplique6"/>
+                        {/* <div className="containerJames">
+                        </div>     */}
+                    </>
+                )}
+
+            </div>
         </>
     )
 }

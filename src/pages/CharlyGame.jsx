@@ -13,12 +13,7 @@ import Charly from "../Component/Charly.jsx";
 import Sebi from "../Component/Sebi.jsx";
 
 
-const breakpoints = {
-  mobile: '600px',
-  tablet: '900px',
-  medium: '1607px',
-}
-// Styled Components
+
 const PictureContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -62,10 +57,14 @@ const ContainerTimer = styled.div`
   align-items:center;
 `
 const ContainerCharlyTimer = styled.div`
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;    
   justify-content:space-around;
   align-items: center;
   margin-top:30px;
+  @media (max-width: 900px) {
+    grid-template-columns:auto 1fr;    
+  }
 `
 const Container = styled.div`
   display:grid;
@@ -153,10 +152,10 @@ const CharlyGames = () => {
                       draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
                   </PictureContainer>
                   <ContainerCharlyTimer>
+                    <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
                     <ContainerTimer>
                       <TimmerComponent  />
                     </ContainerTimer>
-                    <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
                   </ContainerCharlyTimer>
                 </Container>
 
