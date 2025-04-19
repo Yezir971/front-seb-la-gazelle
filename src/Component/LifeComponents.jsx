@@ -4,6 +4,12 @@ import heartDead from "../assets/img/vie/coeur-dead.png"
 import styled from "styled-components"
 import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap";
+
+const breakpoints = {
+    mobile: '600px',
+    tablet: '900px',
+}
+
 const HeartFrame = styled.div`
     background: white;
     border: 4px solid #EF910F;
@@ -16,6 +22,29 @@ const HeartFrame = styled.div`
     justify-content: center;
     align-items: center;
     max-width: 300px;
+
+
+    @media (max-width: ${breakpoints.mobile}) {
+        // max-width: 100px;
+        flex-direction:row;
+        width:200px;
+        padding: 10px;
+
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        // max-width: 100px;
+        flex-direction:row;
+        gap:1rem;
+
+
+    }
+
+`
+const ImageHearth = styled.img`
+    @media (max-width: ${breakpoints.tablet}) {
+        width:2rem;
+    }
 `
 const LifeComponents = ({nbLifeMin, nbLife}) => {
     const [hearthType, setHearthType] = useState(heartOpen)
@@ -43,10 +72,10 @@ const LifeComponents = ({nbLifeMin, nbLife}) => {
         <>
             <HeartFrame>
                 {[...Array(nbLife-nbLifeMin)].map((_, key) => (
-                    <img key={key} ref={(element) => (hearthRef.current[key] = element)} draggable="false" src={hearthType} alt="" />
+                    <ImageHearth key={key} ref={(element) => (hearthRef.current[key] = element)} draggable="false" src={hearthType} alt="" />
                 ))}
                 {[...Array(nbLifeMin)].map((_, key) => (
-                    <img key={key} draggable="false" src={heartDead} alt="" />
+                    <ImageHearth key={key} draggable="false" src={heartDead} alt="" />
                 ))}
             </HeartFrame>
         </>

@@ -12,6 +12,12 @@ import EndGame from "../Component/EndGame.jsx";
 import Charly from "../Component/Charly.jsx";
 import Sebi from "../Component/Sebi.jsx";
 
+
+const breakpoints = {
+  mobile: '600px',
+  tablet: '900px',
+  medium: '1607px',
+}
 // Styled Components
 const PictureContainer = styled.div`
   display: flex;
@@ -19,10 +25,15 @@ const PictureContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 10px;
+  margin-top:3rem;
 
   @media (min-width: 768px) {
     padding: 20px;
+    width:60vh;
+    margin:20px auto;
+
   }
+
 `
 
 const PictureGameCharly = styled.img`
@@ -38,22 +49,29 @@ const PictureGameCharly = styled.img`
 `
 const ContainerGame = styled.div`
   position:relative;
-  height:75vh;
+  height:82vh;
 `
 const ContainerTimer = styled.div`
-  position:absolute;
-  right:15px;
+  // position:absolute;
+  // right:15px;
+  // bottom:0px;
+  // left:0px;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
 `
-const CharlyContainer = styled.div`
-  height: 350px;
-  position: absolute;
-  bottom:0px;
-  right:0px;
-  transform: translate(-50%, -50%);
+const ContainerCharlyTimer = styled.div`
+  display:flex;
+  justify-content:space-around;
+  align-items: center;
+  margin-top:30px;
+`
+const Container = styled.div`
+  display:grid;
+  grid-template:row;
+  gap:10px;
+
 `
 
 
@@ -127,19 +145,20 @@ const CharlyGames = () => {
               
 
               {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
-                <>
-                  <ContainerTimer>
-                    <TimmerComponent  />
-                  </ContainerTimer>
+                <Container>
                   <PictureContainer>
                       <PictureGameCharly 
                       onMouseEnter={() => setCursorType(pointer)}
                       onMouseLeave={() => setCursorType(cursor)} 
                       draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
                   </PictureContainer>
-                  <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
-                
-                </>
+                  <ContainerCharlyTimer>
+                    <ContainerTimer>
+                      <TimmerComponent  />
+                    </ContainerTimer>
+                    <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
+                  </ContainerCharlyTimer>
+                </Container>
 
               ):(
                 <>

@@ -2,22 +2,34 @@ import styled from "styled-components"
 import imageCharly from "../assets/img/charly-full-body.webp";
 import Bubble from "./Bubble";
 
+const breakpoints = {
+  mobile: '600px',
+  tablet: '900px',
+  medium: '1180px',
+}
 const Container = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: auto;
   position: relative;
+  @media (max-width: ${breakpoints.medium}) {
+    width:100px;
+    height:100px;
+  }
 `
 const Image = styled.img`
   position: absolute;
-  width: 200px;
+  width: 170px;
+  @media (max-width: ${breakpoints.medium}) {
+    width:100px;
+  }
 `
 
 
 const ContaineAnimation = styled.div`
   display:flex;
-  position:absolute;
-  bottom:200px;
-  right:0px;
+  // position:absolute;
+  // bottom:0px;
+  // right:0px;
 `
 
 
