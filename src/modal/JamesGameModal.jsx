@@ -25,6 +25,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  @media (max-width: 768px) {
+    height:95vh;
+
+  }
 `
 const JamesGameModal = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);

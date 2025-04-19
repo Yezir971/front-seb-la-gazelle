@@ -10,7 +10,7 @@ import Sebi from "../Component/Sebi"
 const Arrow = styled.img`
   width:30px;
   height:30px;
-  position:absolute;;
+  position:absolute;
   top:10px;
   left:43px;
 
@@ -25,7 +25,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    height:95vh;
+  }
 `
+
 
 const CharlyGameModal = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);
