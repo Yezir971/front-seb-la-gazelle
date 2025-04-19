@@ -8,7 +8,7 @@ import Sebi from "../Component/Sebi"
 
 const ImageLogoCharly = styled.img`
   left: 4%;
-  top: 65%;
+  top: 59%;
   transform: translate(-50%, 0%);
   width: auto;
   height: 300px;
@@ -21,20 +21,24 @@ const ImageLogoCharly = styled.img`
 
 const ImageLogoJames = styled.img`
   right: 50%;
-  top: 40%;
+  top: 45%;
   transform: translate(50%, -50%);
   width: auto;
   height: 300px;
   position: absolute;
   @media (max-width: 768px) {
     height: 150px;
-    top: 50%;
+    top: 57%;
   }
 `
 const ContainerAnimals = styled.div`
   height:75vh;
   width:100%;
   position: relative;
+  @media (max-width: 768px) {
+    height:95vh;
+
+  }
 `
 
 const ShowAllAnimals = () => {
