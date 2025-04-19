@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 
 
 const Cadre = styled.div`
-    max-width: 1100px;
     aspect-ratio: 1 / 1; /* Maintient un carré parfait */
     background: url(${cadre}) no-repeat center center;
     background-size: contain; /* Ajuste l'image sans la couper */
@@ -18,36 +17,37 @@ const Cadre = styled.div`
     align-items: center;
     text-align: center;
     margin: -124px auto;    
+    width:80%;
+
+    @media (max-width: 900px) {
+        width:100%;
+        margin: 0;
+        background-size: cover; 
+    }
 
 
 
 `
 const ContainerListe = styled.ul`
-    // list-style:none;
-    // color:white;
-    // text-tranform:uppercase;
-    // background-color: rgb(224 217 158 / 49%);
-    // backdrop-filter: blur(10px);
-    // width:945px;
-    // height:482px;
-    // margin: auto;
-    // gap:41px;
-    // display:grid;
-    // grid-template-columns: 1fr 1fr ;
-    // padding:66px 26px;
-    // border-radius:23px;
-
-
-
+    width:50%;
+    height:50%;
     list-style: none;
     color: white;
-    text-tranform: uppercase;
     background-color: rgb(224 217 158 / 49%);
     gap: 41px;
     display: grid;
-    grid-template-columns: 234px 234px;
+    grid-template-columns: auto auto;
     padding: 66px 26px;
     border-radius: 23px;
+
+    @media (max-width: 900px) {
+        width:80%;
+        height:80%;
+        gap:8px;
+        padding: 16px 8px;
+        grid-template-columns: auto ;
+    }
+
 
 `
 
@@ -62,6 +62,13 @@ const ListeItem = styled.li`
     align-items:center;
     justify-content:center;
     text-transform:uppercase;
+
+    @media (max-width: 900px) {
+        font-size:1rem;
+    }
+    @media (max-width: 400px) {
+        padding: 8px 1px;
+    }
 `
 const ListeItemPolitique = styled.li`
     background-color: rgb(69 145 7 / 77%);
@@ -70,6 +77,12 @@ const ListeItemPolitique = styled.li`
     padding:16px;
     font-weight:bold;
     font-size:1rem;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    @media (max-width: 900px) {
+        font-size:1rem;
+    }
 `
 const Settings = () => {
     const {volumeOnOff, setVolumeOnOff, setMusiqueOnOff, musiqueOnOff, soundRef} = useContext(AudioContext)
