@@ -1,12 +1,12 @@
 /* --------------- spinner pie ----------------  */
-@property --percentage {
+/* @property --percentage {
     initial-value: 0%;
     inherits: true;
     syntax: "<percentage>";
-}
-/* :root {
-    --percentage: 0%;
 } */
+:root {
+    --percentage: 0%;
+}
 .textTimer, .textEndTimer{
     font-weight: 600;
     animation: colors 60s linear;
