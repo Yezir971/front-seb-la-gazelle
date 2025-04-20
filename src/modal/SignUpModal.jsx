@@ -1,25 +1,14 @@
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { UserContext } from "../context/UserContext";
 import  useFetch  from "../assets/hooks/useFetch";
 import { CursorContext } from "../context/CursorContext";
 import { t } from "i18next";
 import styled from "styled-components";
 
-const Errors = styled.ul`
-    color:black;
-    list-style: none;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap:8px;
-`
+import { Slide, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ErrorsItems = styled.li`
-    background: red;
-    padding:16px;
-    border-radius:16px;
 
-`
 
 function SignUpModal() {
     const [data, setData] = useState({})
@@ -82,7 +71,25 @@ function SignUpModal() {
                 break;
         }
     }
-    
+
+    // gestion des toast pour les erreurs 
+    useEffect(() => {
+        if (data && data.violations) {
+            data.violations.forEach((violation) => {
+                toast.error(translateMessageError(violation.title), {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Slide,
+                });
+            });
+        }
+    }, [data])
     return(
         <>
             {modalState.signUpModal && (
@@ -114,29 +121,7 @@ function SignUpModal() {
                             type="submit" value={t('creerMonCompte')} className="formButton" />
                         </div>
                     </form>
-                    {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}
-                    {data && data.violations ? (
-                        <>
-                            <Errors>
-                                {data.violations.map((violation, idKey) => 
-
-                                    <ErrorsItems key={idKey}>{translateMessageError(violation.title)}</ErrorsItems>
-                                )}
-                            </Errors>
-                        
-                        </>
-
-                    ):(
-                        <>
-                        <ul>
-                            <li>{data.message}</li>
-                        </ul>
-                        
-                        </>
-
-                    )}
                 </div>
-
             )}
         
         </>    

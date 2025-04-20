@@ -1,9 +1,10 @@
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { UserContext } from "../context/UserContext"
 import { CursorContext } from "../context/CursorContext";
 import useFetch from "../assets/hooks/useFetch";
 import { t } from "i18next";
 import styled from "styled-components";
+import { Slide, toast, ToastContainer } from "react-toastify";
 const Errors = styled.ul`
     color:black;
     list-style: none;
@@ -70,7 +71,39 @@ const ChangePassword = () => {
     const closeModal = () => {
         toggleModals("close")
     }
-    console.log(data.message)    
+
+    // gestion des toast pour les erreurs 
+    useEffect(() => {
+        if(!data.message){
+            return
+        }
+        if(data.message == "Un e-mail vous a été envoyé."){
+            toast.success(t('emailSendSuccess'), {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Slide,
+                });
+        }else{
+            toast.error(t('errorMailReset'), {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Slide,
+                });
+        }
+
+    }, [data.message])   
     return(
         <>
             {modalState.changePassword && (
@@ -82,7 +115,7 @@ const ChangePassword = () => {
                     onMouseUp={() => setCursorType(cursor)} 
                     className="svgForm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" onClick={closeModal}/></svg>
                     <TitlePasswordPage>{t('sendMail')}</TitlePasswordPage>
-                    <form onSubmit={submit} >
+                    <form className="containerForm" onSubmit={submit} >
                         <label htmlFor="email" className="formLabel">{t('monMail')}</label>
                         <input onChange={e => setEmail(e.target.value)} id="email" type="email" name="email" placeholder={`${t('monMail')}...`} className="formInput"/>
                         <div 
@@ -95,24 +128,7 @@ const ChangePassword = () => {
                             type="submit" value={t('send')} className="formButton" />
                         </div>
                     </form>
-                    {/* si il existe des violations donc des erreurs dans les data récupérer, on affiche la liste suivante sinon on affiche le message de succès  */}
-                    {(data.message !== undefined ) && (
-                        <>
-                            <Errors>
-                                {data.message !== "Un e-mail vous a été envoyé." ? (
-                                    <>
-                                        <ErrorsItems>{t('errorMailReset')}</ErrorsItems>
-                                    </>
-                                ):(
-                                    <>
-                                        <SuccessItems>{t('emailSendSuccess')}</SuccessItems>
-                                    </>
-                                )}
-                            </Errors>
-                        </>
-                    )}
                 </div>
-
             )}
         </>
     )

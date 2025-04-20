@@ -1,28 +1,17 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {UserContext} from '../context/UserContext';
 import useFetch from '../assets/hooks/useFetch';
 import { CursorContext } from '../context/CursorContext';
 import Cookies from 'js-cookie';
 import { t } from "i18next";
 import styled from 'styled-components';
-const Errors = styled.ul`
-    color:black;
-    list-style: none;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap:8px;
-`
+import { Slide, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ErrorsItems = styled.li`
-    background: red;
-    padding:16px;
-    border-radius:16px;
 
-`
 const ForgotMdpButton = styled.button`
     border:none;
-    font-size:clamp(1rem, 2vw, 3rem);
+    font-size:clamp(1rem, 1vw, 3rem);
     background:none;
     text-decoration:underline;
 
@@ -49,15 +38,12 @@ function SignInModal() {
 
     const { send } = useFetch('https://orange-wolf-959534.hostingersite.com/api/login_check', "POST")
     const submit = async (e) => {
-        // console.time("temps exécution")
+        setResponseApi('') 
         e.preventDefault()
         // On défini le body de notre requete ici 
         let body = {
             "email": refName.current.value ,
             "password": refPassword.current.value
-            // "username": "james" ,
-            // "email": "james@yahoo.com" ,
-            // "password": "Ketchup971@"
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
@@ -87,6 +73,25 @@ function SignInModal() {
 
         }
     }
+
+    // gestion des toast pour les erreurs 
+    useEffect(() => {
+        if (responseApi) {
+            [responseApi].forEach((violation) => {
+                toast.error(violation, {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Slide,
+                });
+            });
+        }
+    }, [responseApi])
 
     const closeModal = () => {
         toggleModals("close")
@@ -128,14 +133,6 @@ function SignInModal() {
                             type="submit" value={t('seConnecter')} className="formButton"/>
                         </ContainerFormButton>
                     </form>
-                    {
-                        error && (
-                            <Errors>
-                                <ErrorsItems>{responseApi}</ErrorsItems>
-                            </Errors>
-                    )
-                    }
-
                 </div>
             )}
         </>

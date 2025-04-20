@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 import styled, { createGlobalStyle } from "styled-components";
 import Page404 from "./pages/Page404";
 import Profil from "./pages/Profil";
+import { ToastContainer } from "react-toastify";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
@@ -64,6 +65,7 @@ function App() {
           </Routes>
         </BackgroundWrapper>
       </MainContent>
+      <ToastContainer/>
     </div>
   );
 }
