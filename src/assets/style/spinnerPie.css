@@ -23,9 +23,8 @@
 }
 .chart {
     /* border: solid red 4px; */
-    background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     /* bg à supprimer si ya des bug  */
-    background-image: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+    background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     border-radius: 50%;
     width: 87px;
     height: 87px;
@@ -40,16 +39,13 @@
 
 @keyframes bgColors {
     0% {
-        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
-        background-image: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     }
     50% {
-        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0);
-        background-image: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0);
+        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0);
     }
     100% {
-        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
-        background-image: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
+        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
     }
 }
 @keyframes colors {
