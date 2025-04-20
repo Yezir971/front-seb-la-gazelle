@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import '../assets/style/spinnerPie.css'
+// import '../assets/style/spinnerPie.css'
 import { TimerContext } from '../context/TimerContext'
 import styled from 'styled-components'
 
@@ -18,7 +18,6 @@ const TimmerComponent = () => {
         <Timer>
             <div className="chart"></div>
             <p className="textTimer">{time}s</p>
-            {/* <p className="textEndTimer">{messageTimer}</p> */}
         </Timer>
     )
 }
