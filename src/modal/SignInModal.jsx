@@ -22,9 +22,18 @@ const ErrorsItems = styled.li`
 `
 const ForgotMdpButton = styled.button`
     border:none;
-    font-size:1rem;
+    font-size:clamp(1rem, 2vw, 3rem);
     background:none;
     text-decoration:underline;
+
+`
+const ContainerFormButton = styled.div`
+    @media (max-width: 498px){
+        display:grid;
+        justify-content:center;
+        gap:1rem;
+    }
+
 
 `
 function SignInModal() {
@@ -87,12 +96,13 @@ function SignInModal() {
             {modalState.signInModal && (
                 <div className="SignUpContainer formContainer">
                     <svg 
-                    onMouseEnter={() => setCursorType(pointer)}
-                    onMouseLeave={() => setCursorType(cursor)} 
-                    onMouseDown={() => setCursorType(pointer)}
-                    onMouseUp={() => setCursorType(cursor)} 
-                    className="svgForm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" onClick={closeModal}/></svg>
-                    <form onSubmit={submit}>
+                        onMouseEnter={() => setCursorType(pointer)}
+                        onMouseLeave={() => setCursorType(cursor)} 
+                        onMouseDown={() => setCursorType(pointer)}
+                        onMouseUp={() => setCursorType(cursor)} 
+                        onClick={closeModal}
+                        className="svgForm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#ff0000" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                    <form className="containerForm" onSubmit={submit}>
                         <label htmlFor="" className="formLabel">{t('monMail')}</label>
                         <input type="text" ref={refName} name="emailNickname" placeholder={`${t('monMail')}...`} className="formInput"/>
 
@@ -100,7 +110,7 @@ function SignInModal() {
                         <input type="password" ref={refPassword} name="pwd" placeholder={`${t('monMotDePasse')}...`} className="formInput"/>
 
                         {/* <a href="#" className="forgotPassword">Mot de passe oublié ?</a> */}
-                        <div 
+                        <ContainerFormButton 
 
                         className="containerFormButton">
                             <ForgotMdpButton
@@ -116,7 +126,7 @@ function SignInModal() {
                                 onMouseDown={() => setCursorType(pointer)}
                                 onMouseUp={() => setCursorType(cursor)} 
                             type="submit" value={t('seConnecter')} className="formButton"/>
-                        </div>
+                        </ContainerFormButton>
                     </form>
                     {
                         error && (
