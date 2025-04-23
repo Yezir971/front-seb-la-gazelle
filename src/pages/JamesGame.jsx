@@ -35,7 +35,7 @@ const styles = {
       marginTop: "20px",
     },
     button: {
-      background: "#f0f0f0",
+      background: "#EF910F",
       border: "1px solid #ccc",
       borderRadius: "5px",
       padding: "10px 20px",
@@ -43,6 +43,7 @@ const styles = {
       width: "80px",
       height: "80px",
       cursor: "pointer",
+      color: "white",
     },
     message: {
       marginTop: "20px",
@@ -75,7 +76,7 @@ const WhiteBoard = styled.div`
     }
 `
 const ContainerOperation = styled.div`
-    width: 60%;
+    width: 80%;
     font-size: 4rem;
     @media (max-width: ${breakpoints.mobile}) {
         font-size: 2rem;
@@ -84,12 +85,21 @@ const ContainerOperation = styled.div`
 `
 const ContainerJamesTimer = styled.div`
     display:grid;
-    grid-template-columns:1fr auto 1fr;    
+    margin-inline: 20%;
+    gap: 10%;
+    grid-template-columns:2fr 2fr;    
     justify-content:space-around;
-    align-items: center;
+    align-items: end;
+    position:relative;
     margin-top:30px;
     @media (max-width: 900px) {
         grid-template-columns:auto 1fr;    
+    }
+    @media (max-width: ${breakpoints.tablet}) {
+        margin-inline: 10%;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        margin-inline: 0%;
     }
 `
 
@@ -189,10 +199,10 @@ const JamesGame = () => {
                             </WhiteBoard>
                         </ContainerGame>
                         <ContainerJamesTimer>
-                            <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>
                             <ContainerTimer>
                                 <TimmerComponent />
                             </ContainerTimer>
+                            <James firstAnswer={firstAnswer} message={message} key={countAnswer}/>
                         </ContainerJamesTimer>                           
                     
                     </>

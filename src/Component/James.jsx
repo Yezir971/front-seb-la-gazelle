@@ -26,10 +26,13 @@ const Image = styled.img`
 `
 const ContainerAnimation = styled.div`
     display:flex;
-    // position:absolute;
-    // bottom:0px;
-    // right:0px;
-
+    position:absolute;
+    bottom:-30px;
+    right:0px;
+    @media (max-width: ${breakpoints.medium}) {
+        bottom:-10px;
+        right:0px;
+    }
 `
 
 const ContainerBubble = styled.div`

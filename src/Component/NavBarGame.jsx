@@ -46,6 +46,10 @@ const ContainerIconReturn = styled.div`
     justify-content: flex-start;
     width: auto;
   }
+  @media (max-width: ${breakpoints.mobile}) {
+    justify-content: flex-start;
+    width: auto;
+  }
 `
 
 const ImageSebi = styled.img`
