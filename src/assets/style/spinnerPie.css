@@ -1,12 +1,12 @@
 /* --------------- spinner pie ----------------  */
-/* @property --percentage {
+@property --percentage {
     initial-value: 0%;
     inherits: true;
     syntax: "<percentage>";
-} */
-:root {
-    --percentage: 0%;
 }
+/* :root {
+    --percentage: 0%;
+} */
 .textTimer, .textEndTimer{
     font-weight: 600;
     animation: colors 60s linear;
@@ -16,21 +16,27 @@
 .textTimer{
     color: #6D67C9;
     text-align: center;
-
 }
 .textEndTimer{
     color: #DB2222;
 }
 .chart {
-    /* border: solid red 4px; */
-    /* bg à supprimer si ya des bug  */
-    background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+    /* bg à supprimer si ya des bug */
+    background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     border-radius: 50%;
     width: 87px;
     height: 87px;
     animation: timer 61s linear, bgColors 61s linear;
+    /* Fallback pour les navigateurs qui ne supportent pas conic-gradient */
+    background: radial-gradient(circle, #6D67C9 50%, transparent 50%);
 }
-  
+
+@supports (background: conic-gradient(white, white)) {
+    .chart {
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+    }
+}
+
 @keyframes timer {
     to {
         --percentage: 100%;
@@ -39,13 +45,13 @@
 
 @keyframes bgColors {
     0% {
-        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     }
     50% {
-        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0);
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #EB9710 0);
     }
     100% {
-        background-image: -webkit-conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0), conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
+        background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
     }
 }
 @keyframes colors {
