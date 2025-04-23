@@ -12,28 +12,25 @@ import EndGame from "../Component/EndGame.jsx";
 import Charly from "../Component/Charly.jsx";
 import Sebi from "../Component/Sebi.jsx";
 
-
+const breakpoints = {
+  mobile: '600px',
+  tablet: '900px',
+  medium: '1607px',
+}
 
 const PictureContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 10px;
   margin-top:3rem;
-
-  @media (min-width: 768px) {
-    padding: 20px;
-    width:60vh;
-    margin:20px auto;
-
-  }
-
+  padding: 20px;
+  width:60vh;
+  margin:20px auto;
 `
 
 const PictureGameCharly = styled.img`
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   // height: auto;
   object-fit: contain;
   cursor: pointer;
@@ -57,14 +54,23 @@ const ContainerTimer = styled.div`
   align-items:center;
 `
 const ContainerCharlyTimer = styled.div`
-  display:grid;
-  grid-template-columns:1fr auto 1fr;    
-  justify-content:space-around;
-  align-items: center;
-  margin-top:30px;
-  @media (max-width: 900px) {
-    grid-template-columns:auto 1fr;    
-  }
+    display:grid;
+    margin-inline: 20%;
+    gap: 10%;
+    grid-template-columns:2fr 2fr;    
+    justify-content:space-around;
+    align-items: end;
+    position:relative;
+    margin-top:30px;
+    @media (max-width: 900px) {
+        grid-template-columns:auto 1fr;    
+    }
+    @media (max-width: ${breakpoints.tablet}) {
+        margin-inline: 10%;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        margin-inline: 0%;
+    }
 `
 const Container = styled.div`
   display:grid;
@@ -152,10 +158,10 @@ const CharlyGames = () => {
                       draggable="false" ref={scoreContainerRef} src={data[randomPicture].src} onClick={handleClick} />
                   </PictureContainer>
                   <ContainerCharlyTimer>
-                    <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
                     <ContainerTimer>
                       <TimmerComponent  />
                     </ContainerTimer>
+                    <Charly key={randomPicture} isFirstAnser={isFirstAnser} />
                   </ContainerCharlyTimer>
                 </Container>
 

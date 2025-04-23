@@ -9,11 +9,11 @@ const breakpoints = {
 }
 const Container = styled.div`
   width: 170px;
-  height: auto;
+  height: 170px;
   position: relative;
   @media (max-width: ${breakpoints.medium}) {
-    width:100px;
-    height:100px;
+      width:100px;
+      height:100px;
   }
 `
 const Image = styled.img`
@@ -26,10 +26,14 @@ const Image = styled.img`
 
 
 const ContaineAnimation = styled.div`
-  display:flex;
-  // position:absolute;
-  // bottom:0px;
-  // right:0px;
+ display:flex;
+  position:absolute;
+  bottom:-30px;
+  right:0px;
+  @media (max-width: ${breakpoints.medium}) {
+    bottom:30px;
+    right:0px;
+  }
 `
 
 
