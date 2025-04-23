@@ -21,8 +21,12 @@ const Cadre = styled.div`
 
     @media (max-width: 900px) {
         width:100%;
-        margin: 0;
+        margin: 0px;
         background-size: cover; 
+    }
+
+    @media screen and (min-width: 1000px){
+        margin: -20% auto;    
     }
 
 
