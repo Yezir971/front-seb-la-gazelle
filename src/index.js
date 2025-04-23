@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import "../src/assets/style/style.css"
-import "../src/assets/style/spinnerPie.css"
+// import "../src/assets/style/spinnerPie.css"
 import { BrowserRouter } from 'react-router-dom';
 import UserContextProvider from './context/UserContext';
 import TimerContextProvider from './context/TimerContext';

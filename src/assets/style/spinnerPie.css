@@ -1,37 +1,36 @@
 /* --------------- spinner pie ----------------  */
-@property --percentage {
+/* @property --percentage {
     initial-value: 0%;
     inherits: true;
     syntax: "<percentage>";
-}
+} */
 /* :root {
     --percentage: 0%;
 } */
-.textTimer, .textEndTimer{
+/* .textTimer, .textEndTimer{
     font-weight: 600;
     animation: colors 60s linear;
     font-size:xx-large;
-}
+} */
 
-.textTimer{
+/* .textTimer{
     color: #6D67C9;
     text-align: center;
-}
-.textEndTimer{
+} */
+/* .textEndTimer{
     color: #DB2222;
-}
-.chart {
-    /* bg à supprimer si ya des bug */
+} */
+
+/* .chart {
     background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     border-radius: 50%;
     width: 87px;
     height: 87px;
     animation: timer 61s linear, bgColors 61s linear;
-    /* Fallback pour les navigateurs qui ne supportent pas conic-gradient */
     background: radial-gradient(circle, #6D67C9 50%, transparent 50%);
-}
+} */
 
-@supports (background: conic-gradient(white, white)) {
+/* @supports (background: conic-gradient(white, white)) {
     .chart {
         background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
     }
@@ -41,12 +40,11 @@
     to {
         --percentage: 100%;
     }
-}
-
+} */
+/* 
 @keyframes bgColors {
     0% {
         background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #6D67C9 0);
-        /* background: radial-gradient(circle, #6D67C9 50%, transparent 50%); */
 
     }
     50% {
@@ -55,8 +53,8 @@
     100% {
         background: conic-gradient(rgba(255, 255, 255, 0) var(--percentage), #DB2222 0);
     }
-}
-@keyframes colors {
+} */
+/* @keyframes colors {
     0% {
         color: #6D67C9;
     }
@@ -66,6 +64,6 @@
     100% {
         color: #DB2222;
     }
-}
+} */
 
 /* --------------- spinner pie ----------------  */
