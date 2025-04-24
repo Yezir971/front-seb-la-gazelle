@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { LanguageContext } from "../context/LanguageContext";
+import { CursorContext } from "../context/CursorContext";
 
 const SwitchWrapper = styled.label`
   display: inline-block;
@@ -45,6 +46,9 @@ const Container = styled.div`
 const ButtonSwitchEnFr = () => {
     const [checked, setChecked] = useState(true);
     const { language, change } = useContext(LanguageContext);
+    const { setCursorType, pointer, cursor } = useContext(CursorContext);
+    const handleMouse = (e, type) => () => setCursorType(type)
+
     const switchButtonFunction = () => {
         setChecked(!checked)
     }
@@ -52,7 +56,10 @@ const ButtonSwitchEnFr = () => {
         setChecked(language === "fr");
     }, [language]);
     return (
-        <Container>
+        <Container
+        onMouseEnter={handleMouse(null, pointer)}
+        onMouseLeave={handleMouse(null, cursor)}
+        >
         <p>EN</p>
         <SwitchWrapper checked={checked} onAuxClick={() => switchButtonFunction()}>
             <SwitchInput 

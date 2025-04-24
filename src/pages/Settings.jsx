@@ -6,6 +6,7 @@ import cadre  from '../assets/img/cadre.png'
 import { CursorContext } from "../context/CursorContext"
 import ButtonSwitchEnFr from "../Component/ButtonSwitchEnFr"
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom"
 
 
 const Cadre = styled.div`
@@ -73,6 +74,10 @@ const ListeItem = styled.li`
     @media (max-width: 400px) {
         padding: 8px 1px;
     }
+    a{
+        text-decoration:none;
+        color:white;
+    }
 `
 const ListeItemPolitique = styled.li`
     background-color: rgb(69 145 7 / 77%);
@@ -87,12 +92,16 @@ const ListeItemPolitique = styled.li`
     @media (max-width: 900px) {
         font-size:1rem;
     }
+    a{
+        text-decoration:none;
+        color:white;
+    }
 `
 const Settings = () => {
     const {volumeOnOff, setVolumeOnOff, setMusiqueOnOff, musiqueOnOff, soundRef} = useContext(AudioContext)
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     const {t} = useTranslation()
-
+    const handleMouse = (e, type) => () => setCursorType(type)
     
     const volume = () =>{
         setVolumeOnOff(prev => !prev)
@@ -114,11 +123,37 @@ const Settings = () => {
             <ReturnLogo />
             <Cadre>
                 <ContainerListe>
-                    <ListeItem onClick={volume}>{t('volume')} {volumeOnOff ? "🔊" : "🔇"}</ListeItem>
-                    <ListeItem onClick={musique}>{t('musique')} {musiqueOnOff ? "🎵" : "🎶"} </ListeItem>
-                    <ListeItem>{t('mentions')}</ListeItem>
-                    <ListeItem><ButtonSwitchEnFr /></ListeItem>
-                    <ListeItemPolitique>{t('politique')}</ListeItemPolitique>
+                    <ListeItem 
+                    onMouseEnter={handleMouse(null, pointer)}
+                    onMouseLeave={handleMouse(null, cursor)}
+                    onClick={volume}>{t('volume')} {volumeOnOff ? "🔊" : "🔇"}</ListeItem>
+                    <ListeItem 
+                    onMouseEnter={handleMouse(null, pointer)}
+                    onMouseLeave={handleMouse(null, cursor)}
+                    onClick={musique}>{t('musique')} {musiqueOnOff ? "🎵" : "🎶"} </ListeItem>
+                    <ListeItem>
+                        <NavLink 
+                        onMouseEnter={handleMouse(null, pointer)}
+                        onMouseLeave={handleMouse(null, cursor)}
+                        onMouseDown={handleMouse(null, pointer)}
+                        onMouseUp={handleMouse(null, cursor)}
+                        to="/mention" aria-label="Page mention légale">
+                            {t('mentions')}
+                        </NavLink>
+                    </ListeItem>
+                    <ListeItem>
+                        <ButtonSwitchEnFr />
+                    </ListeItem>
+                    <ListeItemPolitique>
+                        <NavLink 
+                        onMouseEnter={handleMouse(null, pointer)}
+                        onMouseLeave={handleMouse(null, cursor)}
+                        onMouseDown={handleMouse(null, pointer)}
+                        onMouseUp={handleMouse(null, cursor)}
+                        to="/politique" aria-label="Page politique de confidentialité">
+                            {t('politique')}
+                        </NavLink>
+                    </ListeItemPolitique>
                 </ContainerListe>
             </Cadre>
         </>

@@ -12,6 +12,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import Page404 from "./pages/Page404";
 import Profil from "./pages/Profil";
 import { ToastContainer } from "react-toastify";
+import Politique from "./pages/Politique";
+import Mention from "./pages/Mention";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
@@ -62,6 +64,8 @@ function App() {
             <Route path="*" element={<Page404 />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/profil" element={<Profil />} />
+            <Route path="/politique" element={<Politique />} />
+            <Route path="/mention" element={<Mention />} />
           </Routes>
         </BackgroundWrapper>
       </MainContent>
