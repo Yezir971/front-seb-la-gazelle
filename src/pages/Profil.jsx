@@ -7,10 +7,20 @@ import cadre  from '../assets/img/cadre.png'
 import defaultUser from '../assets/img/default-user.png'
 import Sebi from "../Component/Sebi"
 import Cookies from "js-cookie";
+
+const breakpoints = {
+    mini: '430px',
+    mobile: '600px',
+    tablet: '900px',
+    medium: '1607px',
+}
+
+
 const ContainerProfil = styled.div`
     width:100vw;
     height:100vh;
     background:rgba(217, 217, 217, 0.4);
+    position:relative;
 `
 
 const ContainerInfoProfil = styled.div`
@@ -45,6 +55,12 @@ const CadreEdit = styled.div`
     text-align: center;
     flex-direction: column;
     margin:auto;
+    @media (max-width: ${breakpoints.tablet}) {
+        height: 60vh;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        height: 50vh;
+    }
 `
 const ContainerUser = styled.div`
     display:flex;
@@ -86,16 +102,38 @@ const ContainerPicture = styled.div`
     justify-content:center;
     flex-wrap:wrap;
     gap: 10px;
-    width:400px;
-    height:280px;
+    width:50%;
+    height:50%;
     padding-inline: 10px;
     overflow-y: scroll;
     scrollbar-color: #459107 #fff;
     scrollbar-width: auto;
-    img{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+    @media (max-width: ${breakpoints.tablet}) {
+        width:52%;
+        height:48%;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        height:40%;
+    }
+    @media (max-width: ${breakpoints.mini}) {
+       height:30%;
+    }
+`
+const Image = styled.img`
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    @media (max-width: ${breakpoints.tablet}) {
+        width: 80px;
+        height: 80px;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        width: 60px;
+        height: 60px;
+    }
+    @media (max-width: ${breakpoints.mini}) {
+        width: 50px;
+        height: 50px;
     }
 `
 const ReturnButton = styled.button`
@@ -325,7 +363,7 @@ const Profil = () => {
                                 >Retour</ReturnButton>
                                 <ContainerPicture>
                                     {avatar && avatar.pictures && avatar.pictures.map((element) => (
-                                        <img
+                                        <Image
                                             key={element.id}
                                             src={`https://orange-wolf-959534.hostingersite.com/${element.src}`}
                                             alt=""
