@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { CursorContext } from "../context/CursorContext"
 import LifeComponents from "./LifeComponents"
+import { GameContext } from "../context/GameContext"
 
 const breakpoints = {
   mobile: '600px',
@@ -149,13 +150,16 @@ const ContainerPointHealth = styled.div`
 
 const NavBarGame = ({ points, nbLife, nbLifeMin }) => {
   const { setCursorType, pointer, cursor } = useContext(CursorContext)
+  const { toggleGameModals } = useContext(GameContext);
 
   const handleMouse = (e, type) => () => setCursorType(type)
-
+  const returnToHome = () => {
+    toggleGameModals('closeGame')
+  }
   return (
     <Navbar role="navigation" aria-label="Game navigation bar">
         <ContainerIconReturn>
-            <NavLink to="/" aria-label="Retour à l'accueil">
+            <NavLink onClick={returnToHome} to="/" aria-label="Retour à l'accueil">
             <ImageSebi
                 onMouseEnter={handleMouse(null, pointer)}
                 onMouseLeave={handleMouse(null, cursor)}

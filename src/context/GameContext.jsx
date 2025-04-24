@@ -39,7 +39,7 @@ const GameContextProvider = (props) => {
         }
   return (
         <GameContext.Provider value={{gameModalState, toggleGameModals}}>
-                  {props.children}
+            {props.children}
         </GameContext.Provider>
   )
 }
