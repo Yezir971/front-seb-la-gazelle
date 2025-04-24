@@ -11,6 +11,7 @@ const ContainerProfil = styled.div`
     width:100vw;
     height:100vh;
     background:rgba(217, 217, 217, 0.4);
+    position:relative;
 `
 
 const ContainerInfoProfil = styled.div`

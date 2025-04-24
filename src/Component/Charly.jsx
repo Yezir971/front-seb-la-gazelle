@@ -26,7 +26,7 @@ const Image = styled.img`
 
 
 const ContaineAnimation = styled.div`
- display:flex;
+  display:flex;
   position:absolute;
   bottom:-30px;
   right:0px;
