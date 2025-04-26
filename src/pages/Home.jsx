@@ -16,6 +16,35 @@ const ContainerHome = styled.div`
     justify-content: center;
     align-items: center;
 `
+const ContainerSessionExpired = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const ContainerMessageExpired = styled.div`
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    button{
+        width: 200px;
+        height: 50px;
+        background-color: #EF910F;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+`
 
 const Home = () => {
     // on récupère le token dans le localStorage si il est présent sinon on créer une chaîne de caractère vide 
@@ -62,10 +91,12 @@ const Home = () => {
                 {/* ternaire pour gérer le cas ou l'utilsateur est déjà connecter  */}
             {
                 isLocalAuth !== "" && !auth  ? (
-                    <>
-                        <p>Votre session à expiré</p>
-                        <button onClick={deleteToken}>{t('revenirAccueil')}</button>
-                    </>
+                    <ContainerSessionExpired>
+                        <ContainerMessageExpired>
+                            <h1>{t('sessionExpiree')}</h1>
+                            <button onClick={deleteToken}>{t('revenirAccueil')}</button>
+                        </ContainerMessageExpired>
+                    </ContainerSessionExpired>
                 ):(
                     <>
                         <Navbar/>
