@@ -1,9 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import NavBarGame from "../Component/NavBarGame";
 import styled from "styled-components";
-// import screen from "../assets/img/charly-game/charly-game-1.png";
 import data from "../data/charlyGame.js";
-import imageCharly from "../assets/img/charly-full-body.webp";
 import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
 import { CursorContext } from "../context/CursorContext.jsx";

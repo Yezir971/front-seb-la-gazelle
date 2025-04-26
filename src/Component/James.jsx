@@ -1,6 +1,6 @@
 import Bubble from "./Bubble"
 import styled from "styled-components";
-import james from "../assets/img/james-full-body-without-fond.png"
+import james from "../assets/img/avatars/james-full-body-without-fond.webp"
 
 const breakpoints = {
     mobile: '600px',

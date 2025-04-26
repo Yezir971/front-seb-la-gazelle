@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { GameContext } from '../context/GameContext';
 import { NavLink } from 'react-router-dom'
-import ImageJamesGames from '../assets/img/imageJeuJames.png'
-import  arrowReturn  from "../assets/img/Vector-return.svg"
+import ImageJamesGames from '../assets/img/sub-backgroung/imageJeuJames.webp'
+import  arrowReturn  from "../assets/img/picto/Vector-return.svg"
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
 import { t } from "i18next";

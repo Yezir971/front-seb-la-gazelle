@@ -1,6 +1,6 @@
-import heartOpen from "../assets/img/vie/coeur-eyes-open.png"
-import heartClose from "../assets/img/vie/coeur-eyes-close.png"
-import heartDead from "../assets/img/vie/coeur-dead.png"
+import heartOpen from "../assets/img/vie/coeur-eyes-open.webp"
+import heartClose from "../assets/img/vie/coeur-eyes-close.webp"
+import heartDead from "../assets/img/vie/coeur-dead.webp"
 import styled from "styled-components"
 import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap";

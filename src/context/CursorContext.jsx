@@ -1,8 +1,8 @@
 import { createContext } from "react";
-import cursor from "../assets/img/cursor/cursor.png"
-import pointer from "../assets/img/cursor/cursor-pointer.png"
-import cursorGrabClose from "../assets/img/cursor/cursor-grab-close.png"
-import cursorGrabOpen from "../assets/img/cursor/cursor-grab-open.png"
+import cursor from "../assets/img/cursor/cursor.webp"
+import pointer from "../assets/img/cursor/cursor-pointer.webp"
+import cursorGrabClose from "../assets/img/cursor/cursor-grab-close.webp"
+import cursorGrabOpen from "../assets/img/cursor/cursor-grab-open.webp"
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap"
 import styled from "styled-components";

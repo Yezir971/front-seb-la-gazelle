@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { GameContext } from '../context/GameContext';
-import Charly from '../assets/img/charly-full-body.webp';
-import James from '../assets/img/james-full-body-without-fond.png';
+import Charly from '../assets/img/avatars/charly-full-body.webp';
+import James from '../assets/img/avatars/james-full-body-without-fond.webp';
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
 import Sebi from "../Component/Sebi"

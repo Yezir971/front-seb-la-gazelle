@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import iconSebi from "../assets/img/sebi_logo.png"
-import arrowReturn from "../assets/img/Vector-return.svg"
+import iconSebi from "../assets/img/sebi_logo.webp"
 import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { CursorContext } from "../context/CursorContext"

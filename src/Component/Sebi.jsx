@@ -2,11 +2,11 @@ import { useRef, useEffect, useContext, useState } from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 import styled from "styled-components";
-import head from "../assets/img/components-sebi/head.png";
-import headStart from "../assets/img/components-sebi/head-start.png";
-import body from "../assets/img/components-sebi/body.png";
-import ears from "../assets/img/components-sebi/ears.png";
-import tail from "../assets/img/components-sebi/taill.png";
+import head from "../assets/img/components-sebi/head.webp";
+import headStart from "../assets/img/components-sebi/head-start.webp";
+import body from "../assets/img/components-sebi/body.webp";
+import ears from "../assets/img/components-sebi/ears.webp";
+import tail from "../assets/img/components-sebi/taill.webp";
 
 import { CursorContext } from "../context/CursorContext";
 import Bubble from "./Bubble";

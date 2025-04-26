@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import imageCharly from "../assets/img/charly-full-body.webp";
+import imageCharly from "../assets/img/avatars/charly-full-body.webp";
 import Bubble from "./Bubble";
 
 const breakpoints = {

@@ -3,8 +3,8 @@ import { CursorContext } from "../context/CursorContext";
 import { AuthContext } from "../context/AuthContext";
 import NavBarProfil from "../Component/NavBarProfil";
 import styled from "styled-components";
-import cadre  from '../assets/img/cadre.png'
-import defaultUser from '../assets/img/default-user.png'
+import cadre  from '../assets/img/sub-backgroung/cadre.webp'
+import defaultUser from '../assets/img/sub-backgroung/default-user.webp'
 import Sebi from "../Component/Sebi"
 import Cookies from "js-cookie";
 const ContainerProfil = styled.div`

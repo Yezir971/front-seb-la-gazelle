@@ -2,7 +2,7 @@ import styled from "styled-components"
 import ReturnLogo from "../Component/ReturnLogo"
 import { AudioContext } from "../context/AudioContext"
 import { useContext } from "react"
-import cadre  from '../assets/img/cadre.png'
+import cadre  from '../assets/img/sub-backgroung/cadre.webp'
 import { CursorContext } from "../context/CursorContext"
 import ButtonSwitchEnFr from "../Component/ButtonSwitchEnFr"
 import { useTranslation } from "react-i18next";

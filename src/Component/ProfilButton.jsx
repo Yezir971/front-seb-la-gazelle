@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CursorContext } from "../context/CursorContext";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from 'react-router-dom'
-import defaultUser from '../assets/img/default-user.png'
+import defaultUser from '../assets/img/sub-backgroung/default-user.webp'
 import styled from "styled-components";
 const ProfileButtonContainer = styled.button`
   background: #EF910F;

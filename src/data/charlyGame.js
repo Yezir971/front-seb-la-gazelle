@@ -1,8 +1,8 @@
-import screen1 from "../assets/img/charly-game/charly-game-1.png";
-import screen2 from "../assets/img/charly-game/charly-game-2.png";
-import screen3 from "../assets/img/charly-game/charly-game-3.png";
-import screen4 from "../assets/img/charly-game/charly-game-4.png";
-import screen5 from "../assets/img/charly-game/charly-game-5.png";
+import screen1 from "../assets/img/charly-game/charly-game-1.webp";
+import screen2 from "../assets/img/charly-game/charly-game-2.webp";
+import screen3 from "../assets/img/charly-game/charly-game-3.webp";
+import screen4 from "../assets/img/charly-game/charly-game-4.webp";
+import screen5 from "../assets/img/charly-game/charly-game-5.webp";
 
 const data = [
     {

@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import NatureBackground from "../assets/img/Nature_Vector_Backgrounds.png";
-import ChameleonBackground from "../assets/img/background-charly-le-cameleon.png";
-import HibouBackground from "../assets/img/background_james_hibou.png";
+import NatureBackground from "../assets/img/background/Nature_Vector_Backgrounds.webp";
+import ChameleonBackground from "../assets/img/background/background-charly-le-cameleon.webp";
+import HibouBackground from "../assets/img/background/background_james_hibou.webp";
 const PageBackground = styled.div`
   background-image: ${({ $background }) => $background } ;
   height:100vh;

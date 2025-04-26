@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import iconSebi from "../assets/img/sebi_logo.png"
+import iconSebi from "../assets/img/sebi_logo.webp"
 import { CursorContext } from "../context/CursorContext";
 import { GameContext } from "../context/GameContext";
 import { NavLink } from "react-router-dom";

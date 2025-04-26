@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import TimmerComponent from "../Component/TimmerComponent";
 import gsap from "gsap";
-import imageJamesTheHowl from "../assets/img/james-full-body-without-fond.png"
 import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
 import { CursorContext } from "../context/CursorContext";
-import { t } from "i18next";
 import EndGame from "../Component/EndGame";
 import James from "../Component/James";
 import Sebi from "../Component/Sebi";
