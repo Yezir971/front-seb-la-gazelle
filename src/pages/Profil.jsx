@@ -7,7 +7,16 @@ import cadre  from '../assets/img/sub-backgroung/cadre.webp'
 import defaultUser from '../assets/img/sub-backgroung/default-user.webp'
 import Sebi from "../Component/Sebi"
 import Cookies from "js-cookie";
-const ContainerProfil = styled.div`
+
+const breakpoints = {
+    mini: '430px',
+    mobile: '600px',
+    tablet: '900px',
+    medium: '1607px',
+}
+
+
+const Container = styled.div`
     width:100vw;
     height:100vh;
     background:rgba(217, 217, 217, 0.4);
@@ -19,6 +28,21 @@ const ContainerInfoProfil = styled.div`
     grid-template-columns:2fr 4fr;
     justify-content:center;
     align-items:center;
+    @media (max-width: ${breakpoints.mobile}) {
+        grid-template-columns:2fr 2fr;
+    }
+    @media (max-width: ${breakpoints.tablet}) {
+        margin-inline: 10vw;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        margin-inline: 15vw;
+    }
+`
+const ContainerProfil = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
 `
 const Cadre = styled.div`
     width: 90vw;
@@ -32,6 +56,12 @@ const Cadre = styled.div`
     align-items: center;
     text-align: center;
     margin:auto;
+    @media (max-width: ${breakpoints.tablet}) {
+        height: 60vh;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        height: 50vh;
+    }
 `
 const CadreEdit = styled.div`
     width: 90vw;
@@ -46,18 +76,51 @@ const CadreEdit = styled.div`
     text-align: center;
     flex-direction: column;
     margin:auto;
+    @media (max-width: ${breakpoints.tablet}) {
+        height: 60vh;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        height: 50vh;
+    }
 `
 const ContainerUser = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media (max-width: ${breakpoints.tablet}) {
+        h2{
+            font-size: 20px;
+        }
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        h2{
+            font-size: 15px;
+        }
+    }
+    @media (max-width: ${breakpoints.mini}) {
+        h2{
+            font-size: 10px;
+        }
+    }
 `
 const ContainerAvatar = styled.div`
     width: 300px;
     height: 300px;
     border-radius: 50%;
     position: relative;
+    @media (max-width: ${breakpoints.tablet}) {
+        width: 200px;
+        height: 200px;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        width: 150px;
+        height: 150px;
+    }
+    @media (max-width: ${breakpoints.mini}) {
+        width: 100px;
+        height: 100px;
+    }
 `
 const EditButton = styled.button`
     position: absolute;
@@ -68,6 +131,20 @@ const EditButton = styled.button`
     background: #EF910F;
     color: #fff;
     padding: 5px;
+    @media (max-width: ${breakpoints.tablet}) {
+        top: 46%;
+        right: 32%;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        width: 60px;
+        font-size: 11px;
+    }
+    @media (max-width: ${breakpoints.mini}) {
+        top: 42%;
+        right: 24%;
+        width: 50px;
+        font-size: 9px;
+    }
 `
 const Avatar= styled.img`
     width: 100%;
@@ -87,16 +164,38 @@ const ContainerPicture = styled.div`
     justify-content:center;
     flex-wrap:wrap;
     gap: 10px;
-    width:400px;
-    height:280px;
+    width:50%;
+    height:50%;
     padding-inline: 10px;
     overflow-y: scroll;
     scrollbar-color: #459107 #fff;
     scrollbar-width: auto;
-    img{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+    @media (max-width: ${breakpoints.tablet}) {
+        width:52%;
+        height:48%;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        height:40%;
+    }
+    @media (max-width: ${breakpoints.mini}) {
+       height:30%;
+    }
+`
+const Image = styled.img`
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    @media (max-width: ${breakpoints.tablet}) {
+        width: 80px;
+        height: 80px;
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        width: 60px;
+        height: 60px;
+    }
+    @media (max-width: ${breakpoints.mini}) {
+        width: 50px;
+        height: 50px;
     }
 `
 const ReturnButton = styled.button`
@@ -117,6 +216,7 @@ const Score = styled.div`
     width: 400px;
     h2{
         margin-bottom: 10px;
+        font-size: 18px;
     }
     div{
         display: flex;
@@ -130,6 +230,39 @@ const Score = styled.div`
         width: 300px;
         p{
             margin-bottom: 5px;
+        }
+    }
+    @media (max-width: ${breakpoints.tablet}) {
+        h2{
+            font-size: 13px;
+        }
+        div{
+            width: 200px;
+            p{
+                font-size: 10px;
+            }
+        }
+    }
+    @media (max-width: ${breakpoints.mobile}) {
+        h2{
+            font-size: 10px;
+        }
+        div{
+            width: 150px;
+            p{
+                font-size: 8px;
+            }
+        }
+    }
+    @media (max-width: ${breakpoints.mini}) {
+        h2{
+            font-size: 8px;
+        }
+        div{
+            width: 100px;
+            p{
+                font-size: 6px;
+            }
         }
     }
 `
@@ -261,59 +394,59 @@ const Profil = () => {
         }
     } 
     return (
-        <ContainerProfil>
+        <Container>
             <NavBarProfil />
             {!isLoading && user ?
                 <ContainerInfoProfil>
                     {!edit ?
-                        <>
-                        <ContainerUser>
-                            <ContainerAvatar>
-                                {user.avatar == null ? <Avatar src={defaultUser} alt="avatar"/> : <Avatar src={`https://orange-wolf-959534.hostingersite.com/${user.avatar.src}`} alt="avatar"/>}
-                                <EditButton 
-                                    onClick={handleEdit}
-                                    onMouseEnter={() => setCursorType(pointer)}
-                                    onMouseLeave={() => setCursorType(cursor)} 
-                                    onMouseDown={() => setCursorType(pointer)}
-                                    onMouseUp={() => setCursorType(cursor)} 
-                                >Modifier</EditButton>
-                            </ContainerAvatar>
-                            <h2>{user.name}</h2>
-                        </ContainerUser>
-                        <Cadre>
-                            {score ?
-                                <div>
-                                    <Score>
-                                        <h2>Total score James le hiboux:</h2>
-                                        <div>
-                                            {totalScoreForJamesGame()  &&
-                                                <p>Total des scores : {totalScoreForJamesGame()} pts</p>
-                                            }
-                                            {bestScoreForJamesGame() &&
-                                                <p>Meilleur score : {bestScoreForJamesGame()} pts</p>
-                                            }
-                                        </div>
-                                    </Score>
-                                    <Score>
-                                        <h2>Total score Charly le caméléon:</h2>
-                                        <div>
-                                            {totalScoreForCharlyGame() &&
-                                                <p>Total des scores : {totalScoreForCharlyGame()} pts</p>
-                                            }
-                                            {bestScoreForCharlyGame() &&
-                                                <p>Meilleur score : {bestScoreForCharlyGame()} pts</p>
-                                            }
-                                        </div>
-                                    </Score>
-                                </div>
-                                :   
-                                <div>
-                                    <h2>Score</h2>
-                                    <p>Joue à des jeux pour avoir tes scores</p>  
-                                </div>
-                            }
-                        </Cadre>
-                        </>
+                        <ContainerProfil>
+                            <ContainerUser>
+                                <ContainerAvatar>
+                                    {user.avatar == null ? <Avatar src={defaultUser} alt="avatar"/> : <Avatar src={`https://orange-wolf-959534.hostingersite.com/${user.avatar.src}`} alt="avatar"/>}
+                                    <EditButton 
+                                        onClick={handleEdit}
+                                        onMouseEnter={() => setCursorType(pointer)}
+                                        onMouseLeave={() => setCursorType(cursor)} 
+                                        onMouseDown={() => setCursorType(pointer)}
+                                        onMouseUp={() => setCursorType(cursor)} 
+                                    >Modifier</EditButton>
+                                </ContainerAvatar>
+                                <h2>{user.name}</h2>
+                            </ContainerUser>
+                            <Cadre>
+                                {score ?
+                                    <div>
+                                        <Score>
+                                            <h2>Total score James le hiboux:</h2>
+                                            <div>
+                                                {totalScoreForJamesGame()  &&
+                                                    <p>Total des scores : {totalScoreForJamesGame()} pts</p>
+                                                }
+                                                {bestScoreForJamesGame() &&
+                                                    <p>Meilleur score : {bestScoreForJamesGame()} pts</p>
+                                                }
+                                            </div>
+                                        </Score>
+                                        <Score>
+                                            <h2>Total score Charly le caméléon:</h2>
+                                            <div>
+                                                {totalScoreForCharlyGame() &&
+                                                    <p>Total des scores : {totalScoreForCharlyGame()} pts</p>
+                                                }
+                                                {bestScoreForCharlyGame() &&
+                                                    <p>Meilleur score : {bestScoreForCharlyGame()} pts</p>
+                                                }
+                                            </div>
+                                        </Score>
+                                    </div>
+                                    :   
+                                    <div>
+                                        <h2>Score</h2>
+                                        <p>Joue à des jeux pour avoir tes scores</p>  
+                                    </div>
+                                }
+                            </Cadre>
+                        </ContainerProfil>
                       :
                         <ContainerEdit>
                             <CadreEdit>
@@ -326,7 +459,7 @@ const Profil = () => {
                                 >Retour</ReturnButton>
                                 <ContainerPicture>
                                     {avatar && avatar.pictures && avatar.pictures.map((element) => (
-                                        <img
+                                        <Image
                                             key={element.id}
                                             src={`https://orange-wolf-959534.hostingersite.com/${element.src}`}
                                             alt=""
@@ -344,7 +477,7 @@ const Profil = () => {
                 : <p>Chargement...</p>
             }
             <Sebi replique="sebiProfil" repliqueSound="sebiReplique9"/>
-        </ContainerProfil>
+        </Container>
     );
 }
 
