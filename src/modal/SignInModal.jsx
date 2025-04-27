@@ -118,6 +118,12 @@ function SignInModal() {
                         <ContainerFormButton 
 
                         className="containerFormButton">
+                            <input 
+                                onMouseEnter={() => setCursorType(pointer)}
+                                onMouseLeave={() => setCursorType(cursor)} 
+                                onMouseDown={() => setCursorType(pointer)}
+                                onMouseUp={() => setCursorType(cursor)} 
+                            type="submit" value={t('seConnecter')} className="formButton"/>
                             <ForgotMdpButton
                                 onMouseEnter={() => setCursorType(pointer)}
                                 onMouseLeave={() => setCursorType(cursor)} 
@@ -125,12 +131,6 @@ function SignInModal() {
                                 onMouseUp={() => setCursorType(cursor)} 
                                 onClick={()=> toggleModals("changePassword")}
                             >{t('resetPassword')}</ForgotMdpButton>
-                            <input 
-                                onMouseEnter={() => setCursorType(pointer)}
-                                onMouseLeave={() => setCursorType(cursor)} 
-                                onMouseDown={() => setCursorType(pointer)}
-                                onMouseUp={() => setCursorType(cursor)} 
-                            type="submit" value={t('seConnecter')} className="formButton"/>
                         </ContainerFormButton>
                     </form>
                 </div>
