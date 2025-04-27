@@ -43,7 +43,7 @@ function SignInModal() {
         // On défini le body de notre requete ici 
         let body = {
             "email": refName.current.value ,
-            "password": refPassword.current.value
+            "password": refPassword.current.value,
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {

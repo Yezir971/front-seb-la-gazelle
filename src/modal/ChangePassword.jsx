@@ -52,7 +52,8 @@ const ChangePassword = () => {
         e.preventDefault()
         // On défini le body de notre requete ici 
         let body = {
-            "email": email 
+            "email": email,
+            "lang": localStorage.getItem("lang") ? localStorage.getItem("lang") : "fr"
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {

@@ -27,7 +27,8 @@ function SignUpModal() {
         let body = {
             "username": refName.current.value ,
             "email": refEmail.current.value ,
-            "password": refPassword.current.value
+            "password": refPassword.current.value,
+            "lang": localStorage.getItem("lang") ? localStorage.getItem("lang") : "fr"
         }
         // on essaye d'envoyer le body avec la fonction send du hooks useFetch 
         try {
@@ -35,6 +36,19 @@ function SignUpModal() {
             setResponseApi(response)
             
             setData(response.data)
+            if (data && !data.violations) {
+                toast.success(t('successSignUp'), {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Slide,
+                });
+            }
         } catch (error) {
             console.log(`erreur de l'api : ${error}`)
             // setResponseApi(error)

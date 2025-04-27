@@ -122,6 +122,7 @@ const resources = {
             errorEmailUserUsedForm: "This email address is already in use.",
             errorPasswordUserEmptyForm: "The user's password cannot be empty.",
             errorPasswordUserSyntaxeForm: "The password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.",
+            successSignUp: "An activation email has been sent to you.",
             // reset du mot de passe 
             resetPassword: "I've forgotten my password.",
             send:"send",
@@ -215,6 +216,7 @@ const resources = {
             errorEmailUserUsedForm:"Cette adresse email est déjà utilisée.",
             errorPasswordUserEmptyForm: "Le mot de passe de l'utilisateur ne peut pas être vide.",
             errorPasswordUserSyntaxeForm:"Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.",
+            successSignUp: "Un mail d'activation vous a été envoyé.",
             // reset du mot de passe 
             resetPassword: "J'ai oublié mon mot de passe.",
             send:"Envoyer",
