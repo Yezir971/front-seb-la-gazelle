@@ -5,6 +5,7 @@ import ImageCharlyGame from "../assets/img/charly-game/charly-game-1.webp";
 import  arrowReturn  from "../assets/img/picto/Vector-return.svg"
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
+import { LvlGameContext } from '../context/LvlGameContext';
 import { t } from "i18next";
 import Sebi from "../Component/Sebi"
 const Arrow = styled.img`
@@ -30,14 +31,31 @@ const Container = styled.div`
     height:95vh;
   }
 `
-
+const LevelGame = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+`
 
 const CharlyGameModal = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);
   // const {ResetCursor} = useContext(CursorContext)
   // ResetCursor()
   const { setCursorType, pointer, cursor } = useContext(CursorContext);
+  const { nbLife, setNbLife } = useContext(LvlGameContext);
 
+  const getButtonStyle = (level) => ({
+    backgroundColor: nbLife === level ? 'orange' : 'gray',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 20px',
+    fontSize: '1.5rem',
+    margin: '10px',
+  });
+  
   return (
     <>
       {gameModalState.CharlyGameModal && (  
@@ -55,6 +73,34 @@ const CharlyGameModal = () => {
               </NavLink>        
             </ContainerArrowLink>
             <img src={ImageCharlyGame} alt="aperçu du jeu de Charly le caméléon" className='pictureGame' draggable="false"/>
+            <LevelGame>
+              <div className='containerLevelGame'>
+                <h2 className='titleLevelGame'> {t('choisir_niveau')} </h2>
+                <div className='containerButtonLevel'>
+                  <button 
+                    style={getButtonStyle(5)}
+                    onMouseEnter={() => setCursorType(pointer)}
+                    onMouseLeave={() => setCursorType(cursor)} 
+                    onMouseDown={() => setCursorType(pointer)}
+                    onMouseUp={() => setCursorType(cursor)} 
+                    onClick={() => setNbLife(5)}> {t('facile')} </button>
+                  <button 
+                    style={getButtonStyle(4)} 
+                    onMouseEnter={() => setCursorType(pointer)}
+                    onMouseLeave={() => setCursorType(cursor)} 
+                    onMouseDown={() => setCursorType(pointer)}
+                    onMouseUp={() => setCursorType(cursor)} 
+                    onClick={() => setNbLife(4)}> {t('moyen')} </button>
+                  <button 
+                    style={getButtonStyle(3)} 
+                    onMouseEnter={() => setCursorType(pointer)}
+                    onMouseLeave={() => setCursorType(cursor)} 
+                    onMouseDown={() => setCursorType(pointer)}
+                    onMouseUp={() => setCursorType(cursor)} 
+                    onClick={() => setNbLife(3)}> {t('difficile')} </button>
+                </div>
+              </div>
+            </LevelGame>
             <button 
             onMouseEnter={() => setCursorType(pointer)} 
             onMouseLeave={() => setCursorType(cursor)} 

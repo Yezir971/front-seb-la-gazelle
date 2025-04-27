@@ -5,6 +5,7 @@ import data from "../data/charlyGame.js";
 import TimmerComponent from "../Component/TimmerComponent.jsx";
 import { TimerContext } from "../context/TimerContext.jsx";
 import { CursorContext } from "../context/CursorContext.jsx";
+import { LvlGameContext } from "../context/LvlGameContext.jsx";
 import { t } from "i18next";
 import EndGame from "../Component/EndGame.jsx";
 import Charly from "../Component/Charly.jsx";
@@ -85,8 +86,7 @@ const CharlyGames = () => {
     const [interactScore, setInteractScore] = useState('')
     const [isFirstAnser, setIsFirstAnser] = useState(false)
     const [nbLifeMin, setNbLifeMin] = useState(0)
-    const [nbLife, setNbLife] = useState(3)
-
+    const {nbLife} = useContext(LvlGameContext)
     const {time, setTime} = useContext(TimerContext)
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
 

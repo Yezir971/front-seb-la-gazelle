@@ -267,16 +267,6 @@
     border-bottom: 13px solid transparent;
   }
 
-
-
-
-
-
-
-
-
-
-
 /*
     Style de modal de jeu
 */
@@ -320,3 +310,33 @@
     }
 }
 
+/* lvlgame */
+
+.containerLevelGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .titleLevelGame {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .containerButtonLevel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttonLevel {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }

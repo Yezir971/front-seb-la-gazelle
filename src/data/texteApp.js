@@ -86,6 +86,10 @@ const resources = {
             jamesgames: "Here you can earn points by answering calculations!",
             charlygames: "Here you can earn points by finding Charly's hiding place!",
             sessionExpiree:"Session expired",
+            facile:"Easy",
+            moyen:"Medium",
+            difficile:"Hard",
+            choisir_niveau:"Choose difficulty",
             // voix
             // sebi 
             sebiReplique1: sebiReplique1En,
@@ -175,6 +179,10 @@ const resources = {
             jamesgames: "Ici tu vas pouvoir gagner des points en répondant à des calculs !",
             charlygames: "Ici tu vas pouvoir gagner des points en trouvant la cachette de Charly !",
             sessionExpiree: "Votre session a expiré",
+            facile:"Facile",
+            moyen:"Moyen",
+            difficile:"Difficile",
+            choisir_niveau:"Choisir la difficulté",
             // voix
             // sebi 
             sebiReplique1: sebiReplique1Fr,

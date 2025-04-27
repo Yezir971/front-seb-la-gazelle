@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { TimerContext } from "../context/TimerContext";
 import NavBarGame from "../Component/NavBarGame";
 import { CursorContext } from "../context/CursorContext";
+import { LvlGameContext } from "../context/LvlGameContext";
 import EndGame from "../Component/EndGame";
 import James from "../Component/James";
 import Sebi from "../Component/Sebi";
@@ -109,7 +110,8 @@ const JamesGame = () => {
     const [firstAnswer, setFirstAnswer] = useState(true);
     const [countAnswer, setCountAnswer] = useState(0);
     const [nbLifeMin, setNbLifeMin] = useState(0)
-    const [nbLife, setNbLife] = useState(3)
+    const { nbLife } = useContext(LvlGameContext);
+    
     const {time, messageTimer, setTime} = useContext(TimerContext);
     const { setCursorType, pointer, cursor } = useContext(CursorContext);
     // Generate a random question

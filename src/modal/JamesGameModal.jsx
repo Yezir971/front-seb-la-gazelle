@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { GameContext } from '../context/GameContext';
 import { NavLink } from 'react-router-dom'
 import ImageJamesGames from '../assets/img/sub-backgroung/imageJeuJames.webp'
 import  arrowReturn  from "../assets/img/picto/Vector-return.svg"
 import styled from 'styled-components';
 import { CursorContext } from '../context/CursorContext';
+import { LvlGameContext } from '../context/LvlGameContext';
 import { t } from "i18next";
 import Sebi from "../Component/Sebi"
 const Arrow = styled.img`
@@ -31,9 +32,30 @@ const Container = styled.div`
 
   }
 `
+const LevelGame = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+`
+
+
+
 const JamesGameModal = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);
   const { setCursorType, pointer, cursor } = useContext(CursorContext);
+  const { nbLife, setNbLife } = useContext(LvlGameContext);
+  
+  const getButtonStyle = (level) => ({
+    backgroundColor: nbLife === level ? 'orange' : 'gray',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 20px',
+    fontSize: '1.5rem',
+    margin: '10px',
+  });
 
   return (
     <>
@@ -51,6 +73,34 @@ const JamesGameModal = () => {
             </NavLink>        
           </ContainerArrowLink>
           <img className='pictureGame' src={ImageJamesGames} alt="jeu de James" draggable="false"/>
+          <LevelGame>
+            <div className='containerLevelGame'>
+              <h2 className='titleLevelGame'> {t('choisir_niveau')} </h2>
+              <div className='containerButtonLevel'>
+                <button 
+                  style={getButtonStyle(5)}
+                  onMouseEnter={() => setCursorType(pointer)}
+                  onMouseLeave={() => setCursorType(cursor)} 
+                  onMouseDown={() => setCursorType(pointer)}
+                  onMouseUp={() => setCursorType(cursor)} 
+                  onClick={() => setNbLife(5)}> {t('facile')} </button>
+                <button 
+                  style={getButtonStyle(4)} 
+                  onMouseEnter={() => setCursorType(pointer)}
+                  onMouseLeave={() => setCursorType(cursor)} 
+                  onMouseDown={() => setCursorType(pointer)}
+                  onMouseUp={() => setCursorType(cursor)} 
+                  onClick={() => setNbLife(4)}> {t('moyen')} </button>
+                <button 
+                  style={getButtonStyle(3)} 
+                  onMouseEnter={() => setCursorType(pointer)}
+                  onMouseLeave={() => setCursorType(cursor)} 
+                  onMouseDown={() => setCursorType(pointer)}
+                  onMouseUp={() => setCursorType(cursor)} 
+                  onClick={() => setNbLife(3)}> {t('difficile')} </button>
+              </div>
+            </div>
+          </LevelGame>
           <button className='boutonPlayGame'>
             <NavLink 
             onMouseEnter={() => setCursorType(pointer)}

@@ -11,6 +11,7 @@ import AudioContextProvider from './context/AudioContext';
 import CursorContextProvider from './context/CursorContext';
 import AuthContextProvider from './context/AuthContext';
 import LanguageProvider from './context/LanguageContext';
+import LvlGameProvider from './context/LvlGameContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,7 +24,9 @@ root.render(
               <CursorContextProvider>
                 <AuthContextProvider>
                   <LanguageProvider>
-                    <App />
+                    <LvlGameProvider>
+                      <App />
+                    </LvlGameProvider>
                   </LanguageProvider>
                 </AuthContextProvider>
               </CursorContextProvider>
