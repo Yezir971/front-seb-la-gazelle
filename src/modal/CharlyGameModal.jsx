@@ -12,8 +12,8 @@ const Arrow = styled.img`
   width:30px;
   height:30px;
   position:absolute;
-  top:10px;
-  left:43px;
+  top:0px;
+  left:0px;
 
 `
 const ContainerArrowLink = styled.div`
@@ -38,7 +38,25 @@ const LevelGame = styled.div`
   flex-direction: column;
   margin-top: 20px;
 `
-
+const ContainerButtonLevel = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const ButtonLevel = styled.button`
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    margin: 10px;
+    @media (max-width: 768px) {
+        padding: 5px 10px;
+    }    
+    @media (max-width: 400px) {
+        font-size: 1rem;
+    }
+`
 const CharlyGameModal = () => {
   const {gameModalState, toggleGameModals } = useContext(GameContext);
   // const {ResetCursor} = useContext(CursorContext)
@@ -48,12 +66,6 @@ const CharlyGameModal = () => {
 
   const getButtonStyle = (level) => ({
     backgroundColor: nbLife === level ? 'orange' : 'gray',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    padding: '10px 20px',
-    fontSize: '1.5rem',
-    margin: '10px',
   });
   
   return (
@@ -76,29 +88,29 @@ const CharlyGameModal = () => {
             <LevelGame>
               <div className='containerLevelGame'>
                 <h2 className='titleLevelGame'> {t('choisir_niveau')} </h2>
-                <div className='containerButtonLevel'>
-                  <button 
+                <ContainerButtonLevel>
+                  <ButtonLevel 
                     style={getButtonStyle(5)}
                     onMouseEnter={() => setCursorType(pointer)}
                     onMouseLeave={() => setCursorType(cursor)} 
                     onMouseDown={() => setCursorType(pointer)}
                     onMouseUp={() => setCursorType(cursor)} 
-                    onClick={() => setNbLife(5)}> {t('facile')} </button>
-                  <button 
+                    onClick={() => setNbLife(5)}> {t('facile')} </ButtonLevel>
+                  <ButtonLevel 
                     style={getButtonStyle(4)} 
                     onMouseEnter={() => setCursorType(pointer)}
                     onMouseLeave={() => setCursorType(cursor)} 
                     onMouseDown={() => setCursorType(pointer)}
                     onMouseUp={() => setCursorType(cursor)} 
-                    onClick={() => setNbLife(4)}> {t('moyen')} </button>
-                  <button 
+                    onClick={() => setNbLife(4)}> {t('moyen')} </ButtonLevel>
+                  <ButtonLevel 
                     style={getButtonStyle(3)} 
                     onMouseEnter={() => setCursorType(pointer)}
                     onMouseLeave={() => setCursorType(cursor)} 
                     onMouseDown={() => setCursorType(pointer)}
                     onMouseUp={() => setCursorType(cursor)} 
-                    onClick={() => setNbLife(3)}> {t('difficile')} </button>
-                </div>
+                    onClick={() => setNbLife(3)}> {t('difficile')} </ButtonLevel>
+                </ContainerButtonLevel>
               </div>
             </LevelGame>
             <button 

@@ -2,7 +2,7 @@ import gsap from "gsap";
 // plugin pour l'animation du texte
 import { TextPlugin } from "gsap/TextPlugin";
 import { t } from "i18next";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import AudioPlayer from "./AudioPlayer";
 gsap.registerPlugin(TextPlugin);
@@ -40,6 +40,13 @@ const Bubble = ({guili, replique,repliqueSound}) => {
             duration: 2,
             text: t(replique),
             ease: "none",
+            onComplete: () => {
+                setTimeout(() => {
+                    if (textBubbleRef.current) {
+                        textBubbleRef.current.style.display = "none";
+                    }
+                }, 2000);
+            },
         });
     }, [])
     return(
