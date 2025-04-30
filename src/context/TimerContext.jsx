@@ -8,9 +8,9 @@ const TimerContextProvider = (props) => {
 
     let [time, setTime] = useState(60)
     let [messageTimer, setMessageTimer] = useState("")
-    useEffect(() => {
-        setTime(60)
-    }, [])
+    // useEffect(() => {
+    //     setTime(60)
+    // }, [])
     useEffect( () => {
         let cleanUp = setTimeout(() => {
             setTime(time-1)

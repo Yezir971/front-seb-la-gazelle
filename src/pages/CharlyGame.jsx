@@ -22,15 +22,16 @@ const PictureContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top:3rem;
-  padding: 20px;
-  width:60vh;
+  padding: 20px 0px;
+  // width:60vh;
+  width:clamp(320px, 100%, 60vh);
   margin:20px auto;
 `
 
 const PictureGameCharly = styled.img`
   width: 100%;
   max-width: 800px;
-  // height: auto;
+  height: auto;
   object-fit: contain;
   cursor: pointer;
   margin:-40px auto;
@@ -43,10 +44,6 @@ const ContainerGame = styled.div`
   height:82vh;
 `
 const ContainerTimer = styled.div`
-  // position:absolute;
-  // right:15px;
-  // bottom:0px;
-  // left:0px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -73,7 +70,6 @@ const ContainerCharlyTimer = styled.div`
 `
 const Container = styled.div`
   display:grid;
-  grid-template:row;
   gap:10px;
 
 `
@@ -147,7 +143,8 @@ const CharlyGames = () => {
 
               
 
-              {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
+              {/* {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? ( */}
+              {true ? (
                 <Container>
                   <PictureContainer>
                       <PictureGameCharly 

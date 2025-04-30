@@ -76,7 +76,7 @@ export default function EndGame({score, nameGame}) {
 
             <RetryAgain 
             className="disconnectButton" 
-            onClick={handleReplay}
+            onClick={()=> handleReplay()}
             onMouseEnter={() => setCursorType(pointer)}
             onMouseLeave={() => setCursorType(cursor)} 
             onMouseDown={() => setCursorType(pointer)}
