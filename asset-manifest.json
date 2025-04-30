@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.78c12235.css",
-    "main.js": "/static/js/main.3465b36d.js",
+    "main.js": "/static/js/main.c9e28ee5.js",
     "static/media/sebi-la-gazelle-sound.mp3": "/static/media/sebi-la-gazelle-sound.d87d1882ede6f1e1961c.mp3",
-    "static/media/mel_la_marmotte.svg": "/static/media/mel_la_marmotte.9edac2b3c6d616ce0a59ae35419a8ea6.svg",
+    "static/media/mel_la_marmotte.svg": "/static/media/mel_la_marmotte.0c4bf37f06b01932058bfb0eaf05bf5d.svg",
     "static/media/sebi-la-gazelle_mixage.wav": "/static/media/sebi-la-gazelle_mixage.936887d15f3ab0ef5fb4.wav",
     "static/media/sebi-la-gazelle2_mixage.wav": "/static/media/sebi-la-gazelle2_mixage.958de3338b1b8b1ed34c.wav",
     "static/media/charly-game-3.webp": "/static/media/charly-game-3.2698da8f9404629edb09.webp",
@@ -33,12 +33,12 @@
     "static/media/coeur-dead.webp": "/static/media/coeur-dead.f57fd8d2741e5eac1ef5.webp",
     "static/media/cursor.webp": "/static/media/cursor.4697ce570f7c39127304.webp",
     "index.html": "/index.html",
-    "static/media/Vector-return.svg": "/static/media/Vector-return.8dd4469d1ef1025a3ed81d706573c9ee.svg",
+    "static/media/Vector-return.svg": "/static/media/Vector-return.75783eac89bb6ebc54180040aa8dabbf.svg",
     "main.78c12235.css.map": "/static/css/main.78c12235.css.map",
-    "main.3465b36d.js.map": "/static/js/main.3465b36d.js.map"
+    "main.c9e28ee5.js.map": "/static/js/main.c9e28ee5.js.map"
   },
   "entrypoints": [
     "static/css/main.78c12235.css",
-    "static/js/main.3465b36d.js"
+    "static/js/main.c9e28ee5.js"
   ]
 }
