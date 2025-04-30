@@ -143,8 +143,7 @@ const CharlyGames = () => {
 
               
 
-              {/* {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? ( */}
-              {true ? (
+              {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
                 <Container>
                   <PictureContainer>
                       <PictureGameCharly 
