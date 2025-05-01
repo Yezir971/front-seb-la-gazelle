@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.78c12235.css",
-    "main.js": "/static/js/main.a9c137b2.js",
+    "main.js": "/static/js/main.1f66506e.js",
     "static/media/sebi-la-gazelle-sound.mp3": "/static/media/sebi-la-gazelle-sound.d87d1882ede6f1e1961c.mp3",
     "static/media/mel_la_marmotte.svg": "/static/media/mel_la_marmotte.0c4bf37f06b01932058bfb0eaf05bf5d.svg",
     "static/media/sebi-la-gazelle_mixage.wav": "/static/media/sebi-la-gazelle_mixage.936887d15f3ab0ef5fb4.wav",
@@ -35,10 +35,10 @@
     "index.html": "/index.html",
     "static/media/Vector-return.svg": "/static/media/Vector-return.75783eac89bb6ebc54180040aa8dabbf.svg",
     "main.78c12235.css.map": "/static/css/main.78c12235.css.map",
-    "main.a9c137b2.js.map": "/static/js/main.a9c137b2.js.map"
+    "main.1f66506e.js.map": "/static/js/main.1f66506e.js.map"
   },
   "entrypoints": [
     "static/css/main.78c12235.css",
-    "static/js/main.a9c137b2.js"
+    "static/js/main.1f66506e.js"
   ]
 }
