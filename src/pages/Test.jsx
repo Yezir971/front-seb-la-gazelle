@@ -3,6 +3,7 @@ import gsap from "gsap";
 // plugin pour l'animation du texte
 import { TextPlugin } from "gsap/TextPlugin";
 import LifeComponents from "../Component/LifeComponents";
+import EndGame from "../Component/EndGame";
 gsap.registerPlugin(TextPlugin);
 
 const Test = () => {
@@ -14,12 +15,12 @@ const Test = () => {
         setNbLifeMin((prev) => prev+1)
     }
   }
-
+  let score = 16
   return (
     <>
         
 
-      {/* <EndGame nameGame="james le hiboux" score={score}/> */}
+      <EndGame nameGame="james le hiboux" score={score}/>
       <LifeComponents nbLifeMin={nbLifeMin} nbLife={nbLife} />
       <button onClick={minHeart}  >
         {nbLifeMin}
