@@ -129,6 +129,8 @@ const resources = {
             sendMail: "Send me an e-mail to change my password.",
             errorMailReset:"The e-mail address does not exist.",
             emailSendSuccess:"An e-mail has been sent to you.",
+            // message landscape
+            messageLandScape:"Turn your camera to portrait mode",
         }
     },
     fr: {
@@ -223,6 +225,8 @@ const resources = {
             sendMail: "Envoyer un mail pour changer mon mot de passe.",
             errorMailReset:"L'adresse e-mail n'existe pas.",
             emailSendSuccess:"Un e-mail vous a été envoyé.",
+            // message landscape
+            messageLandScape:"Tourne ton appareil en mode portrait",
 
 
         }

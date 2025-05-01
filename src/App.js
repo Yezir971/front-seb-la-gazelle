@@ -14,6 +14,7 @@ import Profil from "./pages/Profil";
 import { ToastContainer } from "react-toastify";
 import Politique from "./pages/Politique";
 import Mention from "./pages/Mention";
+import { t } from "i18next";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
@@ -51,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <LandscapeOverlay>
-        <p>Tourne ton appareil en mode portrait</p>
+        <p>{t("messageLandScape")}</p>
       </LandscapeOverlay>
       <MainContent>
         <GlobalStyle />
