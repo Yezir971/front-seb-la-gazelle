@@ -36,19 +36,7 @@ function SignUpModal() {
             setResponseApi(response)
             
             setData(response.data)
-            if (data && !data.violations) {
-                toast.success(t('successSignUp'), {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                    transition: Slide,
-                });
-            }
+
         } catch (error) {
             console.log(`erreur de l'api : ${error}`)
             // setResponseApi(error)
@@ -86,9 +74,21 @@ function SignUpModal() {
         }
     }
 
-    // gestion des toast pour les erreurs 
+    // gestion des toast pour les erreurs et du succès 
     useEffect(() => {
-        if (data && data.violations) {
+        if (data && !data.violations) {
+            toast.success(t('successSignUp'), {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Slide,
+            });
+        }else if (data && data.violations) {
             data.violations.forEach((violation) => {
                 toast.error(translateMessageError(violation.title), {
                     position: "bottom-right",
