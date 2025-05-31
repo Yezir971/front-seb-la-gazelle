@@ -76,7 +76,7 @@ function SignUpModal() {
 
     // gestion des toast pour les erreurs et du succès 
     useEffect(() => {
-        if (data && !data.violations) {
+        if (data && data.message == 'Un mail de validation vous à été envoyé !') {
             toast.success(t('successSignUp'), {
                 position: "bottom-right",
                 autoClose: 5000,
