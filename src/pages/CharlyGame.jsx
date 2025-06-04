@@ -112,7 +112,7 @@ const CharlyGames = () => {
         const proportionalY = (relativeY / rect.height) * 600; // 600 est la hauteur originale de l'image
 
         setMouse({ x: proportionalX, y: proportionalY });
-
+        
         // Vérifiez si le clic est dans une zone spécifique
         if (proportionalX >= data[randomPicture].position[0].xMin && proportionalX <= data[randomPicture].position[0].xMax && proportionalY >= data[randomPicture].position[1].yMin && proportionalY <= data[randomPicture].position[1].yMax) {
           setInteractScore(t("gagner"));
@@ -144,6 +144,7 @@ const CharlyGames = () => {
               
 
               {(time > 0 && time <= 60) && (nbLifeMin !== nbLife) ? (
+              // {true ? (
                 <Container>
                   <PictureContainer>
                       <PictureGameCharly 

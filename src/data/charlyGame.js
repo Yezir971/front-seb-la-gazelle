@@ -3,6 +3,10 @@ import screen2 from "../assets/img/charly-game/charly-game-2.webp";
 import screen3 from "../assets/img/charly-game/charly-game-3.webp";
 import screen4 from "../assets/img/charly-game/charly-game-4.webp";
 import screen5 from "../assets/img/charly-game/charly-game-5.webp";
+import screen6 from "../assets/img/charly-game/charly_jeu_1.webp";
+import screen7 from "../assets/img/charly-game/charly_jeux_2.webp";
+import screen8 from "../assets/img/charly-game/charly_jeux_3.webp";
+import screen9 from "../assets/img/charly-game/charly_jeux_4.webp";
 
 const data = [
     {
@@ -72,7 +76,63 @@ const data = [
             },
             {
                 yMin:140,
-                yMax:162
+                yMax:162,
+            }
+        ]
+
+    },
+    {
+        src: screen6,
+        position : [
+            {
+                xMin:524,
+                xMax:596,
+            },
+            {
+                yMin:352,
+                yMax:410,
+            }
+        ]
+
+    },
+    {
+        src: screen7,
+        position : [
+            {
+                xMin:21,
+                xMax:57,
+            },
+            {
+                yMin:179,
+                yMax:217,
+            }
+        ]
+
+    },
+    {
+        src: screen8,
+        position : [
+            {
+                xMin:50,
+                xMax:99,
+            },
+            {
+                yMin:8,
+                yMax:56,
+            }
+        ]
+
+    },
+    {
+        src: screen9,
+        position : [
+            {
+                xMin:50,
+                xMax:170,
+            },
+            {
+                yMin:8,
+                yMax:397,
             }
         ]
 

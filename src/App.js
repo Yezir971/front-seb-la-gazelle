@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import Politique from "./pages/Politique";
 import Mention from "./pages/Mention";
 import { t } from "i18next";
+import TestMel from "./pages/TestMel";
 
 const GlobalStyle=createGlobalStyle`
   *, body{
